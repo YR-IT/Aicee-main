@@ -122,37 +122,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
-      {/* Top Contact Bar */}
-      <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4" />
-              <span>+91-99907-33308</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4" />
-              <span>info@aicc.ind.in</span>
-            </div>
-            <div className="flex items-center space-x-2 cursor-pointer hover:text-orange-200 transition-colors">
-              <Download className="w-4 h-4" />
-              <span>DOWNLOAD BROCHURE</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Clock className="w-4 h-4" />
-              <span>Mon - Fri: 8:00am - 7:00pm</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Twitter className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-              <Facebook className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-              <Instagram className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-              <Linkedin className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Hero Section with Logo */}
       <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
@@ -190,7 +160,9 @@ function App() {
       {/* Main Content */}
       <main className="w-full">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid lg:grid-cols-12 gap-6">
+        <div className="grid lg:grid-cols-12 gap-6 items-stretch min-h-[600px]">
+
+
             {/* Left Sidebar - Benefits */}
             <div className="lg:col-span-4 space-y-6">
               {/* Membership Benefits */}
@@ -201,12 +173,12 @@ function App() {
                 </h3>
                 <div className="space-y-3">
                   {membershipBenefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors duration-200 group">
+                    <div key={index} className="flex items-start space-x-3 p-2 rounded-lg hover:bg-orange-50 transition-colors duration-200 group">
                       <div className="bg-gradient-to-br from-orange-500 to-red-500 p-2 rounded-lg group-hover:scale-110 transition-transform duration-200">
                         <benefit.icon className="w-4 h-4 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-800 text-sm">{benefit.title}</h4>
+                     
                         <p className="text-xs text-gray-600">{benefit.description}</p>
                       </div>
                     </div>
@@ -216,6 +188,29 @@ function App() {
 
               
 
+              {/* Upcoming Events */}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                  <Calendar className="w-6 h-6 text-orange-500 mr-2" />
+                  Upcoming Events
+                </h3>
+                <div className="space-y-3">
+                  <div className="border-l-4 border-orange-500 pl-4 py-2">
+                    <h4 className="font-semibold text-sm text-gray-800">Global Business Summit</h4>
+                    <p className="text-xs text-gray-600 flex items-center mt-1">
+                      <MapPin className="w-3 h-3 mr-1" />
+                      Mumbai • Dec 15, 2024
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-red-500 pl-4 py-2">
+                    <h4 className="font-semibold text-sm text-gray-800">Export-Import Workshop</h4>
+                    <p className="text-xs text-gray-600 flex items-center mt-1">
+                      <MapPin className="w-3 h-3 mr-1" />
+                      Delhi • Dec 20, 2024
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Center - Membership Form */}
@@ -377,19 +372,8 @@ function App() {
 
             {/* Right Sidebar */}
             <div className="lg:col-span-3 space-y-6">
-              {/* Premium Membership CTA */}
-              <div className="bg-gradient-to-br from-orange-500 to-red-500 text-white rounded-xl p-6 shadow-lg transform hover:scale-105 transition-all duration-300">
-                <div className="text-center">
-                  <Star className="w-8 h-8 mx-auto mb-3 text-yellow-300" />
-                  <h3 className="text-lg font-bold mb-3">Premium Membership</h3>
-                  <p className="mb-4 text-orange-100 text-sm">
-                    Unlock exclusive benefits and take your business to the next level
-                  </p>
-                  <button className="bg-white text-orange-600 px-4 py-2 rounded-lg font-semibold hover:bg-orange-50 transition-colors duration-200 shadow-lg text-sm">
-                    JOIN AS PREMIUM MEMBER
-                  </button>
-                </div>
-              </div>
+           
+          
 
               {/* Member Testimonials */}
               <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
@@ -399,20 +383,57 @@ function App() {
                 </h3>
                 <div className="space-y-3">
                   {testimonials.map((testimonial, index) => (
-                    <div key={index} className="p-2 bg-gradient-to-br from-orange-50 to-red-50 rounded-lg">
+                    <div key={index} className="p-3 bg-gradient-to-br from-orange-50 to-red-50 rounded-lg">
                       <div className="flex items-center mb-2">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-3 h-3 text-yellow-500 fill-current" />
                         ))}
                       </div>
                       <p className="text-xs text-gray-700 mb-2">"{testimonial.text}"</p>
+                      <div>
                       
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-            
+              {/* Contact Info */}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                  <Phone className="w-5 h-5 text-orange-500 mr-2" />
+                  Need Help?
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <Phone className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-800">Call Us</p>
+                      <p className="text-xs text-gray-600">+91-99907-33308</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <Mail className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-800">Email Us</p>
+                      <p className="text-xs text-gray-600">info@aicc.ind.in</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <Clock className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-800">Office Hours</p>
+                      <p className="text-xs text-gray-600">Mon - Fri: 8:00am - 7:00pm</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
