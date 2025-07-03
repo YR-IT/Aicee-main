@@ -1,411 +1,532 @@
 import React, { useState } from 'react';
 import { 
-  Search, 
-  MapPin, 
-  Building2, 
   Phone, 
   Mail, 
-  Globe, 
-  Filter,
-  ChevronDown,
-  ExternalLink,
+  Clock, 
+  Building,
   Users,
-  Star,
   Award,
-  
+  Globe,
+  BookOpen,
+  Star,
+  Shield,
+  Zap,
+  ArrowRight,
+  Calendar,
+  MapPin,
 } from 'lucide-react';
 import Footer from '../components/Footer';
 
-const MembersDirectory = () => {
-  const [selectedState, setSelectedState] = useState('');
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const [selectedLetter, setSelectedLetter] = useState('');
+interface FormData {
+  fullName: string;
+  phone: string;
+  email: string;
+  address: string;
+  city: string;
+  country: string;
+  zipCode: string;
+}
 
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  
-  const states = [
-    'All States', 'Andhra Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi', 
-    'Gujarat', 'Haryana', 'Karnataka', 'Kerala', 'Maharashtra', 'Punjab', 
-    'Rajasthan', 'Tamil Nadu', 'Uttar Pradesh', 'West Bengal'
+function App() {
+  const [formData, setFormData] = useState<FormData>({
+    fullName: '',
+    phone: '',
+    email: '',
+    address: '',
+    city: '',
+    country: '',
+    zipCode: ''
+  });
+
+  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof FormData]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<FormData> = {};
+    
+    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.country.trim()) newErrors.country = 'Country is required';
+    if (!formData.zipCode.trim()) newErrors.zipCode = 'Zip code is required';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsSubmitting(false);
+    
+    // Reset form or show success message
+    alert('Membership application submitted successfully!');
+  };
+
+  const membershipBenefits = [
+    { icon: Users, title: 'Networking Opportunities', description: 'Connect with industry leaders and professionals worldwide' },
+    { icon: Award, title: 'Recognition Programs', description: 'Get recognized for your business achievements and excellence' },
+    { icon: BookOpen, title: 'Educational Resources', description: 'Access to workshops, seminars, and training programs' },
+    { icon: Globe, title: 'Global Connections', description: 'Expand your business internationally with our network' },
+    { icon: Shield, title: 'Business Support', description: 'Legal and advisory services for your business growth' },
+    { icon: Zap, title: 'Exclusive Events', description: 'Attend member-only events and conferences' }
   ];
 
-  const members = [
+  const countries = [
+    'India', 'United States', 'United Kingdom', 'Canada', 'Australia', 
+    'Germany', 'France', 'Japan', 'Singapore', 'UAE'
+  ];
+
+  const testimonials = [
     {
-      id: 1,
-      name: 'Stalwart Creations',
-      address: '410-411, Udyog Vihar, Phase-IV, Haryana - 122001',
-      state: 'Haryana',
-      country: 'India',
-      category: 'Manufacturing',
-      rating: 4.8,
-      verified: true
+      name: 'Rajesh Kumar',
+      company: 'Tech Solutions Ltd.',
+      text: 'Joining AICC has transformed our business reach globally. The networking opportunities are unparalleled.',
+      rating: 5
     },
     {
-      id: 2,
-      name: 'Sahni Trading Corp.',
-      address: '5-B, Marwari Vidyalaya, 473, S.V.P. Road, Charni Road, Maharashtra - 400004',
-      state: 'Maharashtra',
-      country: 'India',
-      category: 'Trading',
-      rating: 4.6,
-      verified: true
+      name: 'Sarah Johnson',
+      company: 'Global Exports Inc.',
+      text: 'The educational resources and business support have been invaluable for our company growth.',
+      rating: 5
     },
     {
-      id: 3,
-      name: 'Bangalore Granites',
-      address: 'No. 130, Magadi Main Road, Machohalli Gate, Karnataka - 560091',
-      state: 'Karnataka',
-      country: 'India',
-      category: 'Construction',
-      rating: 4.7,
-      verified: true
-    },
-    {
-      id: 4,
-      name: 'Gold Marine Exports (P) Ltd.',
-      address: 'New No. 16 (Old No. 25), Dharmaja Koil Street, Chintadripet, Tamil Nadu - 600002',
-      state: 'Tamil Nadu',
-      country: 'India',
-      category: 'Export',
-      rating: 4.9,
-      verified: true
-    },
-    {
-      id: 5,
-      name: 'Aggarwal Fibre & Plastic Industries',
-      address: '3060, D. B. Gupta Road, Chuna Mandi, Pahar Ganj, Delhi - 110055',
-      state: 'Delhi',
-      country: 'India',
-      category: 'Manufacturing',
-      rating: 4.5,
-      verified: true
-    },
-    {
-      id: 6,
-      name: 'Emkay Aromatics Limited',
-      address: 'L-6, Industrial Estate, Ambattur, Tamil Nadu - 600058',
-      state: 'Tamil Nadu',
-      country: 'India',
-      category: 'Chemicals',
-      rating: 4.8,
-      verified: true
+      name: 'Mohammed Ali',
+      company: 'Innovation Hub',
+      text: 'AICC membership opened doors to international markets we never thought possible.',
+      rating: 5
     }
   ];
 
-  const filteredMembers = members.filter(member => {
-    const matchesState = !selectedState || selectedState === 'All States' || member.state === selectedState;
-    const matchesKeyword = !searchKeyword || member.name.toLowerCase().includes(searchKeyword.toLowerCase());
-    const matchesLetter = !selectedLetter || member.name.charAt(0).toUpperCase() === selectedLetter;
-    return matchesState && matchesKeyword && matchesLetter;
-  });
-
-  const handleSearch = () => {
-    // Search functionality is handled by the filter above
-    console.log('Searching with:', { selectedState, searchKeyword, selectedLetter });
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 py-20 px-4 overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-spin-slow"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
+      
 
-        {/* City Skyline Illustration */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/20 to-transparent">
-          <div className="max-w-7xl mx-auto h-full flex items-end justify-center space-x-4 opacity-30">
-            {[...Array(12)].map((_, i) => (
-              <div 
-                key={i} 
-                className={`bg-white/40 rounded-t-lg animate-pulse`}
-                style={{
-                  width: `${Math.random() * 30 + 20}px`,
-                  height: `${Math.random() * 60 + 40}px`,
-                  animationDelay: `${i * 0.2}s`
-                }}
-              ></div>
-            ))}
+      {/* Hero Section with Logo */}
+      <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative max-w-7xl mx-auto px-4">
+          {/* Logo and Company Info */}
+          <div className="text-center mb-10">
+  <div className="flex justify-center mb-4">
+    <div className="w-20 h-20 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+      <Building className="w-10 h-10 text-white" />
+    </div>
+  </div>
+  <h1 className="text-4xl sm:text-5xl font-extrabold tracking-wide">ALL INDIA CHAMBER</h1>
+  <h2 className="text-2xl sm:text-3xl font-semibold mt-1">OF COMMERCE</h2>
+  <p className="text-base sm:text-lg text-orange-100 mt-2">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
+</div>
+
+          
+          {/* Hero Content */}
+          <div className="text-center">
+            <h3 className="text-4xl font-bold mb-4">Become a Member</h3>
+            <p className="text-lg mb-6 max-w-2xl mx-auto">
+              Join thousands of businesses worldwide and unlock exclusive opportunities for growth and success
+            </p>
+            <div className="flex items-center justify-center space-x-2 text-sm">
+              <span>Home</span>
+              <span className="text-orange-200">›</span>
+              <span className="text-orange-200">Become a Member</span>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="relative z-10 max-w-7xl mx-auto text-center text-white">
-          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-3 mb-8">
-            <Users className="w-5 h-5" />
-            <span className="font-semibold">Members Directory</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-200 bg-clip-text text-transparent">Business Members</span>
-          </h1>
-          
-          {/* Search Section */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                {/* State Selector */}
-                <div className="relative">
-                  <select 
-                    value={selectedState}
-                    onChange={(e) => setSelectedState(e.target.value)}
-                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 appearance-none cursor-pointer font-medium"
-                  >
-                    <option value="" className="text-gray-800">Select State</option>
-                    {states.map(state => (
-                      <option key={state} value={state} className="text-gray-800">{state}</option>
-                    ))}
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70 pointer-events-none" />
-                </div>
+      {/* Main Content */}
+      <main className="w-full">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid lg:grid-cols-12 gap-6 items-stretch min-h-[600px]">
 
-                {/* Keyword Search */}
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Type the keyword"
-                    value={searchKeyword}
-                    onChange={(e) => setSearchKeyword(e.target.value)}
-                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 font-medium"
-                  />
-                  <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70" />
-                </div>
 
-                {/* Search Button */}
-                <button 
-                  onClick={handleSearch}
-                  className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-bold hover:bg-orange-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
-                >
-                  <Search className="w-5 h-5" />
-                  <span>SEARCH</span>
-                </button>
-              </div>
-
-              {/* Alphabet Filter */}
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-white/90 font-semibold mb-4 text-center">Search by Alphabet:</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {alphabet.map(letter => (
-                    <button
-                      key={letter}
-                      onClick={() => setSelectedLetter(selectedLetter === letter ? '' : letter)}
-                      className={`w-10 h-10 rounded-xl font-bold transition-all duration-300 transform hover:scale-110 ${
-                        selectedLetter === letter
-                          ? 'bg-white text-orange-600 shadow-lg'
-                          : 'bg-white/20 text-white hover:bg-white/30'
-                      }`}
-                    >
-                      {letter}
-                    </button>
+            {/* Left Sidebar - Benefits */}
+            <div className="lg:col-span-4 space-y-6">
+              {/* Membership Benefits */}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                  <Award className="w-6 h-6 text-orange-500 mr-2" />
+                  Membership Benefits
+                </h3>
+                <div className="space-y-3">
+                  {membershipBenefits.map((benefit, index) => (
+                    <div key={index} className="flex items-start space-x-3 p-2 rounded-lg hover:bg-orange-50 transition-colors duration-200 group">
+                      <div className="bg-gradient-to-br from-orange-500 to-red-500 p-2 rounded-lg group-hover:scale-110 transition-transform duration-200">
+                        <benefit.icon className="w-4 h-4 text-white" />
+                      </div>
+                      <div>
+                     
+                        <p className="text-xs text-gray-600">{benefit.description}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Members Section */}
-      <div className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Find the Best <span className="bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">Members in Town</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Connect with verified business members across India. Discover opportunities and build valuable partnerships.
-            </p>
-          </div>
+              
 
-          {/* Results Count */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl px-6 py-3">
-                <span className="text-orange-700 font-bold">
-                  {filteredMembers.length} Members Found
-                </span>
+              {/* Upcoming Events */}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                  <Calendar className="w-6 h-6 text-orange-500 mr-2" />
+                  Upcoming Events
+                </h3>
+                <div className="space-y-3">
+                  <div className="border-l-4 border-orange-500 pl-4 py-2">
+                    <h4 className="font-semibold text-sm text-gray-800">Global Business Summit</h4>
+                    <p className="text-xs text-gray-600 flex items-center mt-1">
+                      <MapPin className="w-3 h-3 mr-1" />
+                      Mumbai • Dec 15, 2024
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-red-500 pl-4 py-2">
+                    <h4 className="font-semibold text-sm text-gray-800">Export-Import Workshop</h4>
+                    <p className="text-xs text-gray-600 flex items-center mt-1">
+                      <MapPin className="w-3 h-3 mr-1" />
+                      Delhi • Dec 20, 2024
+                    </p>
+                  </div>
+                </div>
               </div>
-              {(selectedState || searchKeyword || selectedLetter) && (
-                <button 
-                  onClick={() => {
-                    setSelectedState('');
-                    setSearchKeyword('');
-                    setSelectedLetter('');
-                  }}
-                  className="text-gray-600 hover:text-orange-600 font-medium transition-colors duration-300"
-                >
-                  Clear Filters
-                </button>
-              )}
             </div>
-            
-            <div className="flex items-center space-x-2">
-              <Filter className="w-5 h-5 text-gray-600" />
-              <span className="text-gray-600 font-medium">Sort by Relevance</span>
-            </div>
-          </div>
 
-          {/* Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredMembers.map((member) => (
-              <div key={member.id} className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
-                {/* Member Header */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
-                        <Building2 className="w-8 h-8 text-white" />
-                      </div>
-                      {member.verified && (
-                        <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                          <Award className="w-3 h-3" />
-                          <span>Verified</span>
-                        </div>
+            {/* Center - Membership Form */}
+            <div className="lg:col-span-5">
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-800 mb-3">Join Our Community</h2>
+                  <p className="text-gray-600 text-sm">
+                    Fields marked with <span className="text-red-500 font-semibold">*</span> are required
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        placeholder="Enter your full name"
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
+                          errors.fullName ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
+                        }`}
+                      />
+                      {errors.fullName && (
+                        <p className="mt-1 text-sm text-red-600">{errors.fullName}</p>
                       )}
                     </div>
-                    
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-yellow-200 transition-colors duration-300">
-                      {member.name}
-                    </h3>
-                    
-                    <div className="flex items-center space-x-2 mb-3">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span className="text-white text-sm font-medium">{member.category}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 text-yellow-300 fill-current" />
-                        <span className="text-white font-bold text-sm">{member.rating}</span>
-                      </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Enter your phone number"
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
+                          errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
+                        }`}
+                      />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                      )}
                     </div>
                   </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Enter your email address"
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
+                        errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
+                      }`}
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Address
+                    </label>
+                    <input
+                      type="text"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleInputChange}
+                      placeholder="Enter your address"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
+                    />
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        City
+                      </label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleInputChange}
+                        placeholder="Enter your city"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Country <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="country"
+                        value={formData.country}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
+                          errors.country ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
+                        }`}
+                      >
+                        <option value="">Select Country</option>
+                        {countries.map(country => (
+                          <option key={country} value={country}>{country}</option>
+                        ))}
+                      </select>
+                      {errors.country && (
+                        <p className="mt-1 text-sm text-red-600">{errors.country}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Zip Code <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="zipCode"
+                        value={formData.zipCode}
+                        onChange={handleInputChange}
+                        placeholder="Enter zip code"
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
+                          errors.zipCode ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
+                        }`}
+                      />
+                      {errors.zipCode && (
+                        <p className="mt-1 text-sm text-red-600">{errors.zipCode}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center">
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className="w-[350px] bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+  >
+    {isSubmitting ? 'Submitting...' : (
+      <>
+        Submit Membership Application
+        <ArrowRight className="w-5 h-5 ml-2" />
+      </>
+    )}
+  </button>
+</div>
+
+                </form>
+              </div>
+            </div>
+
+            {/* Right Sidebar */}
+            <div className="lg:col-span-3 space-y-6">
+           
+          
+
+              {/* Member Testimonials */}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                  <Users className="w-5 h-5 text-orange-500 mr-2" />
+                  What Members Say
+                </h3>
+                <div className="space-y-3">
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="p-3 bg-gradient-to-br from-orange-50 to-red-50 rounded-lg">
+                      <div className="flex items-center mb-2">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 text-yellow-500 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-xs text-gray-700 mb-2">"{testimonial.text}"</p>
+                      <div>
+                      
+                      </div>
+                    </div>
+                  ))}
                 </div>
+              </div>
 
-                {/* Member Details */}
-                <div className="p-6">
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start space-x-3">
-                      <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
-                      <div className="text-gray-600 text-sm leading-relaxed">
-                        {member.address}
-                      </div>
+              {/* Contact Info */}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
+                <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                  <Phone className="w-5 h-5 text-orange-500 mr-2" />
+                  Need Help?
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <Phone className="w-4 h-4 text-orange-600" />
                     </div>
-                    
-                    <div className="flex items-center space-x-3">
-                      <Globe className="w-5 h-5 text-orange-500" />
-                      <span className="text-gray-600 font-medium">{member.country}</span>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-800">Call Us</p>
+                      <p className="text-xs text-gray-600">+91-99907-33308</p>
                     </div>
                   </div>
-
-                  {/* Action Buttons */}
-                  <div className="space-y-3">
-                    <button className="w-full bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-3 px-6 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
-                      <ExternalLink className="w-5 h-5" />
-                      <span>More Info</span>
-                    </button>
-                    
-                    <div className="grid grid-cols-2 gap-3">
-                      <button className="bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 py-2 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2">
-                        <Phone className="w-4 h-4" />
-                        <span>Call</span>
-                      </button>
-                      <button className="bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 py-2 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2">
-                        <Mail className="w-4 h-4" />
-                        <span>Email</span>
-                      </button>
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <Mail className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-800">Email Us</p>
+                      <p className="text-xs text-gray-600">info@aicc.ind.in</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="bg-orange-100 p-2 rounded-lg">
+                      <Clock className="w-4 h-4 text-orange-600" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-800">Office Hours</p>
+                      <p className="text-xs text-gray-600">Mon - Fri: 8:00am - 7:00pm</p>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
+        </div>
+      </main>
 
-          {/* Load More Button */}
-          {filteredMembers.length > 0 && (
-            <div className="text-center mt-16">
-              <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
-                Load More Members
-              </button>
-            </div>
-          )}
-
-          {/* No Results */}
-          {filteredMembers.length === 0 && (
-            <div className="text-center py-16">
-              <div className="w-32 h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center mx-auto mb-8">
-                <Search className="w-16 h-16 text-orange-500" />
+      {/* Animated Logo Section - Fills the gap */}
+      <section className="bg-gradient-to-r from-orange-100 via-white to-red-100 py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center">
+            {/* Animated Logo */}
+            <div className="flex justify-center mb-8">
+              <div className="relative">
+                {/* Outer rotating ring */}
+                <div className="w-32 h-32 border-4 border-orange-200 rounded-full animate-spin" style={{animationDuration: '8s'}}></div>
+                
+                {/* Middle pulsing ring */}
+                <div className="absolute inset-2 w-28 h-28 border-2 border-red-300 rounded-full animate-pulse"></div>
+                
+                {/* Inner logo container */}
+                <div className="absolute inset-4 w-24 h-24 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center shadow-2xl transform hover:scale-110 transition-transform duration-300">
+                  <Building className="w-12 h-12 text-white animate-bounce" style={{animationDuration: '2s'}} />
+                </div>
+                
+                {/* Floating elements around the logo */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full animate-ping"></div>
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-400 rounded-full animate-pulse"></div>
+                <div className="absolute top-1/2 -left-4 w-3 h-3 bg-green-400 rounded-full animate-bounce" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute top-1/2 -right-4 w-3 h-3 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">No Members Found</h3>
-              <p className="text-gray-600 mb-8">Try adjusting your search criteria or browse all members.</p>
-              <button 
-                onClick={() => {
-                  setSelectedState('');
-                  setSearchKeyword('');
-                  setSelectedLetter('');
-                }}
-                className="bg-gradient-to-r from-orange-600 to-red-500 text-white px-8 py-3 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                View All Members
-              </button>
             </div>
-          )}
-        </div>
-      </div>
 
-      {/* CTA Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            {/* Animated Text */}
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold text-gray-800 animate-fade-in">
+                Connecting Businesses Worldwide
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-slide-up">
+                Join our global network of successful entrepreneurs and business leaders
+              </p>
+              
+              {/* Animated Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                  <div className="text-3xl font-bold text-orange-600 animate-count-up">10,000+</div>
+                  <div className="text-sm text-gray-600">Active Members</div>
+                </div>
+                <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                  <div className="text-3xl font-bold text-red-600 animate-count-up" style={{animationDelay: '0.2s'}}>50+</div>
+                  <div className="text-sm text-gray-600">Countries</div>
+                </div>
+                <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                  <div className="text-3xl font-bold text-orange-600 animate-count-up" style={{animationDelay: '0.4s'}}>500+</div>
+                  <div className="text-sm text-gray-600">Events</div>
+                </div>
+                <div className="text-center transform hover:scale-105 transition-transform duration-300">
+                  <div className="text-3xl font-bold text-red-600 animate-count-up" style={{animationDelay: '0.6s'}}>25</div>
+                  <div className="text-sm text-gray-600">Years</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
         
-        <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            Want to Join Our <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Business Network?</span>
-          </h2>
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            Become a member of AICC and connect with thousands of businesses across India. 
-            Expand your network and grow your business with us.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
-              Become a Member
-            </button>
-            <button className="border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
-              Learn More
-            </button>
-          </div>
-        </div>
- 
-</div>
-<Footer />
-<style>{`
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`}</style>
-</div>
-
-
-
-    
+        @keyframes slide-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes count-up {
+          from { opacity: 0; transform: scale(0.5); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 1s ease-out 0.3s both;
+        }
+        
+        .animate-count-up {
+          animation: count-up 0.8s ease-out both;
+        }
+      `}</style>
+    </div>
   );
-};
+}
 
-export default MembersDirectory;
+export default App;
