@@ -174,11 +174,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
       AICC Bulletin
     </button>
     <button
-      onClick={() => handleNavigation('contact')}
+      onClick={() =>  onNavigate('Contact-Us')}
 
       className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold"
     >
       Contact Us
+      
     </button>
   </div>
 </div>

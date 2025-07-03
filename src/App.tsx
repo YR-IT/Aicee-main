@@ -5,14 +5,14 @@ import International from './Pages/International.tsx';
 import HeroSection from './components/HeroSection.tsx';
 import CoreServices from './components/CoreServices';
 import ExportImportCourse from './components/ExportImportCourse';
-import Initiatives from './components/Initiatives';
 import ExcellenceAward from './components/ExcellenceAward';
 import CallToAction from './components/CallToAction.tsx';
 import Footer from './components/Footer';
 import Activities from './Pages/Activities';
-import BecomeMembers from './Pages/BecomeMember.tsx'
+import BecomeMembers from './Pages/BecomeMember.tsx';
 import MembersDirectory from './Pages/MembersDirectory.tsx';
-import AiccBulletin from './Pages/AiccBulletin.tsx'
+import AiccBulletin from './Pages/AiccBulletin.tsx';
+import ContactUs from  './Pages/ContactUs.tsx'
 
 
 function App() {
@@ -32,6 +32,8 @@ function App() {
           return <MembersDirectory />;
           case 'AICC-Bulletin':
             return <AiccBulletin />;
+            case 'Contact-Us':
+              return <ContactUs />;
       default:
         return (
           <>
@@ -39,7 +41,6 @@ function App() {
             <CoreServices />
             <ExportImportCourse />
             <ExcellenceAward />
-            <Initiatives />
             <CallToAction />
             <Footer />
           </>
