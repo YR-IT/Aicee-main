@@ -107,7 +107,7 @@ const MembersDirectory = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 py-20 px-4 overflow-hidden">
+      <div className="relative bg-gradient-to-r from-blue-800 via-blue-900 to-blue-900 py-20 px-4 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -139,7 +139,7 @@ const MembersDirectory = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-200 bg-clip-text text-transparent">Business Members</span>
+            Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Business Members</span>
           </h1>
           
           {/* Search Section */}
@@ -252,7 +252,7 @@ const MembersDirectory = () => {
             {filteredMembers.map((member) => (
               <div key={member.id} className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
                 {/* Member Header */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-blue-500 to-blue-900 p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-4">
@@ -301,7 +301,7 @@ const MembersDirectory = () => {
 
                   {/* Action Buttons */}
                   <div className="space-y-3">
-                    <button className="w-full bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-3 px-6 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
+                    <button className="w-full bg-gradient-to-r from-blue-500 via-blue-900 to-blue-500 hover:from-orange-700 hover:to-red-600 text-white py-3 px-6 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
                       <ExternalLink className="w-5 h-5" />
                       <span>More Info</span>
                     </button>
