@@ -29,10 +29,14 @@ const Footer = () => {
             New Delhi - 110001, India
           </p>
           <div className="space-y-2 text-sm text-gray-300">
-            <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-orange-400" /> +91-99907 33308</p>
-            <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-orange-400" /> info@aicc.ind.in</p>
+            <a href="tel:+919990733308" className="flex items-center gap-2 hover:underline">
+  <Phone className="w-4 h-4 text-orange-400" /> +91-99907 33308
+</a>
+<a href="mailto:info@aicc.ind.in" className="flex items-center gap-2 hover:underline">
+  <Mail className="w-4 h-4 text-orange-400" /> info@aicc.ind.in
+</a>
             <a
-              href="https://www.google.com/maps/place/All+India+Chamber+of+Commerce/@28.3502579,76.9005784,11z"
+              href="https://www.google.com/maps/place/All+India+Chamber+of+Commerce/@28.3534306,76.9767154,11.25z/data=!4m14!1m7!3m6!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!2sAll+India+Chamber+of+Commerce!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly!3m5!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-orange-300 hover:underline mt-2"
