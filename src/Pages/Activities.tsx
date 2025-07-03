@@ -102,6 +102,20 @@ const activities = [
     title: "Legal Assistance",
     description: "AICC helps resolve business disputes through conciliation and arbitration.",
     image: "images/Activity16.webp"
+  },
+  {
+    icon: FileText,
+    title: "Protecting Intellectual Property",
+    description: "AICC guides businesses on protecting their intellectual assets globally, including patents, trademarks, and copyrights through legal aid and partnerships.",
+    image: "images/Activity17.webp"
+  },
+
+
+  {
+    icon: Users,
+    title: "Social Initiatives & Community Building",
+    description: "Through various CSR drives and social outreach, AICC promotes inclusive growth and community empowerment alongside industrial development.",
+    image: "images/Activity18.webp"
   }
 ];
 
@@ -184,38 +198,44 @@ const Activities: React.FC = () => {
       </div>
 
       {/* Activities Section */}
-      <div id="activities-section" className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
-        <div className="relative container mx-auto px-4 sm:px-6 py-10 sm:py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {activities.map((activity, index) => {
-              const Icon = activity.icon;
-              return (
-                <div
-                  key={index}
-                  className={`group bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden border border-white/20 ${showCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                  style={{ transitionDelay: showCards ? `${index * 80}ms` : '0ms' }}
-                >
-                  <div className="relative h-36 overflow-hidden">
-                    <img
-                      src={activity.image}
-                      alt={activity.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                    <div className="absolute top-2 right-2 bg-indigo-600 p-2 rounded-lg shadow-md">
-                      <Icon className="w-5 h-5 text-white" />
-                    </div>
-                  </div>
-                  <div className="p-3">
-                    <h3 className="text-base font-bold text-gray-800 mb-1">{activity.title}</h3>
-                    <p className="text-sm text-gray-600 leading-snug">{activity.description}</p>
-                  </div>
-                </div>
-              );
-            })}
+     
+<div id="activities-section" className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+  <div className="relative container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      {activities.map((activity, index) => {
+        const Icon = activity.icon;
+        return (
+          <div
+            key={index}
+            className={`group bg-white/90 rounded-lg shadow-md hover:shadow-lg transition-all duration-400 transform hover:-translate-y-1 hover:scale-105 overflow-hidden border border-white/20 ${showCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ transitionDelay: showCards ? `${index * 60}ms` : '0ms' }}
+          >
+            {/* Image Section */}
+            <div className="relative h-24 sm:h-28 md:h-32 overflow-hidden">
+              <img
+                src={activity.image}
+                alt={activity.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute top-1 right-1 bg-indigo-600 p-1 rounded-md shadow">
+                <Icon className="w-4 h-4 text-white" />
+              </div>
+            </div>
+
+            {/* Title Section */}
+            <div className="p-2">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-800 text-center">
+                {activity.title}
+              </h3>
+            </div>
           </div>
-        </div>
-      </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
 
       <Footer />
 
