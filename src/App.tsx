@@ -41,6 +41,7 @@ function App() {
             <CoreServices />
             <ExportImportCourse />
             <ExcellenceAward />
+            <Initiatives />
             <CallToAction />
             <Footer />
           </>
