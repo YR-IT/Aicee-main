@@ -11,6 +11,7 @@ import CallToAction from './components/CallToAction.tsx';
 import Footer from './components/Footer';
 import Activities from './Pages/Activities';
 import BecomeMembers from './Pages/BecomeMember.tsx'
+import MembersDirectory from './Pages/MembersDirectory.tsx';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -25,6 +26,9 @@ function App() {
       return <Activities />;
       case 'members':
         return <BecomeMembers />;
+        case 'members-directory':
+          return <MembersDirectory />;
+        
       default:
         return (
           <>
@@ -43,6 +47,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
+      
       {renderPage()}
     </div>
   );
