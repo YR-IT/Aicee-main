@@ -122,18 +122,17 @@ function App() {
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-4">
           {/* Logo and Company Info */}
-          <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center space-x-6">
-              <div className="w-20 h-20 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
-                <Building className="w-10 h-10 text-white" />
-              </div>
-              <div className="text-center">
-                <h1 className="text-3xl font-bold mb-1">ALL INDIA CHAMBER</h1>
-                <h2 className="text-xl font-semibold mb-1">OF COMMERCE</h2>
-                <p className="text-sm text-orange-100">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
-              </div>
-            </div>
-          </div>
+          <div className="text-center mb-10">
+  <div className="flex justify-center mb-4">
+    <div className="w-20 h-20 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+      <Building className="w-10 h-10 text-white" />
+    </div>
+  </div>
+  <h1 className="text-4xl sm:text-5xl font-extrabold tracking-wide">ALL INDIA CHAMBER</h1>
+  <h2 className="text-2xl sm:text-3xl font-semibold mt-1">OF COMMERCE</h2>
+  <p className="text-base sm:text-lg text-orange-100 mt-2">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
+</div>
+
           
           {/* Hero Content */}
           <div className="text-center">
@@ -347,18 +346,21 @@ function App() {
                     </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
-                  >
-                    {isSubmitting ? 'Submitting...' : (
-                      <>
-                        Submit Membership Application
-                        <ArrowRight className="w-5 h-5 ml-2" />
-                      </>
-                    )}
-                  </button>
+                  <div className="flex justify-center">
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className="w-[350px] bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+  >
+    {isSubmitting ? 'Submitting...' : (
+      <>
+        Submit Membership Application
+        <ArrowRight className="w-5 h-5 ml-2" />
+      </>
+    )}
+  </button>
+</div>
+
                 </form>
               </div>
             </div>
