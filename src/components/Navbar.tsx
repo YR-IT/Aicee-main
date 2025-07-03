@@ -53,6 +53,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
   return (
     <>
+   
+
+
       {/* Top Contact Bar - HIDDEN ON MOBILE */}
       <div className="hidden md:block bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 text-white text-xs px-3 py-2">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
@@ -102,7 +105,41 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             <div className="hidden lg:flex items-center space-x-2">
               {navItem('HOME', 'home')}
               {navItem('ABOUT US', 'about')}
-              {navItem('MEMBERS', 'members')}
+              
+           {/* Members Dropdown */}
+<div className="relative group">
+  <button
+    className="relative px-4 py-2 font-bold transition-all duration-300 text-gray-700 group-hover:text-orange-600"
+  >
+    <span className="relative z-10">MEMBERS</span>
+  </button>
+
+  {/* Dropdown Menu */}
+  <div className="absolute left-0 mt-1 w-64 bg-white shadow-xl rounded-md 
+                  opacity-0 invisible translate-y-1 
+                  group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                  transition-all duration-500 delay-200 z-50">
+    <button
+      onClick={() => handleNavigation('members')}
+      className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold border-b"
+    >
+      Become a Member
+    </button>
+    <button
+      onClick={() => handleNavigation('member-benefits')}
+      className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold border-b"
+    >
+      Member Benefits
+    </button>
+    <button
+      onClick={() => handleNavigation('members-directory')}
+      className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold"
+    >
+      Members Directory
+    </button>
+  </div>
+</div>
+
               {navItem('ACTIVITIES', 'activities')}
               {navItem('INTERNATIONAL', 'international')}
               {navItem('COURSES', 'courses')}

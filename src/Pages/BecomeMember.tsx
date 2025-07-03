@@ -2,25 +2,18 @@ import React, { useState } from 'react';
 import { 
   Phone, 
   Mail, 
-  Download, 
   Clock, 
-  Twitter, 
-  Facebook, 
   Building,
   Users,
   Award,
   Globe,
   BookOpen,
-  CheckCircle,
   Star,
   Shield,
   Zap,
   ArrowRight,
-  TrendingUp,
   Calendar,
   MapPin,
-  Instagram,
-  Linkedin
 } from 'lucide-react';
 import Footer from '../components/Footer';
 
