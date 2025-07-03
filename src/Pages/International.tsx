@@ -134,7 +134,7 @@ function International() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+      <section className="py-16 relative h-[80vh] flex justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -152,22 +152,31 @@ function International() {
           style={{ transform: `translateY(${scrollY * -0.15}px)` }}
         />
 
-        <div className={`text-center px-8 max-w-6xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="flex items-center justify-center mb-8">
-            <Globe className="w-16 h-16 text-blue-300 mr-4" />
-            <div className="h-12 w-px bg-blue-300/50 mr-4" />
-            <Building2 className="w-16 h-16 text-blue-300" />
-          </div>
+        <div
+  className={`text-center px-4 sm:px-6 md:px-8 max-w-6xl mx-auto transition-all duration-1000 ${
+    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
 
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            International
-            <span className="block text-blue-300">Partnerships</span>
-          </h1>
+  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight">
+    International
+    <span className="block text-blue-300">Partnerships</span>
+  </h1>
 
-          <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed">
-            All India Chamber of Commerce has entered into mutual co-operation agreements with international organizations to promote and develop bilateral economic relations by providing a platform for businessmen to meet, discuss and explore business opportunities.
-          </p>
-        </div>
+  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
+    All India Chamber of Commerce has entered into mutual co-operation agreements with international organizations to promote and develop bilateral economic relations by providing a platform for businessmen to meet, discuss and explore business opportunities.
+  </p>
+   <p className="text-blue-200 italic text-sm sm:text-base md:text-lg max-w-2xl mx-auto flex items-center justify-center gap-2">
+    <svg
+      className="w-5 h-5 text-blue-200"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M9 7H7a5 5 0 00-5 5v5h7V7zm12 0h-2a5 5 0 00-5 5v5h7V7z" />
+    </svg>
+    “Building bridges for better business worldwide.”
+  </p>
+</div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -176,7 +185,7 @@ function International() {
       </section>
 
       {/* Partners Section */}
-      <section id="partners-section" className="h-screen py-8 px-4 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <section id="partners-section" className="py-8 px-4 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
         <div className="max-w-7xl mx-auto h-full flex flex-col">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-bold text-gray-900 mb-3">
@@ -187,16 +196,19 @@ function International() {
             </p>
           </div>
 
-          <div className="flex-1 grid grid-cols-3 md:grid-cols-6 gap-3 content-start overflow-hidden">
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-6 gap-3 content-start overflow-hidden">
             {organizations.map((org, index) => (
               <div
-                key={index}
-                className="group bg-white rounded-lg p-3 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-100 hover:border-blue-200 flex flex-col items-center h-fit"
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                  animation: isVisible ? 'fadeInUp 0.6s ease-out forwards' : 'none'
-                }}
-              >
+  key={index}
+  className="group bg-white rounded-lg p-3 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-100 hover:border-blue-200 flex flex-col items-center w-full"
+  style={{
+    minHeight: '150px',
+    animationDelay: `${index * 50}ms`,
+    animation: isVisible ? 'fadeInUp 0.6s ease-out forwards' : 'none'
+  }}
+>
+
+
                 <div className="w-full h-16 mb-2 rounded-md overflow-hidden group-hover:scale-105 transition-transform duration-300 relative">
                   <img
                     src={org.image}
@@ -215,25 +227,26 @@ function International() {
                   </div>
                 </div>
 
-                <div className="text-center flex-1 flex flex-col justify-between">
-                  <h3 className="font-semibold text-gray-900 mb-1 text-xs leading-tight group-hover:text-blue-700 transition-colors line-clamp-2">
-                    {org.name}
-                  </h3>
+               <div className="text-center flex-1 flex flex-col justify-between overflow-hidden">
+  <h3 className="font-semibold text-gray-900 mb-1 text-xs leading-tight group-hover:text-blue-700 transition-colors line-clamp-2">
+    {org.name}
+  </h3>
 
-                  <p className="text-blue-600 font-medium text-xs flex items-center justify-center">
-                    <MapPin className="w-3 h-3 mr-1" />
-                    <span className="truncate">{org.country}</span>
-                  </p>
-                </div>
+  <p className="text-blue-600 font-medium text-xs flex items-center justify-center w-full">
+    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-1 shrink-0" />
+    <span className="truncate max-w-[80%]">{org.country}</span>
+  </p>
+</div>
+
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-4">
+          {/* <div className="text-center mt-4">
             <p className="text-lg text-gray-500 font-light">
               and many more...
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 <Footer />

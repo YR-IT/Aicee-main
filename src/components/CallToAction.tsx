@@ -9,7 +9,7 @@ const CallToAction = () => {
           {/*  Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 text-center sm:text-left leading-relaxed">
             <span className="bg-gradient-to-r from-white via-orange-300 to-orange-500 bg-clip-text text-transparent animate-pulse">
-              Strengthening Global Engagement
+              Grow Together
             </span>
           </h1>
 

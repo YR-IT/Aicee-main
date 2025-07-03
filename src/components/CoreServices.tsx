@@ -53,17 +53,19 @@ const CoreServices = () => {
               style={{ animationDelay: `${index * 0.2}s`, animationFillMode: "both" }}
             >
               {/* Icon */}
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.bg} flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}>
-                {service.icon}
-              </div>
+              <div className="w-full flex justify-center">
+  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.bg} flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+    {service.icon}
+  </div>
+</div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors duration-300">
+              <h3 className="text-xl sm:text-3xl font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors duration-300">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed mb-6 text-base sm:text-sm md:text-base">
+              <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-lg">
                 {service.description}
               </p>
 
