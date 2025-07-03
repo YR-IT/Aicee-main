@@ -350,7 +350,7 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="w-[350px] bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+    className="w-[300px] bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
   >
     {isSubmitting ? 'Submitting...' : (
       <>
@@ -497,7 +497,7 @@ function App() {
       <Footer />
 
       {/* Custom CSS for animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
