@@ -83,8 +83,7 @@ function App() {
     { icon: Award, title: 'Recognition Programs', description: 'Get recognized for your business achievements and excellence' },
     { icon: BookOpen, title: 'Educational Resources', description: 'Access to workshops, seminars, and training programs' },
     { icon: Globe, title: 'Global Connections', description: 'Expand your business internationally with our network' },
-    { icon: Shield, title: 'Business Support', description: 'Legal and advisory services for your business growth' },
-    { icon: Zap, title: 'Exclusive Events', description: 'Attend member-only events and conferences' }
+ 
   ];
 
   const countries = [
@@ -105,12 +104,7 @@ function App() {
       text: 'The educational resources and business support have been invaluable for our company growth.',
       rating: 5
     },
-    {
-      name: 'Mohammed Ali',
-      company: 'Innovation Hub',
-      text: 'AICC membership opened doors to international markets we never thought possible.',
-      rating: 5
-    }
+  
   ];
 
   return (
@@ -350,7 +344,7 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="w-[300px] bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+    className="w-500 bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
   >
     {isSubmitting ? 'Submitting...' : (
       <>
