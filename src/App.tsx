@@ -13,6 +13,7 @@ import BecomeMembers from './Pages/BecomeMember.tsx';
 import MembersDirectory from './Pages/MembersDirectory.tsx';
 import AiccBulletin from './Pages/AiccBulletin.tsx';
 import ContactUs from  './Pages/ContactUs.tsx'
+import Initiatives from './components/Initiatives.tsx';
 
 
 function App() {
