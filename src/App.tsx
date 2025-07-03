@@ -5,6 +5,7 @@ import International from './Pages/International.tsx';
 import HeroSection from './components/HeroSection.tsx';
 import CoreServices from './components/CoreServices';
 import ExportImportCourse from './components/ExportImportCourse';
+import Initiatives from './components/Initiatives';
 import ExcellenceAward from './components/ExcellenceAward';
 import CallToAction from './components/CallToAction.tsx';
 import Footer from './components/Footer';
@@ -31,6 +32,7 @@ function App() {
             <CoreServices />
             <ExportImportCourse />
             <ExcellenceAward />
+            <Initiatives />
             <CallToAction />
             <Footer />
           </>
