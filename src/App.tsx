@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import Activities from './Pages/Activities';
 import BecomeMembers from './Pages/BecomeMember.tsx'
 import MembersDirectory from './Pages/MembersDirectory.tsx';
+import AiccBulletin from './Pages/AiccBulletin.tsx'
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -27,7 +29,8 @@ function App() {
         return <BecomeMembers />;
         case 'members-directory':
           return <MembersDirectory />;
-        
+          case 'AICC-Bulletin':
+            return <AiccBulletin />;
       default:
         return (
           <>
