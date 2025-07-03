@@ -130,37 +130,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
-      {/* Top Contact Bar */}
-      <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4" />
-              <span>+91-99907-33308</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4" />
-              <span>info@aicc.ind.in</span>
-            </div>
-            <div className="flex items-center space-x-2 cursor-pointer hover:text-orange-200 transition-colors">
-              <Download className="w-4 h-4" />
-              <span>DOWNLOAD BROCHURE</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2">
-              <Clock className="w-4 h-4" />
-              <span>Mon - Fri: 8:00am - 7:00pm</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <Twitter className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-              <Facebook className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-              <Instagram className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-              <Linkedin className="w-4 h-4 hover:text-orange-200 cursor-pointer transition-colors" />
-            </div>
-          </div>
-        </div>
-      </div>
+  
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
@@ -417,15 +387,7 @@ function App() {
                       <p className="text-sm text-gray-600">Industry experience</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="bg-red-100 p-2 rounded-lg">
-                      <Star className="w-5 h-5 text-red-600" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-800">500+ Events</p>
-                      <p className="text-sm text-gray-600">Annual activities</p>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
 
