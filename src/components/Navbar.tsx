@@ -143,7 +143,46 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
               {navItem('ACTIVITIES', 'activities')}
               {navItem('INTERNATIONAL', 'international')}
               {navItem('COURSES', 'courses')}
-              {navItem('MORE', 'more')}
+             {/* More Dropdown */}
+             
+<div className="relative group">
+  <button
+    className={`relative px-4 py-2 font-bold transition-all duration-300 group ${
+      currentPage === 'more' ? 'text-orange-600' : 'text-gray-700 hover:text-orange-600'
+    }`}
+  >
+    <span className="relative z-10">MORE</span>
+    {currentPage === 'more' && (
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-600 to-red-500 rounded-full"></div>
+    )}
+  </button>
+
+  {/* Dropdown */}
+  <div className="absolute left-0 mt-1 w-64 bg-white shadow-xl rounded-md opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-500 delay-200 z-50">
+    <button
+      onClick={() => handleNavigation('arbitration')}
+      
+      className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold border-b"
+    >
+      Arbitration Cell
+    </button>
+    <button
+      onClick={() => onNavigate('AICC-Bulletin')}
+      
+      className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold border-b"
+    >
+      AICC Bulletin
+    </button>
+    <button
+      onClick={() => handleNavigation('contact')}
+
+      className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold"
+    >
+      Contact Us
+    </button>
+  </div>
+</div>
+
             </div>
 
             {/* Actions */}
