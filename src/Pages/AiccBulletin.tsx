@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Calendar, 
   User, 
@@ -17,6 +17,7 @@ import {
   Tag
 } from 'lucide-react';
 import Footer from '../components/Footer';
+
 
 const BulletinPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -152,7 +153,14 @@ const BulletinPage = () => {
 
     function handleNavigation(arg0: string): void {
         throw new Error('Function not implemented.');
+
+      
     }
+
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+    }, []);
+    
 
   return (
     
