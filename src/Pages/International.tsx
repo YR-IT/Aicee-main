@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-   Globe, ArrowDown, Building2,
+    ArrowDown, 
   MapPin, // Removed unused: Users, Handshake, Mail, Phone
   
 } from 'lucide-react';
@@ -128,6 +128,7 @@ function International() {
   }, []);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setIsVisible(true);
   }, []);
 

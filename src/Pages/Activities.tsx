@@ -126,6 +126,7 @@ const Activities: React.FC = () => {
   const [showCards, setShowCards] = useState(false);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => setIsVisible(true), 100);
     setTimeout(() => setShowCards(true), 800);
   }, []);
