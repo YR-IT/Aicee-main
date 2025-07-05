@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Shield, Ribbon,BadgeCheck } from 'lucide-react';
+import { Award, Shield, Ribbon,BadgeCheck, Trophy, Medal } from 'lucide-react';
 
 const ExcellenceAward = () => {
   return (
@@ -73,7 +73,7 @@ const ExcellenceAward = () => {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
       <div className="text-center group">
         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-xl">
-          <Award className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+          <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
         </div>
         <div className="text-yellow-600 font-bold">Gold</div>
         <div className="text-yellow-500 text-sm">Trophy</div>
@@ -81,7 +81,7 @@ const ExcellenceAward = () => {
 
       <div className="text-center group">
         <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-300 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-          <Shield className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+          <Medal className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
         </div>
         <div className="text-blue-600 font-bold">Excellence</div>
         <div className="text-blue-500 text-sm">Medal</div>

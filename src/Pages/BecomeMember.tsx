@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { 
   Phone, 
   Mail, 
@@ -37,6 +38,11 @@ function App() {
     country: '',
     zipCode: ''
   });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+  }, []);
+  
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -111,37 +117,43 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
       
 
-      {/* Hero Section with Logo */}
-      <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-4">
-          {/* Logo and Company Info */}
-          <div className="text-center mb-10">
-  <div className="flex justify-center mb-4">
-    <div className="w-20 h-20 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
-      <Building className="w-10 h-10 text-white" />
-    </div>
-  </div>
-  <h1 className="text-4xl sm:text-5xl font-extrabold tracking-wide">ALL INDIA CHAMBER</h1>
-  <h2 className="text-2xl sm:text-3xl font-semibold mt-1">OF COMMERCE</h2>
-  <p className="text-base sm:text-lg text-orange-100 mt-2">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
-</div>
-
-          
-          {/* Hero Content */}
-          <div className="text-center">
-            <h3 className="text-4xl font-bold mb-4">Become a Member</h3>
-            <p className="text-lg mb-6 max-w-2xl mx-auto">
-              Join thousands of businesses worldwide and unlock exclusive opportunities for growth and success
-            </p>
-            <div className="flex items-center justify-center space-x-2 text-sm">
-              <span>Home</span>
-              <span className="text-orange-200">›</span>
-              <span className="text-orange-200">Become a Member</span>
-            </div>
-          </div>
+     {/* Hero Section with Logo - Responsive */}
+<section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
+  <div className="absolute inset-0 bg-black opacity-20"></div>
+  <div className="relative max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    {/* Left Section: Logo and Title */}
+    <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
+      <div className="flex items-center space-x-4">
+        <div className="w-14 h-14 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+          <Building className="w-6 h-6 text-white" />
         </div>
-      </section>
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold leading-tight">ALL INDIA CHAMBER</h1>
+          <h2 className="text-lg sm:text-xl font-semibold -mt-1">OF COMMERCE</h2>
+        </div>
+      </div>
+      <p className="text-sm sm:text-base text-orange-100 mt-2">
+        WE FACILITATE BUSINESS ACROSS THE GLOBE
+      </p>
+    </div>
+
+    {/* Right Section: Page Title and Breadcrumb */}
+    <div className="text-center md:text-right space-y-3">
+      <h3 className="text-2xl sm:text-3xl font-bold">Become a Member</h3>
+      <p className="text-sm sm:text-base text-orange-100">
+        Get in touch with us for any inquiries, support, or business opportunities
+      </p>
+      <div className="flex justify-center md:justify-end space-x-2 text-sm text-orange-100">
+        <span>Home</span>
+        <span>›</span>
+        <span className="font-semibold">Become a Member</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
       {/* Main Content */}
       <main className="w-full">

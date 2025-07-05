@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Phone, 
   Mail, 
@@ -127,36 +127,38 @@ function App() {
     'Complaint/Feedback',
     'Other'
   ];
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+  }, []);
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
   
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
+      
+           {/* Hero Section */}
+           <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
         <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-4">
-          {/* Logo and Company Info */}
-          <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center space-x-6">
-              <div className="w-20 h-20 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
-                <Building className="w-10 h-10 text-white" />
-              </div>
-              <div className="text-center">
-                <h1 className="text-3xl font-bold mb-1">ALL INDIA CHAMBER</h1>
-                <h2 className="text-xl font-semibold mb-1">OF COMMERCE</h2>
-                <p className="text-sm text-orange-100">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
-              </div>
+        <div className="relative max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-8 md:space-y-0">
+          {/* Logo */}
+          <div className="flex flex-col items-center justify-center md:flex-row md:items-center md:gap-6">
+            <div className="w-20 h-20 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
+              <img src="/images/aicc-logo.png" alt="AICC Logo" className="w-10 h-10 object-contain" />
+            </div>
+            <div className="text-center md:text-left mt-4 md:mt-0">
+              <h1 className="text-2xl md:text-3xl font-bold">ALL INDIA CHAMBER</h1>
+              <h2 className="text-xl md:text-2xl font-semibold">OF COMMERCE</h2>
+              <p className="text-sm text-orange-100">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
             </div>
           </div>
-          
-          {/* Hero Content */}
-          <div className="text-center">
-            <h3 className="text-4xl font-bold mb-4">Contact Us</h3>
-            <p className="text-lg mb-6 max-w-2xl mx-auto">
+
+          {/* Page Info */}
+          <div className="text-center md:text-right">
+            <h3 className="text-2xl md:text-4xl font-bold mb-2">Contact Us</h3>
+            <p className="text-sm md:text-lg mb-2 max-w-xl mx-auto md:mx-0">
               Get in touch with us for any inquiries, support, or business opportunities
             </p>
-            <div className="flex items-center justify-center space-x-2 text-sm">
+            <div className="flex items-center justify-center md:justify-end space-x-2 text-xs md:text-sm">
               <span>Home</span>
               <span className="text-orange-200">›</span>
               <span className="text-orange-200">Contact Us</span>
