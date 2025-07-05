@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 const HeroSection = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+  }, []);
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-start justify-center">
 
