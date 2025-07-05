@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Phone, Mail, Clock, Download, Twitter, Facebook, Search, Menu, X, MapPin, Globe
+  Phone, Mail, Clock, Download, Twitter, Facebook, Search, Menu, X, MapPin,
+  Linkedin
 } from 'lucide-react';
 
 const Navbar: React.FC = () => {
@@ -39,16 +40,39 @@ const Navbar: React.FC = () => {
       <div className="hidden md:block bg-gradient-to-r from-orange-600 via-orange-500 to-red-500 text-white text-sm px-4 py-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex gap-6 items-center">
-            <div className="flex items-center gap-2"><Phone size={14} /> +91-99907 33308</div>
-            <div className="flex items-center gap-2"><Mail size={14} /> info@aicc.ind.in</div>
-            <div className="flex items-center gap-2"><MapPin size={14} /> New Delhi, India</div>
-          </div>
+  <a href="tel:+919990733308" className="flex items-center gap-2">
+    <Phone size={14} /> +91-99907 33308
+  </a>
+  <a href="mailto:info@aicc.ind.in" className="flex items-center gap-2">
+    <Mail size={14} /> info@aicc.ind.in
+  </a>
+  <a
+    href="https://www.google.com/maps/place/All+India+Chamber+of+Commerce/@28.3534306,76.9767154,11.25z/data=!4m14!1m7!3m6!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!2sAll+India+Chamber+of+Commerce!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly!3m5!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2"
+  >
+    <MapPin size={14} /> Gurugram, Haryana
+  </a>
+</div>
           <div className="flex items-center gap-4">
             <div className="flex gap-2">
-              {[Twitter, Facebook, Globe].map((Icon, i) => (
-                <Icon key={i} size={16} className="cursor-pointer hover:opacity-80" />
-              ))}
-            </div>
+  {[
+    { Icon: Twitter, href: "https://x.com/aicc_ind" },
+    { Icon: Facebook, href: "https://facebook.com/aicc.ind" },
+    { Icon: Linkedin, href: "https://linkedin.com/company/aicc-ind" },
+  ].map(({ Icon, href }, i) => (
+    <a
+      key={i}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="cursor-pointer hover:opacity-80"
+    >
+      <Icon size={16} />
+    </a>
+  ))}
+</div>
             <div className="flex items-center gap-2"><Clock size={14} /> Mon–Fri: 8:00am–7:00pm</div>
             <a href="/brochure.pdf" className="bg-white text-orange-600 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
               <Download size={14} /> BROCHURE
@@ -99,9 +123,11 @@ const Navbar: React.FC = () => {
               <button className="p-2 rounded-full border border-gray-200 hover:border-orange-600 hover:bg-orange-50">
                 <Search size={16} />
               </button>
+              <Link to="/contact-us" className="group inline-block">
               <button className="bg-gradient-to-r from-orange-600 to-red-500 text-white px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg transition">
                 Join Now
               </button>
+              </Link>
             </div>
 
             {/* Hamburger Icon */}
