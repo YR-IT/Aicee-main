@@ -1,4 +1,4 @@
-// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Target, 
   Eye, 
@@ -16,6 +16,10 @@ import {
 import Footer from '../components/Footer';
 
 const AboutPage = () => {
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
       {/* Animated Background */}
@@ -161,7 +165,7 @@ const AboutPage = () => {
     </div>
 
     {/* Content */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center px-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       {/* LEFT COLUMN */}
       <div className="flex flex-col gap-8">
         <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
@@ -183,16 +187,14 @@ const AboutPage = () => {
 
       {/* RIGHT COLUMN: Centered Image */}
       <div className="flex justify-center">
-  <div className="w-full max-w-2xl rounded-2xl overflow-hidden border border-white/10 h-80 md:h-96">
-    <img 
-      src="/aboutus.jpg" 
-      alt="Description of image" 
-      className="w-full h-full object-fill"
-    />
-  </div>
-</div>
-
-
+        <div className="rounded-2xl overflow-hidden border border-white/10 h-80 md:h-96 max-w-6xl">
+          <img 
+            src="/aboutus.jpg" 
+            alt="Description of image" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
