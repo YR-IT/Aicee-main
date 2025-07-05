@@ -1,5 +1,3 @@
-// Activities.tsx
-
 import React, { useEffect, useState } from 'react';
 import {
   Globe, Users, TrendingUp, GraduationCap, FileText, Languages, Mail, Handshake,
@@ -125,7 +123,6 @@ const Activities: React.FC = () => {
   const [showCards, setShowCards] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => setIsVisible(true), 100);
     setTimeout(() => setShowCards(true), 800);
   }, []);
@@ -136,101 +133,98 @@ const Activities: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Hero Section */}
-      <div className="relative min-h-[92vh] bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-hidden flex items-center justify-center">
-        {/* Background effects */}
+
+      {/* Hero Section - Unchanged */}
+      <div className="relative h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-hidden flex items-center">
         <div className="absolute inset-0">
-          {/* All gradient blobs here */}
-          <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
-          <div className="absolute top-36 right-10 w-72 h-72 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-xl opacity-25 animate-pulse animation-delay-2000"></div>
-          <div className="absolute bottom-10 left-20 w-60 h-60 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-          <div className="absolute top-1/3 left-1/3 w-36 h-36 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full blur-lg opacity-15 animate-pulse animation-delay-1000"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-44 h-44 bg-gradient-to-r from-rose-400 to-red-400 rounded-full blur-lg opacity-20 animate-pulse animation-delay-3000"></div>
-          <div className="absolute top-1/4 right-1/3 w-28 h-28 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full blur-md opacity-25 animate-pulse animation-delay-500"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full blur-md opacity-20 animate-pulse animation-delay-2500"></div>
-          <div className="absolute top-16 right-16 w-20 h-20 bg-white opacity-5 rotate-45 animate-spin" style={{ animationDuration: '20s' }}></div>
-          <div className="absolute bottom-16 left-16 w-14 h-14 bg-white opacity-10 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+          <div className="absolute top-40 right-10 w-80 h-80 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+          <div className="absolute top-1/3 left-1/3 w-48 h-48 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mix-blend-multiply filter blur-lg opacity-15 animate-pulse animation-delay-1000"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-56 h-56 bg-gradient-to-r from-rose-400 to-red-400 rounded-full mix-blend-multiply filter blur-lg opacity-18 animate-pulse animation-delay-3000"></div>
+          <div className="absolute top-1/4 right-1/3 w-32 h-32 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full mix-blend-multiply filter blur-md opacity-25 animate-pulse animation-delay-500"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full mix-blend-multiply filter blur-md opacity-20 animate-pulse animation-delay-2500"></div>
+          <div className="absolute top-16 right-16 w-24 h-24 bg-white opacity-5 transform rotate-45 animate-spin" style={{ animationDuration: '20s' }}></div>
+          <div className="absolute bottom-16 left-16 w-16 h-16 bg-white opacity-10 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 via-transparent to-purple-900/30"></div>
         </div>
-
-        {/* Hero Content */}
-        <div className="relative w-full px-4 sm:px-6 max-w-6xl text-center flex flex-col justify-center items-center">
-          <div className={`flex items-center justify-center text-blue-200 text-sm mb-2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <div className="relative container mx-auto px-4 sm:px-6 py-8 flex flex-col justify-center h-full">
+          <div className={`flex items-center justify-center text-blue-200 text-sm sm:text-lg mb-4 sm:mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <span>Home</span>
-            <ChevronRight className="mx-2 w-4 h-4" />
+            <ChevronRight className="mx-2 w-4 h-4 sm:w-5 sm:h-5" />
             <span className="text-white">Activities</span>
           </div>
-
-          <h1 className={`text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
-              Activities
-            </span>
-          </h1>
-
-          <div className={`max-w-4xl w-full transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <div className="bg-gradient-to-r from-white/10 to-blue-100/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg">
-              <p className="text-lg sm:text-xl font-bold text-blue-100 mb-3">
-                <span className="bg-gradient-to-r from-cyan-200 via-blue-200 to-purple-200 bg-clip-text text-transparent">
-                  At the All India Chamber of Commerce, we are dedicated to helping your business succeed!
-                </span>
-              </p>
-              <p className="text-sm sm:text-base md:text-lg text-blue-100 font-medium mb-2 leading-relaxed">
-                We exist to help your business grow and prosper in this marketplace and abroad. From networking opportunities to public policy representation, the Chamber positively impacts your bottom line.
-              </p>
-              <p className="text-base font-semibold">
-                <span className="bg-gradient-to-r from-yellow-200 via-orange-200 to-pink-200 bg-clip-text text-transparent">
-                  Let us join hands...to grow together.
-                </span>
-              </p>
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
+                Activities
+              </span>
+            </h1>
+            <div className={`max-w-4xl sm:max-w-5xl mx-auto transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="bg-gradient-to-r from-white/10 to-blue-100/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 shadow-2xl">
+                <p className="text-lg sm:text-xl md:text-2xl font-bold leading-relaxed mb-3 sm:mb-4">
+                  <span className="bg-gradient-to-r from-cyan-200 via-blue-200 to-purple-200 bg-clip-text text-transparent">
+                    At the All India Chamber of Commerce, we are dedicated to helping your business succeed!
+                  </span>
+                </p>
+                <p className="text-sm sm:text-base md:text-lg text-blue-100 leading-relaxed font-medium mb-3 sm:mb-4">
+                  We exist to help your business grow and prosper in this marketplace and abroad. From networking opportunities to public policy representation, the Chamber positively impacts your bottom line.
+                </p>
+                <p className="text-base sm:text-lg md:text-xl font-semibold">
+                  <span className="bg-gradient-to-r from-yellow-200 via-orange-200 to-pink-200 bg-clip-text text-transparent">
+                    Let us join hands...to grow together.
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
-
-          <div className={`mt-5 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <p className="text-sm sm:text-base text-blue-200 mb-2 font-semibold">Various Activities undertaken by AICC are below:</p>
+          <div className={`text-center transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="text-base sm:text-lg text-blue-200 mb-4 sm:mb-6 font-semibold">Various initiatives undertaken by AICC are below:</p>
             <button
               onClick={scrollToActivities}
-              className="inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-white to-blue-50 text-blue-900 rounded-full font-bold text-sm sm:text-base hover:from-blue-50 hover:to-white transition-all duration-300 transform hover:scale-105 shadow-2xl border border-white/20"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-white to-blue-50 text-blue-900 rounded-full font-bold text-base sm:text-lg hover:from-blue-50 hover:to-white transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl border-2 border-white/20"
             >
               Explore Our Services
             </button>
           </div>
         </div>
-
-        {/* Bouncing Arrow */}
-        <div className={`absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="animate-bounce">
-            <ArrowDown className="w-5 h-5 text-blue-200" />
+            <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 text-blue-200" />
           </div>
         </div>
       </div>
 
-      {/* Activities Grid Section */}
- {/* Activities Grid Section */}
-<div id="activities-section" className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen py-4 flex items-center">
-  <div className="mx-auto px-2 sm:px-4 max-w-screen-xl w-full">
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+      {/* Activities Section */}
+     
+<div id="activities-section" className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+  <div className="relative container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
       {activities.map((activity, index) => {
         const Icon = activity.icon;
         return (
           <div
             key={index}
-            className={`group bg-white/90 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:scale-[1.03] overflow-hidden border border-white/20 ${showCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
-            style={{ transitionDelay: showCards ? `${index * 40}ms` : '0ms' }}
+            className={`group bg-white/90 rounded-lg shadow-md hover:shadow-lg transition-all duration-400 transform hover:-translate-y-1 hover:scale-105 overflow-hidden border border-white/20 ${showCards ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ transitionDelay: showCards ? `${index * 60}ms` : '0ms' }}
           >
-            <div className="relative h-20 sm:h-24">
+            {/* Image Section */}
+            <div className="relative h-24 sm:h-28 md:h-32 overflow-hidden">
               <img
                 src={activity.image}
                 alt={activity.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute top-1 right-1 bg-indigo-600 p-1 rounded-md shadow">
                 <Icon className="w-4 h-4 text-white" />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
-            <div className="px-2 py-2">
-              <h3 className="text-[10px] sm:text-xs font-bold text-center text-gray-900 leading-tight">
+
+            {/* Title Section */}
+            <div className="p-2">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-800 text-center">
                 {activity.title}
               </h3>
             </div>
@@ -240,15 +234,6 @@ const Activities: React.FC = () => {
     </div>
   </div>
 </div>
-
-
-<<<<<<< HEAD
-
-
-      <Footer />
-=======
-      
->>>>>>> 4579828 (Footer connects)
 
     
     </div>
