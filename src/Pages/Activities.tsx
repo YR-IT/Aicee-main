@@ -6,7 +6,6 @@ import {
   Package, ShoppingCart, Building, MessageSquare, Leaf, Send, BookOpen, Scale,
   ChevronRight, ArrowDown
 } from 'lucide-react';
-import Footer from '../components/Footer';
 
 const activities = [
   {
@@ -243,22 +242,15 @@ const Activities: React.FC = () => {
 </div>
 
 
+<<<<<<< HEAD
 
 
       <Footer />
+=======
+      
+>>>>>>> 4579828 (Footer connects)
 
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        .animation-delay-500 { animation-delay: 0.5s; }
-        .animation-delay-1000 { animation-delay: 1s; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-2500 { animation-delay: 2.5s; }
-        .animation-delay-3000 { animation-delay: 3s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-      `}</style>
+    
     </div>
   );
 };

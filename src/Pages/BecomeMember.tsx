@@ -16,7 +16,7 @@ import {
   Calendar,
   MapPin,
 } from 'lucide-react';
-import Footer from '../components/Footer';
+
 
 interface FormData {
   fullName: string;
@@ -499,8 +499,7 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <Footer />
+    
 
       {/* Custom CSS for animations */}
       <style>{`

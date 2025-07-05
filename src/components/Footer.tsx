@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Download,
   Building2, Briefcase, Handshake, Shield, ExternalLink
@@ -14,11 +16,13 @@ const Footer = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       </div>
 
+      {/* 💡 Footer Main */}
       <div className="relative z-10 px-6 py-14 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        
         {/* 🏢 Corporate Info */}
-        <div className="transition-opacity duration-1000 ease-in-out">
+        <div>
           <div className="flex items-center space-x-3 mb-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow-lg animate-fade-in">
+            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow-lg">
               <Building2 className="w-5 h-5 text-white" />
             </div>
             <h3 className="text-xl font-bold text-orange-400">Corporate Office</h3>
@@ -53,14 +57,13 @@ const Footer = () => {
               <Briefcase className="w-5 h-5" /> Quick Links
             </h3>
             <ul className="space-y-2 text-sm text-gray-300">
-              {['Home', 'About Us', 'Members', 'Activities', 'International', 'Courses', 'More'].map(link => (
-                <li
-                  key={link}
-                  className="hover:text-orange-400 transition-colors duration-300 cursor-pointer hover:translate-x-1"
-                >
-                  {link}
-                </li>
-              ))}
+              <li><Link to="/" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">Home</Link></li>
+              <li><Link to="/about" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">About Us</Link></li>
+              <li><Link to="/members" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">Members</Link></li>
+              <li><Link to="/activities" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">Activities</Link></li>
+              <li><Link to="/international" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">International</Link></li>
+              <li><Link to="/courses" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">Courses</Link></li>
+              <li><Link to="/contact-us" className="hover:text-orange-400 transition-colors duration-300 hover:translate-x-1 block">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -98,13 +101,19 @@ const Footer = () => {
               Need help expanding your business or resolving trade issues? Contact our expert advisory team.
             </p>
           </div>
-          <button className="w-full bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-3 rounded-xl font-bold transition-transform duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl">
-            <Download className="w-5 h-5" />
-            Download Brochure
-          </button>
-          <button className="w-full border border-white/20 py-3 text-white rounded-xl font-bold hover:bg-white/10 transition-all duration-300 hover:scale-105">
+          <a
+            href="/brochure.pdf"
+            download
+            className="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-3 rounded-xl font-bold transition-transform duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
+          >
+            <Download className="w-5 h-5" /> Download Brochure
+          </a>
+          <Link
+            to="/contact-us"
+            className="block w-full text-center border border-white/20 py-3 text-white rounded-xl font-bold hover:bg-white/10 transition-all duration-300 hover:scale-105"
+          >
             Contact Us Today
-          </button>
+          </Link>
         </div>
       </div>
 

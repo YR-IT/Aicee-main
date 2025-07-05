@@ -13,7 +13,7 @@ import {
   Award,
   TrendingUp
 } from 'lucide-react';
-import Footer from '../components/Footer';
+
 
 const AboutPage = () => {
 
@@ -280,7 +280,7 @@ const AboutPage = () => {
 </div>
         </div>
       </div>
-      <Footer/>
+    
     </div>
   );
 };

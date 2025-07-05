@@ -16,7 +16,7 @@ import {
   FileText,
   Tag
 } from 'lucide-react';
-import Footer from '../components/Footer';
+
 
 
 const BulletinPage = () => {
@@ -441,8 +441,7 @@ const BulletinPage = () => {
         </div>
         
       </div>
-      {/* Footer */}
-      <Footer />
+    
 
       {/* Custom CSS for animations */}
       <style >{`

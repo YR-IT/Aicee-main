@@ -4,7 +4,7 @@ import {
   MapPin, // Removed unused: Users, Handshake, Mail, Phone
   
 } from 'lucide-react';
-import Footer from '../components/Footer';
+
 const organizations = [ {
     name: "The Chamber of Commerce and Industry of the Republic of Abkhazia",
     country: "Republic of Abkhazia",
@@ -250,26 +250,7 @@ function International() {
           </div> */}
         </div>
       </section>
-<Footer />
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
 
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
     </div>
   );
 }

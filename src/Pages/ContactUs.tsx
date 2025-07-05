@@ -22,7 +22,7 @@ import {
   Calendar,
   ExternalLink
 } from 'lucide-react';
-import Footer from '../components/Footer';
+
 
 interface ContactFormData {
   name: string;
@@ -401,8 +401,7 @@ function App() {
 
      
 
-      {/* Footer */}
-      <Footer />
+    
     </div>
   );
 }

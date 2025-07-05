@@ -1,60 +1,49 @@
-import { useState } from 'react';
+// App.tsx
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import AboutPage from './Pages/AboutPage.tsx';
-import International from './Pages/International.tsx';
-import HeroSection from './components/HeroSection.tsx';
+import Footer from './components/Footer';
+
+import AboutPage from './Pages/AboutPage';
+import International from './Pages/International';
+import Activities from './Pages/Activities';
+import BecomeMembers from './Pages/BecomeMember';
+import MembersDirectory from './Pages/MembersDirectory';
+import AiccBulletin from './Pages/AiccBulletin';
+import ContactUs from './Pages/ContactUs';
+
+import HeroSection from './components/HeroSection';
 import CoreServices from './components/CoreServices';
 import ExportImportCourse from './components/ExportImportCourse';
 import ExcellenceAward from './components/ExcellenceAward';
-import CallToAction from './components/CallToAction.tsx';
-import Footer from './components/Footer';
-import Activities from './Pages/Activities';
-import BecomeMembers from './Pages/BecomeMember.tsx';
-import MembersDirectory from './Pages/MembersDirectory.tsx';
-import AiccBulletin from './Pages/AiccBulletin.tsx';
-import ContactUs from  './Pages/ContactUs.tsx'
-import Initiatives from './components/Initiatives.tsx';
+import Initiatives from './components/Initiatives';
+import CallToAction from './components/CallToAction';
 
+const HomePage = () => (
+  <>
+    <HeroSection />
+    <CoreServices />
+    <ExportImportCourse />
+    <ExcellenceAward />
+    <Initiatives />
+    <CallToAction />
+  </>
+);
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'about':
-        return <AboutPage />;
-      case 'international':
-        return <International />;
-         case 'activities':
-      return <Activities />;
-      case 'members':
-        return <BecomeMembers />;
-        case 'members-directory':
-          return <MembersDirectory />;
-          case 'AICC-Bulletin':
-            return <AiccBulletin />;
-            case 'Contact-Us':
-              return <ContactUs />;
-      default:
-        return (
-          <>
-            <HeroSection />
-            <CoreServices />
-            <ExportImportCourse />
-            <ExcellenceAward />
-            <Initiatives />
-            <CallToAction />
-            <Footer />
-          </>
-        );
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
-      
-      {renderPage()}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/international" element={<International />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/members" element={<BecomeMembers />} />
+        <Route path="/members-directory" element={<MembersDirectory />} />
+        <Route path="/aicc-bulletin" element={<AiccBulletin />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
