@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Phone, 
   Mail, 
@@ -127,7 +127,10 @@ function App() {
     'Complaint/Feedback',
     'Other'
   ];
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+  }, []);
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
   
@@ -314,21 +317,18 @@ function App() {
                     )}
                   </div>
 
-                  <div className="flex justify-center">
-  <button
-    type="submit"
-    disabled={isSubmitting}
-    className="inline-flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-  >
-    {isSubmitting ? 'Sending...' : (
-      <>
-        Send Message
-        <Send className="w-5 h-5 ml-2" />
-      </>
-    )}
-  </button>
-</div>
-
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+                  >
+                    {isSubmitting ? 'Sending...' : (
+                      <>
+                        Send Message
+                        <Send className="w-5 h-5 ml-2" />
+                      </>
+                    )}
+                  </button>
                 </form>
               </div>
             </div>
@@ -350,14 +350,8 @@ function App() {
                     Gurugram, Haryana 122001
                   </p>
                   <button className="mt-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg text-sm hover:from-orange-600 hover:to-red-600 transition-colors">
-  <a 
-    href="https://www.google.com/maps/place/All+India+Chamber+of+Commerce/@28.3534306,76.9767154,11.25z/data=!4m14!1m7!3m6!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!2sAll+India+Chamber+of+Commerce!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly!3m5!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" 
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    View on Google Maps
-  </a>
-</button>
+                    View on Google Maps
+                  </button>
                 </div>
               </div>
 
