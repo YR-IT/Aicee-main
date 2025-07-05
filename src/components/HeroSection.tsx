@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const HeroSection = () => {
@@ -79,21 +80,24 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="group bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-8 py-3 md:px-10 md:py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
-            <span className="flex items-center space-x-2">
-              <span>Become a Member</span>
-              <div className="w-2 h-2 bg-white rounded-full group-hover:animate-ping"></div>
-            </span>
-          </button>
-
+          <Link to="/members" className="group inline-block">
+  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-8 py-3 md:px-10 md:py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+    <span className="flex items-center space-x-2">
+      <span>Become a Member</span>
+      <div className="w-2 h-2 bg-white rounded-full group-hover:animate-ping"></div>
+    </span>
+  </button>
+</Link>
+          <Link to="/activities" className="group inline-block">
           <button className="group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-8 py-3 md:px-10 md:py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
             <span className="flex items-center space-x-2">
-              <span>Explore Services</span>
+              <span>Explore Acitivities</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
           </button>
+          </Link>
         </div>
 
         <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">

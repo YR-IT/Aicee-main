@@ -72,22 +72,22 @@ const Footer = () => {
               <Handshake className="w-5 h-5" /> Connect With Us
             </h3>
             <div className="flex gap-4">
-              {[
-                { icon: Facebook, url: 'https://facebook.com/aicc.ind' },
-                { icon: Twitter, url: 'https://x.com/aicc_ind' },
-                { icon: Linkedin, url: 'https://linkedin.com/company/aicc-ind' }
-              ].map(({ icon: Icon, url }, i) => (
-                <a
-                  key={i}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-orange-500 hover:scale-110 transition-transform duration-300 shadow-sm"
-                >
-                  <Icon className="w-5 h-5 text-white" />
-                </a>
-              ))}
-            </div>
+  {[
+    { icon: Facebook, url: 'https://facebook.com/aicc.ind', hover: 'hover:bg-[#0A66C2]' }, 
+    { icon: Twitter, url: 'https://x.com/aicc_ind', hover: 'hover:bg-[#1DA1F2]' }, 
+    { icon: Linkedin, url: 'https://linkedin.com/company/aicc-ind', hover: 'hover:bg-[#0D9488]' } 
+  ].map(({ icon: Icon, url, hover }, i) => (
+    <a
+      key={i}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center ${hover} hover:scale-110 transition-transform duration-300 shadow-sm`}
+    >
+      <Icon className="w-5 h-5 text-white" />
+    </a>
+  ))}
+</div>
           </div>
         </div>
 

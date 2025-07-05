@@ -13,6 +13,7 @@ import {
   Award,
   TrendingUp
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 const AboutPage = () => {
@@ -53,18 +54,19 @@ const AboutPage = () => {
 
 
     <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-12">
-      <a
-        href="/"
-        className="inline-block px-6 py-3 md:px-8 md:py-4 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all"
-      >
-        Discover Our Courses
-      </a>
-      <a
-        href="/"
-        className="group relative inline-flex items-center space-x-3 bg-white/10 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm"
-      >
-        Get in Touch
-      </a>
+      <Link
+  to="/courses"
+  className="inline-block px-6 py-3 md:px-8 md:py-4 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all"
+>
+  Discover Our Courses
+</Link>
+
+<Link
+  to="/contact-us"
+  className="group relative inline-flex items-center space-x-3 bg-white/10 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm"
+>
+  Get in Touch
+</Link>
     </div>
 
     <div className="flex items-center justify-center space-x-4 text-gray-300">
@@ -262,19 +264,23 @@ const AboutPage = () => {
     </p>
 
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+          <Link to="/contact-us" className="group inline-block">
   <button className="inline-flex items-center justify-center group bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
     <span className="flex items-center space-x-2">
       <span>Join Our Network</span>
       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
     </span>
   </button>
+  </Link>
 
+    <Link to="/international" className="group inline-block">
   <button className="inline-flex items-center justify-center group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
     <span className="flex items-center space-x-2">
       <span>Learn More</span>
       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-spin transition-transform duration-300" />
     </span>
   </button>
+  </Link>
 </div>
   </div>
 </div>

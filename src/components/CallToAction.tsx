@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CallToAction = () => {
   return (
@@ -41,20 +42,22 @@ const CallToAction = () => {
           </div>
 
           <div className="sm:flex sm:justify-start justify-center flex">
+            <Link to="/members" className="group inline-block">
             <button className="inline-block bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white sm:px-8 sm:py-4 px-6 py-3 rounded-3xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/30 transform hover:scale-105">
               Become a Member
             </button>
+            </Link>
           </div>
         </div>
 
         {/* Image Content */}
-        <div className="order-1 md:order-2 flex justify-center">
-          <img
-            src="image_1.jpg"
-            alt="AICC Vision"
-            className="rounded-2xl shadow-2xl w-full max-w-md h-80 md:h-[28rem] object-cover"
-          />
-        </div>
+       <div className="order-1 md:order-2 flex justify-center">
+  <img
+    src="image_1.jpg"
+    alt="AICC Vision"
+    className="rounded-2xl shadow-2xl w-full max-w-md h-80 md:h-[28rem] object-cover transition-transform duration-500 hover:scale-105 hover:-translate-y-1"
+  />
+</div>
       </div>
     </section>
   );

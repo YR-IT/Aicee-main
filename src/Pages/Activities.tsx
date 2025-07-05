@@ -135,7 +135,7 @@ const Activities: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
 
       {/* Hero Section - Unchanged */}
-      <div className="relative h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-hidden flex items-center">
+      <div className="relative h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
           <div className="absolute top-40 right-10 w-80 h-80 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-25 animate-pulse animation-delay-2000"></div>
@@ -149,7 +149,7 @@ const Activities: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 via-transparent to-purple-900/30"></div>
         </div>
-        <div className="relative container mx-auto px-4 sm:px-6 py-8 flex flex-col justify-center h-full">
+        <div className="relative container mx-auto px-4 sm:px-6 py-12 h-full">
           <div className={`flex items-center justify-center text-blue-200 text-sm sm:text-lg mb-4 sm:mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <span>Home</span>
             <ChevronRight className="mx-2 w-4 h-4 sm:w-5 sm:h-5" />

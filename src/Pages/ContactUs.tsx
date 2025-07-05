@@ -1,26 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Phone, 
-  Mail, 
-  Download, 
+  Mail,  
   Clock, 
-  Twitter, 
-  Facebook, 
-  Building,
   MapPin,
-  Instagram,
-  Linkedin,
   Send,
   User,
   MessageSquare,
   Globe,
-  ArrowRight,
-  CheckCircle,
-  Star,
   Award,
   Users,
   Calendar,
-  ExternalLink
 } from 'lucide-react';
 
 
@@ -195,7 +185,7 @@ function App() {
             {/* Contact Form */}
             <div className="lg:col-span-8">
               <div className="bg-white rounded-xl shadow-lg p-8 border border-orange-100">
-                <div className="mb-8">
+                <div className="mb-8 text-center">
                   <h2 className="text-3xl font-bold text-gray-800 mb-4">Send us a Message</h2>
                   <p className="text-gray-600">
                     We'd love to hear from you. Send us a message and we'll respond as soon as possible.
@@ -317,18 +307,20 @@ function App() {
                     )}
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
-                  >
-                    {isSubmitting ? 'Sending...' : (
-                      <>
-                        Send Message
-                        <Send className="w-5 h-5 ml-2" />
-                      </>
-                    )}
-                  </button>
+               <div className="flex justify-center">
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className="inline-flex bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none items-center justify-center"
+  >
+    {isSubmitting ? 'Sending...' : (
+      <>
+        Send Message
+        <Send className="w-5 h-5 ml-2" />
+      </>
+    )}
+  </button>
+</div>
                 </form>
               </div>
             </div>
@@ -349,9 +341,16 @@ function App() {
                     Badshahpur Sohna Rd Hwy, Sector 49<br />
                     Gurugram, Haryana 122001
                   </p>
-                  <button className="mt-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg text-sm hover:from-orange-600 hover:to-red-600 transition-colors">
-                    View on Google Maps
-                  </button>
+                  <a
+  href="https://www.google.com/maps/place/All+India+Chamber+of+Commerce/@28.3534306,76.9767154,11.25z/data=!4m14!1m7!3m6!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!2sAll+India+Chamber+of+Commerce!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly!3m5!1s0x390d239a2bc3229d:0xda2d71e9c23d76e6!8m2!3d28.350357!4d77.0653901!16s%2Fg%2F11j91p0yly?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block mt-4"
+>
+  <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg text-sm hover:from-orange-600 hover:to-red-600 transition-colors">
+    View on Google Maps
+  </button>
+</a>
                 </div>
               </div>
 
