@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Search, 
   MapPin, 
@@ -103,6 +103,10 @@ const MembersDirectory = () => {
     // Search functionality is handled by the filter above
     console.log('Searching with:', { selectedState, searchKeyword, selectedLetter });
   };
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
