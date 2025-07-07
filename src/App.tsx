@@ -17,6 +17,9 @@ import ExportImportCourse from './components/ExportImportCourse';
 import ExcellenceAward from './components/ExcellenceAward';
 import Initiatives from './components/Initiatives';
 import CallToAction from './components/CallToAction';
+import NominationForm from './Pages/NominationForm';
+import StartYourBusiness from './Pages/StartYourBusiness';
+import BuildYourBusiness from './components/BuildYourBusiness';
 
 import SocialInitiative from './Pages/Initiatives/SocialInitiative';
 import EducationalInitiative from './Pages/Initiatives/EducationalInitiative';
@@ -28,6 +31,7 @@ const HomePage = () => (
     <ExportImportCourse />
     <ExcellenceAward />
     <Initiatives />
+    <BuildYourBusiness/>
     <CallToAction />
   </>
 );
@@ -45,6 +49,8 @@ function App() {
         <Route path="/members-directory" element={<MembersDirectory />} />
         <Route path="/aicc-bulletin" element={<AiccBulletin />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/nomination" element={<NominationForm />} />
+        <Route path="/start-your-business" element={<StartYourBusiness />} />
         <Route path="/initiatives/social-initiative" element={<SocialInitiative />}/>
         <Route path="/initiatives/educational-initiative" element={<EducationalInitiative/>}/>
        <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
