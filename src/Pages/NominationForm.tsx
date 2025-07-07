@@ -82,19 +82,30 @@ const NominationForm = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-12 px-6 md:px-16 shadow-md">
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
-    
+
     {/* Left Section - Icon + Title */}
-    <div className="flex items-center space-x-5">
+    <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-5">
       <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white bg-opacity-20 shadow-lg flex items-center justify-center">
         <Trophy className="w-10 h-10 md:w-12 md:h-12 text-white" />
       </div>
-      <div>
+      <div className="text-center md:text-left">
         <h1 className="text-3xl md:text-4xl font-bold leading-tight drop-shadow">
           Excellence Awards
         </h1>
         <p className="text-sm md:text-base text-white/80 mt-1 font-light tracking-wide">
           Nominate for Excellence in Business
         </p>
+
+        {/* ⭐ Animated Stars */}
+        <div className="flex justify-center md:justify-start mt-3 space-x-1">
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              className={`w-5 h-5 md:w-6 md:h-6 text-yellow-200 fill-current drop-shadow-sm animate-pulseStar`}
+              style={{ animationDelay: `${i * 0.2}s` }}
+            />
+          ))}
+        </div>
       </div>
     </div>
 
@@ -113,7 +124,7 @@ const NominationForm = () => {
 
 
 
-     
+    
 
       {/* Form Section */}
       <div className="py-20 px-4">
