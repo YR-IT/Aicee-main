@@ -2,7 +2,7 @@
 export default {
   content: [
     './index.html',
-    './src/**/*.{js,ts,jsx,tsx}', // This line ensures Tailwind works with all component files
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -12,6 +12,7 @@ export default {
         'bounce-slow': 'bounce 3s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        'pulseStar': 'pulseStar 1.5s ease-in-out infinite', // ⭐ added star animation
       },
       keyframes: {
         float: {
@@ -21,6 +22,10 @@ export default {
         glow: {
           '0%': { boxShadow: '0 0 5px rgba(234, 88, 12, 0.2)' },
           '100%': { boxShadow: '0 0 20px rgba(234, 88, 12, 0.6)' },
+        },
+        pulseStar: {
+          '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+          '50%': { transform: 'scale(1.2)', opacity: '0.8' },
         },
       },
       backdropBlur: {
