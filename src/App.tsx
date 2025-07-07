@@ -18,6 +18,11 @@ import ExcellenceAward from './components/ExcellenceAward';
 import Initiatives from './components/Initiatives';
 import CallToAction from './components/CallToAction';
 import NominationForm from './Pages/NominationForm';
+import StartYourBusiness from './Pages/StartYourBusiness';
+import BuildYourBusiness from './components/BuildYourBusiness';
+import MaintainBusiness from './Pages/MaintainBusiness';
+import RegulatoryFiling from './Pages/RegulatoryFiling';
+import CorporateCompliances from './Pages/CorporateCompliances';
 
 const HomePage = () => (
   <>
@@ -26,6 +31,7 @@ const HomePage = () => (
     <ExportImportCourse />
     <ExcellenceAward />
     <Initiatives />
+    <BuildYourBusiness/>
     <CallToAction />
   </>
 );
@@ -44,6 +50,10 @@ function App() {
         <Route path="/aicc-bulletin" element={<AiccBulletin />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/nomination" element={<NominationForm />} />
+        <Route path="/start-your-business" element={<StartYourBusiness />} />
+        <Route path="/maintain-your-business" element={<MaintainBusiness />} />
+        <Route path="/regulatory-filing" element={<RegulatoryFiling />} />
+        <Route path="/corporate-compliances" element={<CorporateCompliances />} />
       </Routes>
       <Footer />
     </div>
