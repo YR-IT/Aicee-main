@@ -24,6 +24,9 @@ import BuildYourBusiness from './components/BuildYourBusiness';
 import SocialInitiative from './Pages/Initiatives/SocialInitiative';
 import EducationalInitiative from './Pages/Initiatives/EducationalInitiative';
 import MSMESupportOutreach from './Pages/Initiatives/MSMESupportOutreach';
+import CorporateCompliances from './Pages/Business/CorporateCompliances';
+import RegulatoryFiling from './Pages/Business/RegulatoryFiling';
+import MaintainYourBusiness from './Pages/Business/MaintainBusiness';
 const HomePage = () => (
   <>
     <HeroSection />
@@ -51,6 +54,9 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/nomination" element={<NominationForm />} />
         <Route path="/start-your-business" element={<StartYourBusiness />} />
+        <Route path="/corporate-compliances" element={<CorporateCompliances />} />
+        <Route path="/regulatory-filing" element={<RegulatoryFiling />} />
+        <Route path="/maintain-your-business" element={<MaintainYourBusiness />} />
         <Route path="/initiatives/social-initiative" element={<SocialInitiative />}/>
         <Route path="/initiatives/educational-initiative" element={<EducationalInitiative/>}/>
        <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
