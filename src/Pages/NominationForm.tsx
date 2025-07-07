@@ -109,7 +109,7 @@ const NominationForm = () => {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Nomination Form</h1>
+          <h1 className="text-5xl md:text-4xl font-bold mb-6">Nomination Form</h1>
           <div className="flex items-center justify-center space-x-4 text-gray-300">
             <span className="hover:text-orange-400 transition-colors cursor-pointer">Home</span>
             <ArrowRight className="w-4 h-4 text-orange-500" />
