@@ -80,43 +80,40 @@ const NominationForm = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 py-20 px-4 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-        
-        {/* Excellence Awards Banner */}
-        <div className="absolute inset-0">
-          <div className="w-full h-full bg-gradient-to-r from-yellow-600/20 via-yellow-500/10 to-yellow-600/20 flex items-center justify-center">
-            <div className="text-center">
-              <div className="flex items-center justify-center space-x-8 mb-8">
-                <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl">
-                  <Trophy className="w-16 h-16 text-white" />
-                </div>
-                <div className="text-6xl font-bold text-yellow-400">Excellence</div>
-                <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-2xl">
-                  <Award className="w-16 h-16 text-white" />
-                </div>
-              </div>
-              <div className="text-4xl font-bold text-yellow-300 mb-4">Awards</div>
-              <div className="flex items-center justify-center space-x-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-8 h-8 text-yellow-400 fill-current" />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto text-center text-white">
-          <h1 className="text-5xl md:text-4xl font-bold mb-6">Nomination Form</h1>
-          <div className="flex items-center justify-center space-x-4 text-gray-300">
-            <span className="hover:text-orange-400 transition-colors cursor-pointer">Home</span>
-            <ArrowRight className="w-4 h-4 text-orange-500" />
-            <span className="text-orange-400">Nomination Form</span>
-          </div>
-        </div>
+      <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-12 px-6 md:px-16 shadow-md">
+  <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
+    
+    {/* Left Section - Icon + Title */}
+    <div className="flex items-center space-x-5">
+      <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white bg-opacity-20 shadow-lg flex items-center justify-center">
+        <Trophy className="w-10 h-10 md:w-12 md:h-12 text-white" />
       </div>
+      <div>
+        <h1 className="text-3xl md:text-4xl font-bold leading-tight drop-shadow">
+          Excellence Awards
+        </h1>
+        <p className="text-sm md:text-base text-white/80 mt-1 font-light tracking-wide">
+          Nominate for Excellence in Business
+        </p>
+      </div>
+    </div>
+
+    {/* Right Section - Info + Breadcrumb */}
+    <div className="text-center md:text-right">
+      <p className="text-lg md:text-xl font-medium">Nomination Form</p>
+      <div className="mt-1 text-sm text-white/80">
+        <span>Home</span>
+        <span className="mx-1">›</span>
+        <span className="font-semibold text-white">Nomination</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+     
 
       {/* Form Section */}
       <div className="py-20 px-4">
