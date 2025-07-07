@@ -18,6 +18,9 @@ import ExcellenceAward from './components/ExcellenceAward';
 import Initiatives from './components/Initiatives';
 import CallToAction from './components/CallToAction';
 
+import SocialInitiative from './Pages/Initiatives/SocialInitiative';
+import EducationalInitiative from './Pages/Initiatives/EducationalInitiative';
+import MSMESupportOutreach from './Pages/Initiatives/MSMESupportOutreach';
 const HomePage = () => (
   <>
     <HeroSection />
@@ -42,6 +45,9 @@ function App() {
         <Route path="/members-directory" element={<MembersDirectory />} />
         <Route path="/aicc-bulletin" element={<AiccBulletin />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/initiatives/social-initiative" element={<SocialInitiative />}/>
+        <Route path="/initiatives/educational-initiative" element={<EducationalInitiative/>}/>
+       <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
       </Routes>
       <Footer />
     </div>
