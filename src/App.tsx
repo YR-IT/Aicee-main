@@ -17,6 +17,7 @@ import ExportImportCourse from './components/ExportImportCourse';
 import ExcellenceAward from './components/ExcellenceAward';
 import Initiatives from './components/Initiatives';
 import CallToAction from './components/CallToAction';
+import NominationForm from './Pages/NominationForm';
 
 const HomePage = () => (
   <>
@@ -42,6 +43,7 @@ function App() {
         <Route path="/members-directory" element={<MembersDirectory />} />
         <Route path="/aicc-bulletin" element={<AiccBulletin />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/nomination" element={<NominationForm />} />
       </Routes>
       <Footer />
     </div>
