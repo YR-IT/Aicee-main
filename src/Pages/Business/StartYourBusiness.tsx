@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Rocket, CheckCircle } from "lucide-react";
 
 const sections = [
   {
@@ -198,31 +199,59 @@ const sections = [
   },
 ];
 
+
+
 export default function FirstStep() {
   return (
-    <section className="bg-white py-12 px-4 sm:px-8 max-w-6xl mx-auto">
-      <motion.h2
-        className="text-4xl sm:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-orange-500 to-green-700 bg-clip-text text-transparent"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Start Your Business
-      </motion.h2>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50 text-gray-900">
+      {/* Hero Section */}
+      <section className="relative flex items-center justify-center py-20 sm:py-28 px-4">
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-100/30 via-green-100/20 to-blue-100/10"></div>
+        <div className="relative max-w-6xl mx-auto text-center">
+          <motion.div
+            className="inline-flex items-center gap-2 mb-6 bg-gradient-to-r from-orange-500 via-green-600 to-emerald-500 text-white px-6 py-2 rounded-full text-sm sm:text-base font-semibold shadow-md"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Rocket className="w-5 h-5" /> Launch with Confidence
+          </motion.div>
 
-      <p className="text-center text-gray-600 mb-8">Home &gt; Start Your Business</p>
+          <motion.h1
+            className="text-5xl sm:text-6xl font-extrabold mb-6 bg-gradient-to-r from-orange-500 via-green-600 to-emerald-600 bg-clip-text text-transparent uppercase tracking-tight"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            Start Your Business
+          </motion.h1>
 
-      <motion.p
-        className="text-gray-700 mb-6 text-justify max-w-3xl mx-auto"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Every great company starts with a single idea. From planning to branding and execution, learn the essential steps to turn your vision into a sustainable venture.
-      </motion.p>
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 max-w-4xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            Every great company starts with a single idea. From planning to branding and execution, learn the essential steps to turn your vision into a sustainable venture.
+          </motion.p>
 
+          <motion.div
+            className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-lg rounded-full px-8 py-4 shadow border border-white/30"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <CheckCircle className="w-6 h-6 text-green-600" />
+            <span className="text-gray-900 font-medium text-lg">
+              Vision. Structure. Success.
+            </span>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Image */}
       <motion.div
-        className="flex justify-center mb-10"
+        className="flex justify-center py-10"
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
@@ -233,29 +262,60 @@ export default function FirstStep() {
           className="max-w-md w-full h-auto object-contain"
         />
       </motion.div>
-
-      <div className="space-y-8">
+      {sections.map((section, index) => (
+  <motion.div
+    key={index}
+    className="bg-white border border-orange-200 rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition duration-300"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.05 }}
+  >
+    <div className="flex items-start gap-4">
+      <div className="text-orange-500 font-bold text-xl sm:text-2xl">{index + 1}.</div>
+      <div>
+        <h3 className="text-xl sm:text-2xl font-semibold text-orange-700 mb-2">{section.title}</h3>
+        <p
+          className="text-gray-700 leading-relaxed text-justify text-sm sm:text-base"
+          dangerouslySetInnerHTML={{ __html: section.content }}
+        />
+      </div>
+    </div>
+  </motion.div>
+))}
+      {/* Business Steps */}
+      <section className="px-4 pb-20 sm:px-8 max-w-6xl mx-auto space-y-8">
         {sections.map((section, index) => (
           <motion.div
             key={index}
-            className="bg-orange-50 border border-orange-200 rounded-xl p-6 shadow-md"
+            className="bg-white border border-orange-200 rounded-xl p-6 shadow hover:shadow-lg transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.05 }}
+            transition={{ duration: 0.5, delay: index * 0.04 }}
           >
             <h3 className="text-xl font-semibold text-orange-700 mb-2">{section.title}</h3>
-            <p className="text-gray-700 leading-relaxed whitespace-pre-line">{section.content}</p>
+            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              {section.content}
+            </p>
           </motion.div>
         ))}
+      </section>
 
-        <motion.section
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 py-16 px-6 sm:px-12 text-center text-white rounded-3xl shadow-lg mt-12"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h2 className="text-xl sm:text-4xl font-bold mb-4">
-            Start Your Entrepreneurial Journey With Us Today
+      {/* CTA Section */}
+      <motion.section
+        className="relative py-16 bg-gradient-to-br from-orange-500 via-green-600 to-emerald-600 text-white text-center"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex justify-center mb-6">
+            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center shadow-md">
+              <CheckCircle className="w-10 h-10 text-white" />
+            </div>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            Start Your Entrepreneurial Journey Today
           </h2>
           <p className="text-base sm:text-lg mb-8 max-w-2xl mx-auto">
             Get expert guidance, legal support, and the right tools to launch your business idea and take it to new heights.
@@ -264,12 +324,12 @@ export default function FirstStep() {
             href="/contact-us"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition"
+            className="inline-block bg-white text-green-700 font-semibold px-8 py-3 rounded-full shadow hover:bg-gray-100 transition"
           >
             Get Started Now
           </motion.a>
-        </motion.section>
-      </div>
-    </section>
+        </div>
+      </motion.section>
+    </div>
   );
 }
