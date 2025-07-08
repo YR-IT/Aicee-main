@@ -27,6 +27,8 @@ import MSMESupportOutreach from './Pages/Initiatives/MSMESupportOutreach';
 import CorporateCompliances from './Pages/Business/CorporateCompliances';
 import RegulatoryFiling from './Pages/Business/RegulatoryFiling';
 import MaintainYourBusiness from './Pages/Business/MaintainBusiness';
+import IntellectualProperty from './Pages/Initiatives/IntellectualProperty';
+import IndianLaws from './Pages/Initiatives/IndianLaws';
 const HomePage = () => (
   <>
     <HeroSection />
@@ -60,6 +62,8 @@ function App() {
         <Route path="/initiatives/social-initiative" element={<SocialInitiative />}/>
         <Route path="/initiatives/educational-initiative" element={<EducationalInitiative/>}/>
        <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
+       <Route path="/initiatives/Protecting-Intellectual-Property-Rights" element={<IntellectualProperty/>}/>
+       <Route path="/initiatives/Know-The-Indian-Law" element={<IndianLaws/>}/>
       </Routes>
       <Footer />
     </div>

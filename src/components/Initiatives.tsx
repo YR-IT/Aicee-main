@@ -131,12 +131,15 @@ const Initiatives: React.FC = () => {
                   <div className="p-4 flex flex-col flex-1">
                     <h4 className={`font-bold ${initiative.textColor} text-base sm:text-lg mb-2`}>{initiative.title}</h4>
                     <p className="text-xs sm:text-sm text-gray-600 mb-4 flex-1">{initiative.description}</p>
-                    <Link to={`/initiatives/${initiative.title.toLowerCase().replace(/\s+/g, '-')}`}>
-  <button className={`${initiative.buttonBg} text-white text-xs sm:text-sm py-2 rounded-full flex items-center justify-center gap-2`}>
-    Read More
-    <ArrowRight className="w-4 h-4" />
-  </button>
-</Link>
+                    <div className="mt-auto flex justify-center">
+  <Link to={`/initiatives/${initiative.title.toLowerCase().replace(/\s+/g, '-')}`}>
+    <button className={`${initiative.buttonBg} text-white text-sm sm:text-base py-2 px-4 sm:px-6 rounded-full flex items-center justify-center gap-2`}>
+      Read More
+      <ArrowRight className="w-4 h-4" />
+    </button>
+  </Link>
+</div>
+
 
                   </div>
                 </div>
