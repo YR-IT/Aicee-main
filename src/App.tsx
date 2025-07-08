@@ -18,7 +18,7 @@ import ExcellenceAward from './components/ExcellenceAward';
 import Initiatives from './components/Initiatives';
 import CallToAction from './components/CallToAction';
 import NominationForm from './Pages/NominationForm';
-import StartYourBusiness from './Pages/StartYourBusiness';
+import StartYourBusiness from './Pages/Business/StartYourBusiness';
 import BuildYourBusiness from './components/BuildYourBusiness';
 
 import SocialInitiative from './Pages/Initiatives/SocialInitiative';

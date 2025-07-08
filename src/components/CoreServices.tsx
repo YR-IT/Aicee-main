@@ -60,20 +60,20 @@ const CoreServices = () => {
 </div>
 
               {/* Title */}
-              <h3 className="text-xl sm:text-3xl font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors duration-300">
+              <h3 className="text-xl sm:text-3xl text-center font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors duration-300">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed mb-6 text-base md:text-lg">
+              <p className="text-gray-600 leading-relaxed mb-2 text-base md:text-lg text-center">
                 {service.description}
               </p>
 
               {/* Learn More */}
-              <button className="text-orange-600 font-semibold hover:text-red-500 transition-colors duration-300 flex items-center space-x-2 group-hover:translate-x-2">
+              {/* <button className="text-orange-600 font-semibold hover:text-red-500 transition-colors duration-300 flex items-center space-x-2 group-hover:translate-x-2">
                 <span>Learn More</span>
                 <MoveRight className="w-4 h-4" />
-              </button>
+              </button> */}
             </div>
           ))}
         </div>
