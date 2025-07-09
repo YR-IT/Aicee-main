@@ -154,7 +154,7 @@ function IndianLaws() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Full Screen Hero Section */}
-      <div className="relative h-[90vh] sm:h-[80vh] bg-gradient-to-br from-slate-800 via-orange-900 to-red-900 text-white overflow-hidden">
+      <div className="relative h-[80vh] sm:h-[80vh] bg-gradient-to-br from-slate-800 via-orange-900 to-red-900 text-white overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
