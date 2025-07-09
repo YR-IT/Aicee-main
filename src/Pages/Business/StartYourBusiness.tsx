@@ -1,206 +1,203 @@
 import { motion } from "framer-motion";
 import { Rocket, CheckCircle } from "lucide-react";
 
-const sections = [
-  {
-    title: "Evaluate Your Idea",
-    content:
-    "Once you have zeroed in on an idea, start analysing whether your business" +
-   " answers some basic questions like: What problem is your product or" +
-    "service going to address? Who will be the target audience? Will it be a"+
-    "side project or a full-fledged business? Who will be the competitors?"+
-    "What will be the means of running the business whether stores, online? Is"+
-    "there an international scope for it?"
+const sections = [{
+  title: "Evaluate Your Idea",
+  content:
+  "Once you have zeroed in on an idea, start analysing whether your business" +
+ " answers some basic questions like: What problem is your product or" +
+  "service going to address? Who will be the target audience? Will it be a"+
+  "side project or a full-fledged business? Who will be the competitors?"+
+  "What will be the means of running the business whether stores, online? Is"+
+  "there an international scope for it?"
 
 
-       
-  },
-  {
-    title: "Private Limited Company",
-    content:
-      `If you are planning to seek funding from investors and venture capitalists, to get bank loans and to have shareholders, this should be your choice.
-       A private limited company is the one in which the
-      shareholders and owners are only liable to their shares upon the instance
-      of a financial crisis. In other words, they would not be at the risk of
-      losing their personal assets. To start a private limited company, you
-      need a minimum of 2 people and a maximum of 200. The Companies Act holds
-      provisions related to private limited companies in India and all such
-      entities must be registered with the Registrar of Companies (RoC). It is
-      also required to file mandatory annual compliance regularly which may
-      lead to legal repercussions if ignored.
+     
+},
+{
+  title: "Private Limited Company",
+  content:
+    `If you are planning to seek funding from investors and venture capitalists, to get bank loans and to have shareholders, this should be your choice.
+     A private limited company is the one in which the
+    shareholders and owners are only liable to their shares upon the instance
+    of a financial crisis. In other words, they would not be at the risk of
+    losing their personal assets. To start a private limited company, you
+    need a minimum of 2 people and a maximum of 200. The Companies Act holds
+    provisions related to private limited companies in India and all such
+    entities must be registered with the Registrar of Companies (RoC). It is
+    also required to file mandatory annual compliance regularly which may
+    lead to legal repercussions if ignored.
 `,
-  },
-  {
-    title: "One Person Company",
-    content:
-    `An OPC has only one director who is the sole shareholder. An OPC
-    structure has high compliance requirements and cost and limited tax
-    advantages.`
-  },
-  {
-    title: "Sole Proprietorship",
-    content:
-      `  In a sole proprietorship, a person who is the owner of the business and
-      runs the business is solely, personally liable for business debts. This
-      type of firm has no separate legal identity under the law. Sole
-      proprietors cannot raise capital by selling an interest in the business.`
-  },
-  {
-    title: "Get Government Registrations And Other Licenses",
-    content:
-    `All mandatory government registrations and licenses required to run a
-    registered entity differ based on the place of business, sector or
-    industry, entity type, number of employees, etc. However, all
-    incorporated businesses must apply for and obtain PAN and TAN.<br/><br/> The former
-    is mandatory for opening bank accounts and filing income tax returns and
-    TDS returns, while the latter is required by all companies engaged in
-    deducting or collecting tax.`
+},
+{
+  title: "One Person Company",
+  content:
+  `An OPC has only one director who is the sole shareholder. An OPC
+  structure has high compliance requirements and cost and limited tax
+  advantages.`
+},
+{
+  title: "Sole Proprietorship",
+  content:
+    `  In a sole proprietorship, a person who is the owner of the business and
+    runs the business is solely, personally liable for business debts. This
+    type of firm has no separate legal identity under the law. Sole
+    proprietors cannot raise capital by selling an interest in the business.`
+},
+{
+  title: "Get Government Registrations And Other Licenses",
+  content:
+  `All mandatory government registrations and licenses required to run a
+  registered entity differ based on the place of business, sector or
+  industry, entity type, number of employees, etc. However, all
+  incorporated businesses must apply for and obtain PAN and TAN.<br/><br/> The former
+  is mandatory for opening bank accounts and filing income tax returns and
+  TDS returns, while the latter is required by all companies engaged in
+  deducting or collecting tax.`
 
-  },
-  {
-    title: "Import Export Code",
-    content:
-   ` Often called IEC, this is a 10-digit code required by importers and
-    exporters to clear customs and shipments and transfer money to foreign
-    banks. IEC can be secured with a minimum number of documents easily.`
+},
+{
+  title: "Import Export Code",
+  content:
+ ` Often called IEC, this is a 10-digit code required by importers and
+  exporters to clear customs and shipments and transfer money to foreign
+  banks. IEC can be secured with a minimum number of documents easily.`
 
-  },
-  {
-    title: "Maintaining Accounts And Compliance",
-    content:
-    `One of the most crucial things in a startup is to get an Accounting and
-    compliance system in place. Maintaining your books and financial records
-    help you study the cash flow, display the financial health to
-    stakeholders, plan budgets, take key decisions, report profits and more.`
+},
+{
+  title: "Maintaining Accounts And Compliance",
+  content:
+  `One of the most crucial things in a startup is to get an Accounting and
+  compliance system in place. Maintaining your books and financial records
+  help you study the cash flow, display the financial health to
+  stakeholders, plan budgets, take key decisions, report profits and more.`
 
-  },
-  {
-    title: "Form The Team",
-    content:
-    `If you are looking to hire employees, now is the right time. Make sure to
-    specify the designation, roles, and responsibilities for each position
-    clear enough after thorough analysis. Many startups fail in hiring
-    strategies due to inadequate teams, not conducting market analysis, etc.,
-    which could be costly.`
+},
+{
+  title: "Form The Team",
+  content:
+  `If you are looking to hire employees, now is the right time. Make sure to
+  specify the designation, roles, and responsibilities for each position
+  clear enough after thorough analysis. Many startups fail in hiring
+  strategies due to inadequate teams, not conducting market analysis, etc.,
+  which could be costly.`
 
-  },
-  {
-    title: "Employees’ Provident Fund",
-    content:
-    `If the business employs 10 or more persons and is engaged in any of the
-    industries notified by the government, the business is required to be
-    registered under the Employees Provident Funds and Miscellaneous
-    Provisions Act, 1952.`
+},
+{
+  title: "Employees’ Provident Fund",
+  content:
+  `If the business employs 10 or more persons and is engaged in any of the
+  industries notified by the government, the business is required to be
+  registered under the Employees Provident Funds and Miscellaneous
+  Provisions Act, 1952.`
 
-  },
-  {
-    title: "Raise Funding",
-    content:
-    `To source funds for your startup, some options are crowdfunding,
-    bootstrapping or self-funding, Angel investment, venture capital,
-    business incubators, bank loans, government schemes, etc.<br/><br/> Having a
-    business plan with market analysis, organization management, financial
-    projections, marketing, and sales strategies help impress potential
-    investors.`
+},
+{
+  title: "Raise Funding",
+  content:
+  `To source funds for your startup, some options are crowdfunding,
+  bootstrapping or self-funding, Angel investment, venture capital,
+  business incubators, bank loans, government schemes, etc.<br/><br/> Having a
+  business plan with market analysis, organization management, financial
+  projections, marketing, and sales strategies help impress potential
+  investors.`
 
-  },
-  {
-    title: "Protect The Brand",
-    content:
-    `Brand is one of the key assets of an enterprise, whether it is small,
-    mid-sized, or large. Your brand is how a customer perceives your business
-    and identifies in the market.<br/><br/> Protecting intellectual property, which
-    includes trademark, copyright, patent, industrial designs, software,
-    inventions, etc., is important. Many startups do not prioritize IP
-    management in their early stages due to a lack of awareness.<br/><br/> But when
-    you’re trying to woo investors or pitch to potential team members, it is
-    important to protect both the business ideas and the brand.`
+},
+{
+  title: "Protect The Brand",
+  content:
+  `Brand is one of the key assets of an enterprise, whether it is small,
+  mid-sized, or large. Your brand is how a customer perceives your business
+  and identifies in the market.<br/><br/> Protecting intellectual property, which
+  includes trademark, copyright, patent, industrial designs, software,
+  inventions, etc., is important. Many startups do not prioritize IP
+  management in their early stages due to a lack of awareness.<br/><br/> But when
+  you’re trying to woo investors or pitch to potential team members, it is
+  important to protect both the business ideas and the brand.`
 
-  },
-  {
-    title: "Identify Your Business Structure",
-    content:
-   ` When you are clear of all the questions, your next step will be to assess
-    the type of entity that best suits.<br/><br/> In India, a startup can be registered
-    as a Private Limited Company, Limited Liability Partnership, Partnership
-    Firm, Sole Proprietorship, or One Person Company.`
+},
+{
+  title: "Identify Your Business Structure",
+  content:
+ ` When you are clear of all the questions, your next step will be to assess
+  the type of entity that best suits.<br/><br/> In India, a startup can be registered
+  as a Private Limited Company, Limited Liability Partnership, Partnership
+  Firm, Sole Proprietorship, or One Person Company.`
 
-  },
-  {
-    title: "Limited Liability Partnership (LLP)",
-    content:
-    `Professional and advisory firms that do not require equity funding can
-    choose to register as an LLP.<br/><br/> Unlike a private limited company, LLP
-    offers the benefit of flexible partnerships wherein partners can choose
-    their own internal structure, and it has fewer compliance requirements
-    with low costs. <br/><br/>An LLP can have any number of partners; however, a
-    minimum of two partners are required during registration.`
+},
+{
+  title: "Limited Liability Partnership (LLP)",
+  content:
+  `Professional and advisory firms that do not require equity funding can
+  choose to register as an LLP.<br/><br/> Unlike a private limited company, LLP
+  offers the benefit of flexible partnerships wherein partners can choose
+  their own internal structure, and it has fewer compliance requirements
+  with low costs. <br/><br/>An LLP can have any number of partners; however, a
+  minimum of two partners are required during registration.`
 
-  },
-  {
-    title: "Partnership Firm",
-    content:
-    `As the name suggests, if two or more persons look to establish a small company, then it can be registered as a partnership firm. This type of entity is controlled by the Indian Partnerships Act, 1932 and allows a maximum of 20 partners. The terms and conditions are bound by a partnership deed which must be signed by all the partners. <br/><br/>Partners cannot transfer their interest in the firm to anybody
-    without the consent of other partners. This is highly suitable for small
-    businesses as debts can be recovered from the partners’ personal assets.
+},
+{
+  title: "Partnership Firm",
+  content:
+  `As the name suggests, if two or more persons look to establish a small company, then it can be registered as a partnership firm. This type of entity is controlled by the Indian Partnerships Act, 1932 and allows a maximum of 20 partners. The terms and conditions are bound by a partnership deed which must be signed by all the partners. <br/><br/>Partners cannot transfer their interest in the firm to anybody
+  without the consent of other partners. This is highly suitable for small
+  businesses as debts can be recovered from the partners’ personal assets.
 
-    When you have decided on the structure you will need to register the business. 
-    The registration process may differ based on the type of entity and below are the steps to register 
-    the most common type of entity Private Limited Company.`
+  When you have decided on the structure you will need to register the business. 
+  The registration process may differ based on the type of entity and below are the steps to register 
+  the most common type of entity Private Limited Company.`
 
 
-  },
+},
 
-  {
-    title: "GST Registration",
-    content:
-    `GST is mandatory for all companies whose annual turnover exceeds Rs. 
-    40 lakhs, and Rs. 20 lakhs for businesses operating in States under
-     the “Special Category”. GST registration is also mandatory 
-     for businesses involved in the intrastate supply of goods, regardless of
-      their turnover. This means that even small businesses must obtain a 
-      valid GST number if they supply goods or services across state borders
-       or fall under specific categories such as e-commerce, online marketplaces, 
-       or businesses that wish to avail input tax credit. Failing to
-     register for GST when required can lead to penalties, legal action, and
-      restrictions on doing business with larger clients who need valid GST 
-      invoices. Hence, it is crucial for every business to understand their
-       obligations and ensure compliance with GST laws to operate smoothly
-        and maintain credibility in the market.`
+{
+  title: "GST Registration",
+  content:
+  `GST is mandatory for all companies whose annual turnover exceeds Rs. 
+  40 lakhs, and Rs. 20 lakhs for businesses operating in States under
+   the “Special Category”. GST registration is also mandatory 
+   for businesses involved in the intrastate supply of goods, regardless of
+    their turnover. This means that even small businesses must obtain a 
+    valid GST number if they supply goods or services across state borders
+     or fall under specific categories such as e-commerce, online marketplaces, 
+     or businesses that wish to avail input tax credit. Failing to
+   register for GST when required can lead to penalties, legal action, and
+    restrictions on doing business with larger clients who need valid GST 
+    invoices. Hence, it is crucial for every business to understand their
+     obligations and ensure compliance with GST laws to operate smoothly
+      and maintain credibility in the market.`
 
-  },
-  {
-    title: "Create Online Presence",
-    content:
-   ` In this digital era, it is absolutely necessary for your business to 
-   create an online presence. Having an interactive website and 
-   social media pages help in showcasing your services and products 
-   while attracting potential customers.<br/><br/> Before developing a 
-   website do remember that Terms of Service and Privacy Policy statements 
-   are the most important components, especially if you will be collecting 
-   customers’ data like email address and contact number.`
+},
+{
+  title: "Create Online Presence",
+  content:
+ ` In this digital era, it is absolutely necessary for your business to 
+ create an online presence. Having an interactive website and 
+ social media pages help in showcasing your services and products 
+ while attracting potential customers.<br/><br/> Before developing a 
+ website do remember that Terms of Service and Privacy Policy statements 
+ are the most important components, especially if you will be collecting 
+ customers’ data like email address and contact number.`
 
-  },
-  {
-    title: "ESOPs",
-    content:
-    `You can also leverage ESOPs (Employee Stock Option Plans) to attract
-     and motivate the right pool of talent. ESOPs are an employee benefits 
-     scheme which offers them an ownership interest in the company. As an employer, it is up to 
-     you to issue ESOP as direct stock or as profit-sharing bonuses to employees of your choice. 
-     ESOPs, help in reduce incentive-related problems.<br/><br/>  The right to purchase may vest 
-     only after a stipulated period of time. ESOPs may serve as a lock-in mechanism as the employees 
-     would have to wait until they are vested with the right to purchase the shares of the company. 
-     However, founders may want to consider ESOPs carefully before employing them in their compensation 
-     packages as they will lead to a dilution of their own stakes eventually. ESOPs are, however, an attractive 
-     option for employees as their stake in the business increases as the performance and value of the business 
-     increases, which is a good way to retain top talent.`
+},
+{
+  title: "ESOPs",
+  content:
+  `You can also leverage ESOPs (Employee Stock Option Plans) to attract
+   and motivate the right pool of talent. ESOPs are an employee benefits 
+   scheme which offers them an ownership interest in the company. As an employer, it is up to 
+   you to issue ESOP as direct stock or as profit-sharing bonuses to employees of your choice. 
+   ESOPs, help in reduce incentive-related problems.<br/><br/>  The right to purchase may vest 
+   only after a stipulated period of time. ESOPs may serve as a lock-in mechanism as the employees 
+   would have to wait until they are vested with the right to purchase the shares of the company. 
+   However, founders may want to consider ESOPs carefully before employing them in their compensation 
+   packages as they will lead to a dilution of their own stakes eventually. ESOPs are, however, an attractive 
+   option for employees as their stake in the business increases as the performance and value of the business 
+   increases, which is a good way to retain top talent.`
 
-  },
+},
 ];
-
-
-
+  
 export default function FirstStep() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50 text-gray-900">
@@ -262,40 +259,27 @@ export default function FirstStep() {
           className="max-w-md w-full h-auto object-contain"
         />
       </motion.div>
-      {sections.map((section, index) => (
-  <motion.div
-    key={index}
-    className="bg-white border border-orange-200 rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition duration-300"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.05 }}
-  >
-    <div className="flex items-start gap-4">
-      <div className="text-orange-500 font-bold text-xl sm:text-2xl">{index + 1}.</div>
-      <div>
-        <h3 className="text-xl sm:text-2xl font-semibold text-orange-700 mb-2">{section.title}</h3>
-        <p
-          className="text-gray-700 leading-relaxed text-justify text-sm sm:text-base"
-          dangerouslySetInnerHTML={{ __html: section.content }}
-        />
-      </div>
-    </div>
-  </motion.div>
-))}
+
       {/* Business Steps */}
       <section className="px-4 pb-20 sm:px-8 max-w-6xl mx-auto space-y-8">
         {sections.map((section, index) => (
           <motion.div
             key={index}
-            className="bg-white border border-orange-200 rounded-xl p-6 shadow hover:shadow-lg transition-all duration-300"
+            className="bg-white border border-orange-200 rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition duration-300"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.04 }}
+            transition={{ duration: 0.5, delay: index * 0.05 }}
           >
-            <h3 className="text-xl font-semibold text-orange-700 mb-2">{section.title}</h3>
-            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-              {section.content}
-            </p>
+            <div className="flex items-start gap-4">
+              <div className="text-orange-500 font-bold text-xl sm:text-2xl">{index + 1}.</div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-semibold text-orange-700 mb-2">{section.title}</h3>
+                <p
+                  className="text-gray-700 leading-relaxed text-justify text-sm sm:text-base"
+                  dangerouslySetInnerHTML={{ __html: section.content }}
+                />
+              </div>
+            </div>
           </motion.div>
         ))}
       </section>
