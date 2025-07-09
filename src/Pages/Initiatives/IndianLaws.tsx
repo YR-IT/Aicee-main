@@ -154,7 +154,7 @@ function IndianLaws() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Full Screen Hero Section */}
-      <div className="relative min-h-screen bg-gradient-to-br from-slate-800 via-orange-900 to-red-900 text-white overflow-hidden flex items-center">
+      <div className="relative h-[90vh] sm:h-[80vh] bg-gradient-to-br from-slate-800 via-orange-900 to-red-900 text-white overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -162,9 +162,9 @@ function IndianLaws() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-20 py-12 text-center">
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl mb-8 shadow-2xl">
+            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl mb-4 shadow-2xl">
               <Scale className="w-12 h-12 text-white" />
             </div>
           </div>
@@ -177,7 +177,7 @@ function IndianLaws() {
             <span className="text-white">Indian Laws</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-300 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-slate-300 max-w-5xl mx-auto leading-relaxed">
             Indian Constitution has provided so many rights to the people to protect their fundamental rights but unfortunately most of the people are not aware of their rights. So in this article we have mentioned such laws and the rights which not only protect their interests but also ease their daily life.
           </p>
         </div>

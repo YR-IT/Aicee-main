@@ -48,17 +48,17 @@ function IntellectualProperty() {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-6">
               {/* Logo */}
-              <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-teal-500 rounded-2xl shadow-2xl mr-6">
-                <Shield className="w-12 h-12 text-white" />
+              <div className="flex items-center justify-center sm:w-20 sm:h-20 w-16 h-14 bg-gradient-to-r from-blue-500 to-teal-500 rounded-2xl shadow-2xl mr-6">
+                <Shield className="sm:w-12 sm:h-12 h-8 w-8 text-white" />
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+              <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
                 Protecting Intellectual Property Rights
               </h1>
             </div>
             
             {/* Breadcrumb */}
-            <div className="flex items-center justify-center text-slate-300 text-lg mb-12">
+            <div className="flex items-center justify-center text-slate-300 text-base sm:text-lg mb-12">
               <span className="hover:text-white transition-colors cursor-pointer">Home</span>
               <ChevronRight className="w-5 h-5 mx-3" />
               <span className="text-blue-300">Protecting Intellectual Property Rights</span>
@@ -69,11 +69,11 @@ function IntellectualProperty() {
           <div className="mb-16">
             <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
               <div className="prose prose-xl max-w-none text-white">
-                <p className="text-white/90 leading-relaxed mb-8 text-xl">
+                <p className="text-white/90 leading-relaxed mb-8 text-base sm:text-xl">
                   <strong className="text-white">Intellectual Property (IP)</strong> is the categorized representation of intangible things such as copyrights, patents, trademarks, unique concepts, and ideas. According to the rule of Intellectual Property, these intangible services should receive same legal protection just as the tangible property. In brief, it refers to the mere ownership of one's ideas.
                 </p>
                 
-                <p className="text-white/90 leading-relaxed text-xl mb-12">
+                <p className="text-white/90 leading-relaxed text-base sm:text-xl">
                   Creating a unique product for your business or bringing innovative ideas into reality can prove to be a priceless asset. Majority of the new entrepreneurs don't recognize the need of protecting their Intellectual Property, and the ones who know are not aware of where to start.
                 </p>
               </div>
