@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Rocket, CheckCircle } from "lucide-react";
+import { Rocket, CheckCircle, ShieldCheck, Clock3, FileText, BarChart, Users, LayoutDashboard } from "lucide-react";
 
-const sections = [{
-  title: "Evaluate Your Idea",
-  content:
+const sections = [
+  {
+    title: "Evaluate Your Idea",content:
   "Once you have zeroed in on an idea, start analysing whether your business" +
  " answers some basic questions like: What problem is your product or" +
   "service going to address? Who will be the target audience? Will it be a"+
@@ -196,8 +196,9 @@ const sections = [{
    increases, which is a good way to retain top talent.`
 
 },
+
 ];
-  
+
 export default function FirstStep() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50 text-gray-900">
@@ -246,42 +247,31 @@ export default function FirstStep() {
         </div>
       </section>
 
-      {/* Image */}
-      <motion.div
-        className="flex justify-center py-10"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <img
-          src="/make-in-India-logo.jpg"
-          alt="Make in India"
-          className="max-w-md w-full h-auto object-contain"
-        />
-      </motion.div>
+      {/* Grid Cards */}
+      <section className="px-4 pb-20 sm:px-8 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+          Our Maintenance Solutions
+        </h2>
 
-      {/* Business Steps */}
-      <section className="px-4 pb-20 sm:px-8 max-w-6xl mx-auto space-y-8">
-        {sections.map((section, index) => (
-          <motion.div
-            key={index}
-            className="bg-white border border-orange-200 rounded-2xl p-6 sm:p-8 shadow-md hover:shadow-lg transition duration-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.05 }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-orange-500 font-bold text-xl sm:text-2xl">{index + 1}.</div>
-              <div>
-                <h3 className="text-xl sm:text-2xl font-semibold text-orange-700 mb-2">{section.title}</h3>
-                <p
-                  className="text-gray-700 leading-relaxed text-justify text-sm sm:text-base"
-                  dangerouslySetInnerHTML={{ __html: section.content }}
-                />
-              </div>
-            </div>
-          </motion.div>
-        ))}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {sections.map((section, index) => (
+            <motion.div
+              key={index}
+              className={`rounded-2xl p-6 sm:p-8 ${section.color} shadow-md hover:shadow-lg transition-all duration-300`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+            >
+              <div className="mb-4">{section.icon}</div>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
+                {section.title}
+              </h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                {section.content}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* CTA Section */}
