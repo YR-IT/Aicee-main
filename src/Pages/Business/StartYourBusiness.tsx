@@ -201,6 +201,7 @@ const sections = [
 
 export default function FirstStep() {
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50 text-gray-900">
       {/* Hero Section */}
       <section className="relative flex items-center justify-center py-20 sm:py-28 px-4">
@@ -249,30 +250,29 @@ export default function FirstStep() {
 
       {/* Grid Cards */}
       <section className="px-4 pb-20 sm:px-8 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          Our Maintenance Solutions
-        </h2>
+  <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+    Business Formation Roadmap
+  </h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {sections.map((section, index) => (
-            <motion.div
-              key={index}
-              className={`rounded-2xl p-6 sm:p-8 ${section.color} shadow-md hover:shadow-lg transition-all duration-300`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-            >
-              <div className="mb-4">{section.icon}</div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
-                {section.title}
-              </h3>
-              <p className="text-gray-700 text-sm leading-relaxed">
-                {section.content}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {sections.map((section, index) => (
+      <motion.div
+        key={index}
+        className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-orange-200 flex flex-col p-6 sm:p-8 min-h-[300px]"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.03 }}
+      >
+        <h3 className="text-lg sm:text-xl font-semibold text-orange-700 mb-3">
+          {section.title}
+        </h3>
+        <div className="text-gray-700 text-sm leading-relaxed mt-auto"
+             dangerouslySetInnerHTML={{ __html: section.content }} />
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <motion.section
