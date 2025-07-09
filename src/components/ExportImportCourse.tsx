@@ -57,14 +57,19 @@ const ExportImportCourse = () => {
 
             {/* CTA Button */}
             <div className="flex justify-center z-10">
-              <Link to="/courses" className="group inline-block">
+              <a 
+                href="https://eknowlede2.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group inline-block"
+              >
               <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white sm:px-10 sm:py-4 px-6 py-3 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center space-x-2">
                 <span>Know More</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
