@@ -139,7 +139,7 @@ const Activities: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Hero Section */}
-      <div className="relative min-h-[92vh] bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white overflow-hidden flex items-center justify-center">
+      <div className="relative min-h-[92vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden flex items-center justify-center">
         {/* Background effects */}
         <div className="absolute inset-0">
           {/* All gradient blobs here */}
@@ -209,7 +209,7 @@ const Activities: React.FC = () => {
 
       {/* Activities Grid Section */}
 {/* Activities Grid Section */}
-<div id="activities-section" className="relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen py-4 flex items-center">
+<div id="activities-section" className="relative bg-gradient-to-br from-slate-100 via-slate-100 to-slate-100 min-h-screen py-4 flex items-center">
   <div className="mx-auto px-2 sm:px-4 max-w-screen-xl w-full">
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
       {activities.map((activity, index) => {
