@@ -17,7 +17,7 @@ const initiatives = [
     title: 'Social Initiative',
     description: 'Enhancing property values through sustainable landscaping with trees and plants for community development. Our comprehensive approach focuses on environmental conservation while creating beautiful, livable spaces.',
     icon: TreePine,
-    gradient: 'from-green-400 to-green-600',
+    gradient: 'from-blue-800 to-blue-600',
     bgColor: 'bg-green-50',
     textColor: 'text-green-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -27,7 +27,7 @@ const initiatives = [
     title: 'Educational Initiative',
     description: 'AICC initiative to educate, train and develop skills across various professional aspects. We provide comprehensive training programs, workshops, and certification courses designed to enhance professional capabilities.',
     icon: GraduationCap,
-    gradient: 'from-blue-500 to-purple-600',
+    gradient: 'from-blue-800 to-blue-600',
     bgColor: 'bg-blue-50',
     textColor: 'text-blue-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -37,7 +37,7 @@ const initiatives = [
     title: 'MSME Support & Outreach',
     description: 'New wave MSME framework considering global context, benchmarks and technological advancement. Our support system includes mentorship, funding guidance, market access facilitation, and digital transformation assistance.',
     icon: Headphones,
-    gradient: 'from-orange-400 to-red-500',
+    gradient: 'from-blue-800 to-blue-600',
     bgColor: 'bg-orange-50',
     textColor: 'text-orange-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -47,7 +47,7 @@ const initiatives = [
     title: 'Protecting Intellectual Property Rights',
     description: 'Safeguarding unique products and innovative ideas as priceless business assets requiring protection. We offer comprehensive IP consultation, patent filing assistance, trademark registration, and legal support.',
     icon: Shield,
-    gradient: 'from-teal-400 to-cyan-600',
+    gradient: 'from-blue-800 to-blue-600',
     bgColor: 'bg-teal-50',
     textColor: 'text-teal-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -57,7 +57,7 @@ const initiatives = [
     title: 'Know The Indian Law',
     description: 'Educating citizens about constitutional laws and rights protection that most people are unaware of. Our legal awareness programs cover fundamental rights, consumer protection, labor laws, and civil procedures.',
     icon: Scale,
-    gradient: 'from-purple-500 to-pink-600',
+    gradient: 'from-blue-800 to-blue-600',
     bgColor: 'bg-purple-50',
     textColor: 'text-purple-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
