@@ -140,21 +140,26 @@ const Activities: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Hero Section */}
       <div className="relative min-h-[92vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden flex items-center justify-center">
-        {/* Background effects */}
-        <div className="absolute inset-0">
-          {/* All gradient blobs here */}
-          <div className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
-          <div className="absolute top-36 right-10 w-72 h-72 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-xl opacity-25 animate-pulse animation-delay-2000"></div>
-          <div className="absolute bottom-10 left-20 w-60 h-60 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
-          <div className="absolute top-1/3 left-1/3 w-36 h-36 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full blur-lg opacity-15 animate-pulse animation-delay-1000"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-44 h-44 bg-gradient-to-r from-rose-400 to-red-400 rounded-full blur-lg opacity-20 animate-pulse animation-delay-3000"></div>
-          <div className="absolute top-1/4 right-1/3 w-28 h-28 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full blur-md opacity-25 animate-pulse animation-delay-500"></div>
-          <div className="absolute bottom-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full blur-md opacity-20 animate-pulse animation-delay-2500"></div>
-          <div className="absolute top-16 right-16 w-20 h-20 bg-white opacity-5 rotate-45 animate-spin" style={{ animationDuration: '20s' }}></div>
-          <div className="absolute bottom-16 left-16 w-14 h-14 bg-white opacity-10 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 via-transparent to-purple-900/30"></div>
-        </div>
+  {/* Background effects */}
+  <div className="absolute inset-0 overflow-hidden">
+    {/* Static background gradient overlays */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 via-transparent to-purple-900/30"></div>
+
+    {/* Soft pulsing radial light effect */}
+    <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-purple-500/10 rounded-full blur-3xl animate-softpulse"></div>
+
+    {/*  Floating translucent circles */}
+    <div
+      className="absolute top-20 left-20 w-32 h-32 rounded-full bg-white/5 backdrop-blur-sm"
+      style={{ transform: `translateY(0)` }}
+    />
+    <div
+      className="absolute bottom-40 right-32 w-24 h-24 rounded-full bg-blue-400/10 backdrop-blur-sm"
+      style={{ transform: `translateY(0)` }}
+    />
+  </div>
+
 
         {/* Hero Content */}
         <div className="relative w-full px-4 sm:px-6 max-w-6xl text-center flex flex-col justify-center items-center">
