@@ -21,14 +21,14 @@ import NominationForm from './Pages/NominationForm';
 import StartYourBusiness from './Pages/Business/StartYourBusiness';
 import BuildYourBusiness from './components/BuildYourBusiness';
 
-import SocialInitiative from './Pages/Initiatives/SocialInitiative';
-import EducationalInitiative from './Pages/Initiatives/EducationalInitiative';
-import MSMESupportOutreach from './Pages/Initiatives/MSMESupportOutreach';
+import SocialInitiative from '../Initiatives/SocialInitiative';
+import EducationalInitiative from '../Initiatives/EducationalInitiative';
+import MSMESupportOutreach from '../Initiatives/MSMESupportOutreach';
 import CorporateCompliances from './Pages/Business/CorporateCompliances';
 import RegulatoryFiling from './Pages/Business/RegulatoryFiling';
 import MaintainYourBusiness from './Pages/Business/MaintainBusiness';
-import IntellectualProperty from './Pages/Initiatives/IntellectualProperty';
-import IndianLaws from './Pages/Initiatives/IndianLaws';
+import IntellectualProperty from '../Initiatives/IntellectualProperty';
+import IndianLaws from '../Initiatives/IndianLaws';
 const HomePage = () => (
   <>
     <HeroSection />

@@ -94,7 +94,7 @@ const sections = [
 export default function FirstStep() {
   return (
     
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50 text-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-300 via-slate-400 to-slate-500 text-gray-900">
       {/* Hero Section */}
       <section className="relative flex items-center justify-center py-20 sm:py-16 px-4">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-100/30 via-green-100/20 to-blue-100/10"></div>
@@ -170,22 +170,22 @@ export default function FirstStep() {
 
       {/* CTA Section */}
       <motion.section
-        className="relative py-16 bg-gradient-to-br from-orange-500 via-green-600 to-emerald-600 text-white text-center"
+        className="relative py-16 bg-gradient-to-br from-slate-100 via-slate-100 to-slate-100 text-white text-center"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center shadow-md">
-              <CheckCircle className="w-10 h-10 text-white" />
+            <div className="w-20 h-20 bg-black/20 rounded-full flex items-center justify-center shadow-md">
+              <CheckCircle className="w-10 h-10 text-black" />
             </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 ">
             Start Your Entrepreneurial Journey Today
           </h2>
-          <p className="text-base sm:text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-black sm:text-lg mb-8 max-w-2xl text- black mx-auto">
             Get expert guidance, legal support, and the right tools to launch your business idea and take it to new heights.
           </p>
           <motion.a

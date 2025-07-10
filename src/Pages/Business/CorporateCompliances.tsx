@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import {
   ShieldCheck,
   FileText,
@@ -17,9 +17,11 @@ const CorporateCompliances = () => {
     {
       icon: ShieldCheck,
       title: "Board Meetings",
+     
       description:
         "Hold regular board meetings and maintain clear records for legal transparency.",
-      gradient: "from-indigo-500 to-purple-600"
+      gradient: "from-slate-400 via-slate-400 to-slate-400"
+    
     },
     {
       icon: FileText,

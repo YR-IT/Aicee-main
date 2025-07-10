@@ -15,7 +15,7 @@ const services = [
     title: "Automated Compliance Tracking",
     description:
       "Automatically monitor licenses and permits to ensure you stay compliant with all local and national regulations.",
-    bg: "bg-gradient-to-br from-blue-100 to-blue-200",
+    bg: "bg-gradient-to-br from-white-50 to-blue-50",
     iconColor: "text-blue-600",
     titleColor: "text-blue-800",
   },
@@ -24,7 +24,7 @@ const services = [
     title: "Timely Renewal Reminders",
     description:
       "Get timely alerts for upcoming renewals and filings — never miss a critical deadline again.",
-    bg: "bg-gradient-to-br from-green-100 to-green-200",
+    bg: "bg-gradient-to-br from-white-50 to-blue-50",
     iconColor: "text-green-600",
     titleColor: "text-green-800",
   },
@@ -33,7 +33,7 @@ const services = [
     title: "Expert Regulatory Guidance",
     description:
       "Receive up-to-date guidance from seasoned professionals on evolving regulations.",
-    bg: "bg-gradient-to-br from-red-100 to-red-200",
+    bg: "bg-gradient-to-br from-white-50 to-blue-50",
     iconColor: "text-red-600",
     titleColor: "text-red-800",
   },
@@ -42,7 +42,7 @@ const services = [
     title: "Comprehensive Audit Support",
     description:
       "Get fully prepared for audits with streamlined documentation and expert oversight.",
-    bg: "bg-gradient-to-br from-pink-100 to-pink-200",
+    bg: "bg-gradient-to-br from-white-50 to-blue-50",
     iconColor: "text-pink-600",
     titleColor: "text-pink-800",
   },
@@ -51,7 +51,7 @@ const services = [
     title: "Dedicated Business Support",
     description:
       "A team of compliance specialists at your side to simplify complex filings and paperwork.",
-    bg: "bg-gradient-to-br from-yellow-100 to-yellow-200",
+    bg: "bg-gradient-to-br from-white-50 to-blue-50",
     iconColor: "text-yellow-600",
     titleColor: "text-yellow-800",
   },
@@ -60,7 +60,7 @@ const services = [
     title: "Performance Dashboards",
     description:
       "Monitor operational compliance metrics via detailed reports and dashboards.",
-    bg: "bg-gradient-to-br from-purple-100 to-purple-200",
+    bg: "bg-gradient-to-br from-white-50 to-blue-50",
     iconColor: "text-purple-600",
     titleColor: "text-purple-800",
   },
@@ -70,7 +70,7 @@ const MaintainYourBusiness = () => {
   return (
     <section className="relative overflow-hidden">
       {/* Hero Section */}
-      <div className="relative z-10 py-32 px-4 bg-gradient-to-br from-emerald-50 via-white to-blue-100">
+      <div className="relative z-10 py-32 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,128,128,0.1),transparent_70%)]"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.div
@@ -83,7 +83,7 @@ const MaintainYourBusiness = () => {
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 mb-6"
+            className="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-100 mb-6"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -92,7 +92,7 @@ const MaintainYourBusiness = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-10"
+            className="text-lg sm:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed mb-10"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -113,7 +113,7 @@ const MaintainYourBusiness = () => {
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-14">
             Our Maintenance Solutions
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 ">
             {services.map((service, idx) => (
               <motion.div
                 key={idx}

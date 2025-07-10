@@ -59,7 +59,7 @@ const RegulatoryFiling = () => {
   return (
     <div className="min-h-screen bg-gradient-to-tr from-gray-50 to-white text-gray-900">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50 py-28 px-4 text-center">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-28 px-4 text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,128,0,0.05),transparent)] pointer-events-none"></div>
         <div className="relative max-w-6xl mx-auto z-10">
           <motion.div
@@ -72,7 +72,7 @@ const RegulatoryFiling = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-green-600 via-blue-600 to-emerald-600 bg-clip-text text-transparent uppercase tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-gray-100 via-orange-300 to-orange-600 bg-clip-text text-transparent uppercase tracking-tight"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -81,7 +81,7 @@ const RegulatoryFiling = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-10 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
