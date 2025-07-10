@@ -66,7 +66,7 @@ const initiatives = [
 
 const Initiatives: React.FC = () => {
   return (
-    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex flex-col">
+    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-100 via-purple-100 to-slate-100 flex flex-col">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-5 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
@@ -97,7 +97,7 @@ const Initiatives: React.FC = () => {
           <div className="text-center mb-10 sm:mb-12 lg:mb-14">
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 blur-2xl opacity-30 animate-pulse" />
-              <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200 mb-4 tracking-tight">
+              <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200 mb-4 tracking-tight">
                 Our Initiatives
                 <Sparkles className="inline-block w-6 h-6 sm:w-8 sm:h-8 text-yellow-400 animate-spin ml-2" style={{ animationDuration: '3s' }} />
               </h2>
@@ -105,7 +105,7 @@ const Initiatives: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse" />
               </div>
             </div>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto px-2">
+            <p className="text-sm sm:text-base md:text-lg text-gray-900 max-w-3xl mx-auto px-2">
               Empowering communities through dedicated programs that drive positive change and sustainable development across various sectors.
             </p>
           </div>
