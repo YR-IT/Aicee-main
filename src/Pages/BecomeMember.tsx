@@ -118,7 +118,7 @@ function App() {
       
 
      {/* Hero Section with Logo - Responsive */}
-<section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
+<section className="relative bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-16">
   <div className="absolute inset-0 bg-black opacity-20"></div>
   <div className="relative max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
     
@@ -356,7 +356,7 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="w-500 bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+    className="w-500 bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
   >
     {isSubmitting ? 'Submitting...' : (
       <>

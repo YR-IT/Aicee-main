@@ -256,7 +256,7 @@ const MembersDirectory = () => {
             {filteredMembers.map((member) => (
               <div key={member.id} className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
                 {/* Member Header */}
-                <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-6 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-4">

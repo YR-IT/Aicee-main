@@ -83,25 +83,25 @@ function App() {
       icon: Phone,
       title: 'Call Us',
       details: ['+91-99907-33308', '+91-22-1234-5678'],
-      color: 'text-orange-600'
+      color: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
       icon: Mail,
       title: 'Email Us',
       details: ['info@aicc.ind.in', 'support@aicc.ind.in'],
-      color: 'text-red-600'
+      color: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
       details: ['Unit No. 836-A, Tower B-3, Spaze Tech Park', 'Badshahpur Sohna Rd Hwy, Sector 49', 'Gurugram, Haryana 122001'],
-      color: 'text-orange-600'
+      color: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
       icon: Clock,
       title: 'Office Hours',
       details: ['Mon - Fri: 8:00am - 7:00pm', 'Sat: 9:00am - 5:00pm', 'Sun: Closed'],
-      color: 'text-red-600'
+      color: 'from-slate-900 via-slate-800 to-slate-900'
     }
   ];
 
@@ -127,7 +127,7 @@ function App() {
 
       
            {/* Hero Section */}
-           <section className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-700 text-white py-16">
+           <section className="relative bg-gradient-to-r from-slate-500 via-slate-800 to-slate-800 text-white py-16">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between space-y-8 md:space-y-0">
           {/* Logo */}
@@ -311,7 +311,7 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="inline-flex bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none items-center justify-center"
+    className="inline-flex bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none items-center justify-center"
   >
     {isSubmitting ? 'Sending...' : (
       <>
@@ -347,7 +347,7 @@ function App() {
   rel="noopener noreferrer"
   className="inline-block mt-4"
 >
-  <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg text-sm hover:from-orange-600 hover:to-red-600 transition-colors">
+  <button className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white px-4 py-2 rounded-lg text-sm hover:from-orange-600 hover:to-red-600 transition-colors">
     View on Google Maps
   </button>
 </a>
