@@ -17,7 +17,7 @@ const initiatives = [
     title: 'Social Initiative',
     description: 'Enhancing property values through sustainable landscaping with trees and plants for community development. Our comprehensive approach focuses on environmental conservation while creating beautiful, livable spaces.',
     icon: TreePine,
-    gradient: 'from-blue-800 to-blue-600',
+    gradient: 'from-slate-800 to-blue-900',
     bgColor: 'bg-green-50',
     textColor: 'text-green-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -27,7 +27,7 @@ const initiatives = [
     title: 'Educational Initiative',
     description: 'AICC initiative to educate, train and develop skills across various professional aspects. We provide comprehensive training programs, workshops, and certification courses designed to enhance professional capabilities.',
     icon: GraduationCap,
-    gradient: 'from-blue-800 to-blue-600',
+    gradient: 'from-slate-800 to-blue-900',
     bgColor: 'bg-blue-50',
     textColor: 'text-blue-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -37,7 +37,7 @@ const initiatives = [
     title: 'MSME Support & Outreach',
     description: 'New wave MSME framework considering global context, benchmarks and technological advancement. Our support system includes mentorship, funding guidance, market access facilitation, and digital transformation assistance.',
     icon: Headphones,
-    gradient: 'from-blue-800 to-blue-600',
+    gradient: 'from-slate-800 to-blue-900',
     bgColor: 'bg-orange-50',
     textColor: 'text-orange-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -47,7 +47,7 @@ const initiatives = [
     title: 'Protecting Intellectual Property Rights',
     description: 'Safeguarding unique products and innovative ideas as priceless business assets requiring protection. We offer comprehensive IP consultation, patent filing assistance, trademark registration, and legal support.',
     icon: Shield,
-    gradient: 'from-blue-800 to-blue-600',
+    gradient: 'from-slate-800 to-blue-900',
     bgColor: 'bg-teal-50',
     textColor: 'text-teal-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -57,7 +57,7 @@ const initiatives = [
     title: 'Know The Indian Law',
     description: 'Educating citizens about constitutional laws and rights protection that most people are unaware of. Our legal awareness programs cover fundamental rights, consumer protection, labor laws, and civil procedures.',
     icon: Scale,
-    gradient: 'from-blue-800 to-blue-600',
+    gradient: 'from-slate-800 to-blue-900',
     bgColor: 'bg-purple-50',
     textColor: 'text-purple-800',
     buttonBg: 'bg-slate-800 hover:bg-slate-900'
@@ -96,7 +96,7 @@ const Initiatives: React.FC = () => {
           {/* Heading */}
           <div className="text-center mb-10 sm:mb-12 lg:mb-14">
             <div className="relative inline-block">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 blur-2xl opacity-30 animate-pulse" />
+              {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 blur-2xl opacity-30 animate-pulse" /> */}
               <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200 mb-4 tracking-relaxed">
                 Our Initiatives
                 <Sparkles className="inline-block w-6 h-6 sm:w-8 sm:h-8 text-yellow-400 animate-spin ml-2" style={{ animationDuration: '3s' }} />
