@@ -7,7 +7,7 @@ function MSMESupportOutreach() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <div className="min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white flex flex-col">
+      <div className="min-h-screen bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 flex flex-col">
           <nav className="flex items-center space-x-2 text-blue-200 text-sm mb-8">
             <span className="hover:text-white transition-colors cursor-pointer">Home</span>

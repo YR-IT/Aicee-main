@@ -72,7 +72,7 @@ const RegulatoryFiling = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-gray-100 via-orange-300 to-orange-600 bg-clip-text text-transparent uppercase tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white uppercase tracking-tight"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -95,8 +95,8 @@ const RegulatoryFiling = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <ClipboardList className="w-6 h-6 text-green-600" />
-            <span className="text-gray-900 font-medium text-lg">
+            <ClipboardList className="w-6 h-6 text-gray-300" />
+            <span className="text-gray-200 font-medium text-lg">
               Effortless. Compliant. Ready.
             </span>
           </motion.div>
@@ -170,7 +170,7 @@ const RegulatoryFiling = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-4 inline-block bg-green-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-green-700 transition"
+            className="mt-4 inline-block bg-slate-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-slate-700 transition"
           >
             Start Filing Smarter
           </motion.button>

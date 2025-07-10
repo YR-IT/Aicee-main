@@ -36,7 +36,7 @@ const CoreServices = () => {
         
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-800 mb-4 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-800 mb-4 leading-tight">
             Our <span className="bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">Core Services</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">

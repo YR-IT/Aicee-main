@@ -61,14 +61,14 @@ function SocialInitiative() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-white text-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden flex items-center justify-center py-20 sm:py-24 lg:py-32">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 via-emerald-600/20 to-teal-600/20"></div>
+      <section className="relative overflow-hidden flex items-center justify-center py-20 sm:py-24 lg:py-32 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800">
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 via-emerald-600/20 to-teal-600/20"></div> */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-8">
             <div className="relative">
-              <TreePine className="w-20 sm:w-24 h-20 sm:h-24 text-green-600 animate-pulse" />
+              <TreePine className="w-20 sm:w-24 h-20 sm:h-24 text-white-900 animate-pulse" />
               <div className="absolute -top-2 -right-2 w-6 sm:w-8 h-6 sm:h-8 bg-emerald-500 rounded-full flex items-center justify-center">
                 <Leaf className="w-3 sm:w-4 h-3 sm:h-4 text-white" />
               </div>
@@ -76,12 +76,12 @@ function SocialInitiative() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
-            <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            <span className="text-white">
               Social Initiative
             </span>
           </h1>
 
-          <p className="text-lg sm:text-2xl md:text-3xl text-gray-600 mb-8 sm:mb-12 max-w-5xl mx-auto leading-relaxed px-2">
+          <p className="text-base sm:text-2xl md:text-3xl text-gray-200 mb-8 sm:mb-12 max-w-5xl mx-auto leading-relaxed px-2">
             Trees are a vital part of our world, and crucial to our survival. They provide us with the oxygen we need to
             <span className="font-semibold text-green-700"> breathe</span>,
             <span className="font-semibold text-emerald-700"> shelter for wildlife</span>, and
@@ -136,7 +136,7 @@ function SocialInitiative() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 to-teal-600">
+      <section className="py-20 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-8">
             <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">

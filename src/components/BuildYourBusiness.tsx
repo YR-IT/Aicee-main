@@ -57,10 +57,7 @@ export default function BuildYourBusiness() {
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
 >
-  Build Your{" "}
-  <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
-    Business
-  </span>
+  Build Your Business
 </motion.h2>
         <motion.p
           className="text-gray-800 mb-12 max-w-3xl mx-auto"

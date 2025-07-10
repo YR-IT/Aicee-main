@@ -88,7 +88,7 @@ const CorporateCompliances = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_70%)]"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.div
-            className="inline-flex items-center gap-2 bg-white text-purple-800 px-6 py-2 rounded-full text-sm font-medium shadow-sm mb-6 border border-purple-300"
+            className="inline-flex items-center gap-2 bg-white text-gray-800 px-6 py-2 rounded-full text-sm font-medium shadow-sm mb-6 border border-purple-300"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -97,7 +97,7 @@ const CorporateCompliances = () => {
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6"
+            className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 uppercase"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -131,11 +131,11 @@ const CorporateCompliances = () => {
             {compliances.map((item, index) => (
               <motion.div
                 key={index}
-                className={`rounded-3xl p-6 bg-gradient-to-br ${item.gradient} shadow-lg hover:shadow-xl transition-all duration-300 text-left text-white`}
+               className="rounded-3xl border-2 border-gray-200 p-6 bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-left text-black"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-white shadow-sm mb-5">
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gray-200 shadow-sm mb-5">
                   <item.icon className="w-7 h-7 text-gray-800" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>

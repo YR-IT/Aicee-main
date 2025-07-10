@@ -12,7 +12,7 @@ function EducationalInitiative() {
   return (
    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
   {/* Educational Initiative Section - Full Screen (Final Enhanced Version) */}
-  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white flex items-center relative overflow-hidden pt-8 pb-4">
+  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex items-center relative overflow-hidden pt-8 pb-4">
     {/* Animated background */}
     <div className="absolute inset-0">
       <div className="absolute top-10 left-10 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>

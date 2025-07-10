@@ -74,13 +74,13 @@ const NominationForm = () => {
         throw new Error('Function not implemented.');
     }
      useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
       }, []);
     
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white py-12 px-6 md:px-16 shadow-md">
+      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-12 px-6 md:px-16 shadow-md">
   <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0">
 
     {/* Left Section - Icon + Title */}
@@ -101,7 +101,7 @@ const NominationForm = () => {
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
-              className={`w-5 h-5 md:w-6 md:h-6 text-yellow-200 fill-current drop-shadow-sm animate-pulseStar`}
+              className={`w-5 h-5 md:w-6 md:h-6 text-amber-400 fill-current drop-shadow-sm animate-pulseStar`}
               style={{ animationDelay: `${i * 0.2}s` }}
             />
           ))}
@@ -480,7 +480,7 @@ const NominationForm = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white px-12 py-5 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center space-x-3 mx-auto"
+                className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-6 py-4 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center space-x-3 mx-auto"
               >
                 <Send className="w-6 h-6" />
                 <span>Submit Nomination</span>

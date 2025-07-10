@@ -97,7 +97,7 @@ const Initiatives: React.FC = () => {
           <div className="text-center mb-10 sm:mb-12 lg:mb-14">
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 blur-2xl opacity-30 animate-pulse" />
-              <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200 mb-4 tracking-tight">
+              <h2 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black bg-clip-text bg-gradient-to-r from-white via-purple-200 to-pink-200 mb-4 tracking-relaxed">
                 Our Initiatives
                 <Sparkles className="inline-block w-6 h-6 sm:w-8 sm:h-8 text-yellow-400 animate-spin ml-2" style={{ animationDuration: '3s' }} />
               </h2>
