@@ -58,7 +58,7 @@ const ExportImportCourse = () => {
             {/* CTA Button */}
             <div className="flex justify-center z-10">
               <a 
-                href="https://eknowlede2.vercel.app/" 
+                href="https://eknowledge.vercel.app/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="group inline-block"
