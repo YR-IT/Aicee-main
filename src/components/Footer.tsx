@@ -101,19 +101,21 @@ const Footer = () => {
               Need help expanding your business or resolving trade issues? Contact our expert advisory team.
             </p>
           </div>
+          <div className='text-center space-y-6'>
           <a
             href="/brochure.pdf"
             download
-            className="w-full inline-flex justify-center items-center gap-2 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-3 rounded-xl font-bold transition-transform duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
+            className="inline-flex justify-center items-center gap-2 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-3 px-5 rounded-xl font-bold transition-transform duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             <Download className="w-5 h-5" /> Download Brochure
           </a>
           <Link
             to="/contact-us"
-            className="block w-full text-center border border-white/20 py-3 text-white rounded-xl font-bold hover:bg-white/10 transition-all duration-300 hover:scale-105"
+            className="inline-block text-center border border-white/20 py-3 px-11 text-white rounded-xl font-bold hover:bg-white/10 transition-all duration-300 hover:scale-105"
           >
             Contact Us Today
           </Link>
+          </div>
         </div>
       </div>
 

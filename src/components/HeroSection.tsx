@@ -81,7 +81,8 @@ const HeroSection = () => {
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Link to="/members" className="group inline-block">
-  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-8 py-3 md:px-10 md:py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white 
+  px-6 py-3 md:px-5 md:py-3 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
     <span className="flex items-center space-x-2">
       <span>Become a Member</span>
       <div className="w-2 h-2 bg-white rounded-full group-hover:animate-ping"></div>
@@ -89,7 +90,8 @@ const HeroSection = () => {
   </button>
 </Link>
           <Link to="/activities" className="group inline-block">
-          <button className="group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-8 py-3 md:px-10 md:py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
+          <button className="group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 
+         px-5 py-3 md:px-5 md:py-3 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
             <span className="flex items-center space-x-2">
               <span>Explore Acitivities</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,7 +1,4 @@
 
-
-// Activities.tsx
-
 import React, { useEffect, useState } from 'react';
 import {
   Globe, Users, TrendingUp, GraduationCap, FileText, Languages, Mail, Handshake,
