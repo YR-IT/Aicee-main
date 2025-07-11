@@ -252,79 +252,49 @@ const MembersDirectory = () => {
           </div>
 
           {/* Members Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredMembers.map((member) => (
-              <div key={member.id} className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden">
-                {/* Member Header */}
-                <div className="bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 p-6 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
-                        <Building2 className="w-8 h-8 text-white" />
-                      </div>
-                      {member.verified && (
-                        <div className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                          <Award className="w-3 h-3" />
-                          <span>Verified</span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-yellow-200 transition-colors duration-300">
-                      {member.name}
-                    </h3>
-                    
-                    <div className="flex items-center space-x-2 mb-3">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-                        <span className="text-white text-sm font-medium">{member.category}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 text-yellow-300 fill-current" />
-                        <span className="text-white font-bold text-sm">{member.rating}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+{/* Clean & Compact Members Grid */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {filteredMembers.map((member) => (
+    <div
+      key={member.id}
+      className="bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col hover:shadow-lg transition"
+    >
+      {/* Top: Logo + Name + Rating */}
+      <div className="flex items-center space-x-4 mb-4">
+        {/* Logo/Initial */}
+        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-lg">
+          {member.name.charAt(0)}
+        </div>
 
-                {/* Member Details */}
-                <div className="p-6">
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start space-x-3">
-                      <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
-                      <div className="text-gray-600 text-sm leading-relaxed">
-                        {member.address}
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center space-x-3">
-                      <Globe className="w-5 h-5 text-orange-500" />
-                      <span className="text-gray-600 font-medium">{member.country}</span>
-                    </div>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="space-y-3">
-                    <button className="w-full bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 hover:from-orange-700 hover:to-red-600 text-white py-3 px-6 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl">
-                      <ExternalLink className="w-5 h-5" />
-                      <span>More Info</span>
-                    </button>
-                    
-                    <div className="grid grid-cols-2 gap-3">
-                      <button className="bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 py-2 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2">
-                        <Phone className="w-4 h-4" />
-                        <span>Call</span>
-                      </button>
-                      <button className="bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 py-2 px-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center space-x-2">
-                        <Mail className="w-4 h-4" />
-                        <span>Email</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="flex-1">
+          <h3 className="text-base font-semibold text-gray-900">{member.name}</h3>
+          <div className="flex items-center space-x-1 text-yellow-400">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className={`w-4 h-4 ${i < Math.round(member.rating) ? 'fill-current' : 'text-gray-300'}`}
+              />
             ))}
+            <span className="text-sm text-gray-600 ml-1">{member.rating}</span>
           </div>
+        </div>
+      </div>
+
+      {/* Address */}
+      <div className="flex items-start space-x-3 mb-4">
+        <MapPin className="w-5 h-5 text-orange-500 mt-1" />
+        <p className="text-sm text-gray-700 leading-relaxed">{member.address}</p>
+      </div>
+
+      {/* More Info */}
+      <button className="group inline-flex items-center text-orange-600 font-semibold text-sm hover:underline hover:underline-offset-4 transition mt-auto">
+        <span>More Info</span>
+        <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+      </button>
+    </div>
+  ))}
+</div>
+
 
           {/* Load More Button */}
           {filteredMembers.length > 0 && (
@@ -335,27 +305,8 @@ const MembersDirectory = () => {
             </div>
           )}
 
-          {/* No Results */}
-          {filteredMembers.length === 0 && (
-            <div className="text-center py-16">
-              <div className="w-32 h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center mx-auto mb-8">
-                <Search className="w-16 h-16 text-orange-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">No Members Found</h3>
-              <p className="text-gray-600 mb-8">Try adjusting your search criteria or browse all members.</p>
-              <button 
-                onClick={() => {
-                  setSelectedState('');
-                  setSearchKeyword('');
-                  setSelectedLetter('');
-                }}
-                className="bg-gradient-to-r from-orange-600 to-red-500 text-white px-8 py-3 rounded-2xl font-bold hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                View All Members
-              </button>
-            </div>
-          )}
-        </div>
+       
+</div>
       </div>
 
       {/* CTA Section */}
@@ -380,7 +331,7 @@ const MembersDirectory = () => {
             <button className="border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
               Learn More
             </button>
-          </div>
+          </div> 
         </div>
  
 </div>
