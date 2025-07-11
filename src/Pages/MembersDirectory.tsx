@@ -14,6 +14,8 @@ import {
   Award,
   
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 
 
 const MembersDirectory = () => {
@@ -268,15 +270,7 @@ const MembersDirectory = () => {
 
         <div className="flex-1">
           <h3 className="text-base font-semibold text-gray-900">{member.name}</h3>
-          <div className="flex items-center space-x-1 text-yellow-400">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className={`w-4 h-4 ${i < Math.round(member.rating) ? 'fill-current' : 'text-gray-300'}`}
-              />
-            ))}
-            <span className="text-sm text-gray-600 ml-1">{member.rating}</span>
-          </div>
+         
         </div>
       </div>
 
@@ -287,10 +281,14 @@ const MembersDirectory = () => {
       </div>
 
       {/* More Info */}
-      <button className="group inline-flex items-center text-orange-600 font-semibold text-sm hover:underline hover:underline-offset-4 transition mt-auto">
-        <span>More Info</span>
-        <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-      </button>
+      <Link
+  to={`/company/${member.id}`}
+  className="group inline-flex items-center text-orange-600 font-semibold text-sm hover:underline hover:underline-offset-4 transition mt-auto"
+>
+  <span>More Info</span>
+  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+</Link>
+
     </div>
   ))}
 </div>

@@ -29,6 +29,7 @@ import RegulatoryFiling from './Pages/Business/RegulatoryFiling';
 import MaintainYourBusiness from './Pages/Business/MaintainBusiness';
 import IntellectualProperty from './Pages/Initiatives/IntellectualProperty';
 import IndianLaws from './Pages/Initiatives/IndianLaws';
+import CompanyDetails from './Pages/Companies/CompanyDetails';
 const HomePage = () => (
   <>
     <HeroSection />
@@ -64,6 +65,8 @@ function App() {
        <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
        <Route path="/initiatives/Protecting-Intellectual-Property-Rights" element={<IntellectualProperty/>}/>
        <Route path="/initiatives/Know-The-Indian-Law" element={<IndianLaws/>}/>
+       <Route path="/company/:id" element={<CompanyDetails />} />
+    
       </Routes>
       <Footer />
     </div>
