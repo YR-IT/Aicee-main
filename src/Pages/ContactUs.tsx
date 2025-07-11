@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { sendContactEmail } from '../../helper/email'; 
+
 import { 
   Phone, 
   Mail,  
@@ -59,24 +61,35 @@ function App() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-    
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    
-    // Reset form or show success message
-    alert('Message sent successfully! We will get back to you soon.');
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  setIsSubmitting(true);
+
+  const result = await sendContactEmail({
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    subject: formData.subject,
+    message: formData.message,
+  });
+
+  setIsSubmitting(false);
+
+  if (result.success) {
+    alert(result.message);
     setFormData({
       name: '',
       email: '',
       phone: '',
       subject: '',
-      message: ''
+      message: '',
     });
-  };
+  } else {
+    alert(result.message);
+  }
+};
+
 
   const contactInfo = [
     {
