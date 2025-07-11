@@ -17,7 +17,6 @@ interface Company {
   email: string;
   phone: string;
   fax: string;
- 
   verified: boolean;
 }
 
@@ -41,7 +40,7 @@ const CompanyDetails = () => {
 
   const fetchCompanyDetails = async () => {
     try {
-      const response = await fetch(`/api/companies/${id}`);
+      const response = await fetch(`https://api.jsonbin.io/v3/qs/6870fafd013b9e4bdcc0ad7a`);
       if (!response.ok) {
         throw new Error('Company not found');
       }
@@ -129,7 +128,7 @@ const CompanyDetails = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <Link 
-              to="/members" 
+              to="/members-directory" 
               className="flex items-center space-x-2 text-white hover:text-orange-200 transition-colors duration-300"
             >
               <ArrowLeft className="w-5 h-5" />
