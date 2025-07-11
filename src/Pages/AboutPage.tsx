@@ -56,14 +56,14 @@ const AboutPage = () => {
     <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-12">
       <Link
   to="/courses"
-  className="inline-block px-6 py-3 md:px-8 md:py-4 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all"
+  className="inline-block px-6 py-3 md:px-6 md:py-3 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all"
 >
   Discover Our Courses
 </Link>
 
 <Link
   to="/contact-us"
-  className="group relative inline-flex items-center space-x-3 bg-white/10 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm"
+  className="group relative inline-flex items-center space-x-3 bg-white/10 text-white px-6 py-3 md:px-6 md:py-3 rounded-full font-bold shadow-2xl hover:bg-white/20 hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm"
 >
   Get in Touch
 </Link>
@@ -154,45 +154,54 @@ const AboutPage = () => {
 
           {/* Administration Section */}
           <div className="mb-20 px-4">
-  <div className="bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8 max-w-7xl mx-auto">
+  <div className="bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 max-w-7xl mx-auto">
     {/* Heading */}
     <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left md:space-x-4 mb-8">
-      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl flex items-center justify-center mb-4 md:mb-0">
-        <Zap className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+      <div className="w-14 h-14 sm:w-20 sm:h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl flex items-center justify-center mb-4 md:mb-0">
+        <Zap className="w-7 h-7 sm:w-10 sm:h-10 text-white" />
       </div>
       <div>
-        <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">Dual Administration</h2>
-        <p className="text-orange-400 text-base sm:text-lg">Structured Governance Model</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
+          Dual Administration
+        </h2>
+        <p className="text-orange-400 text-base sm:text-lg">
+          Structured Governance Model
+        </p>
       </div>
     </div>
 
     {/* Content */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center px-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center px-2 sm:px-6 md:px-16">
       {/* LEFT COLUMN */}
-      <div className="flex flex-col gap-8">
-        <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-          <h3 className="text-base sm:text-2xl md:text-3xl font-bold text-white mb-4">General Administration</h3>
-          <p className="text-gray-300 leading-relaxed">
-             The General Administration is looked after by the Board of Directors, as per the statutory 
-  provisions of the Companies Act, 1956, ensuring smooth operations and effective governance at all times.
+      <div className="flex flex-col gap-6 sm:gap-8">
+        <div className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10">
+          <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+            General Administration
+          </h3>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            The General Administration is looked after by the Board of Directors,
+            as per the statutory provisions of the Companies Act, 1956,
+            ensuring smooth operations and effective governance at all times.
           </p>
         </div>
 
-        <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-          <h3 className="text-base sm:text-2xl md:text-3xl font-bold text-white mb-4">Central Business Committee</h3>
-          <p className="text-gray-300 leading-relaxed">
-            The promotion of trade and commerce is looked after by the Central Business Committee, 
-            whose representatives are elected through democratic process.
+        <div className="bg-white/5 rounded-2xl p-4 sm:p-6 border border-white/10">
+          <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+            Central Business Committee
+          </h3>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+            The promotion of trade and commerce is looked after by the Central Business Committee,
+            whose representatives are elected through a democratic process.
           </p>
         </div>
       </div>
 
-      {/* RIGHT COLUMN: Centered Image */}
-      <div className="flex justify-center">
-        <div className="rounded-2xl overflow-hidden border border-white/10 h-80 md:h-96 w-full">
-          <img 
-            src="/aboutus.jpg" 
-            alt="Description of image" 
+      {/* RIGHT COLUMN: Image */}
+      <div className="flex justify-center w-full">
+        <div className="rounded-2xl overflow-hidden border border-white/10 w-full max-w-md h-60 sm:h-72 md:h-96">
+          <img
+            src="/aboutus.jpg"
+            alt="Description of image"
             className="w-full h-full object-cover"
           />
         </div>
@@ -200,7 +209,6 @@ const AboutPage = () => {
     </div>
   </div>
 </div>
-
 
           {/* Mission, Vision, Values */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
@@ -265,7 +273,7 @@ const AboutPage = () => {
 
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
           <Link to="/contact-us" className="group inline-block">
-  <button className="inline-flex items-center justify-center group bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+  <button className="inline-flex items-center justify-center group bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 sm:px-6 py-3 sm:py-2 rounded-full font-bold text-base sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
     <span className="flex items-center space-x-2">
       <span>Join Our Network</span>
       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -274,7 +282,7 @@ const AboutPage = () => {
   </Link>
 
     <Link to="/international" className="group inline-block">
-  <button className="inline-flex items-center justify-center group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
+  <button className="inline-flex items-center justify-center group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-6 sm:px-6 py-3 sm:py-2 rounded-full font-bold text-base sm:text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
     <span className="flex items-center space-x-2">
       <span>Learn More</span>
       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-spin transition-transform duration-300" />

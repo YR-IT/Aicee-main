@@ -66,7 +66,7 @@ const initiatives = [
 
 const Initiatives: React.FC = () => {
   return (
-    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-100 via-purple-100 to-slate-100 flex flex-col">
+    <section className=" relative overflow-hidden bg-gradient-to-br from-slate-100 via-purple-100 to-slate-100 flex flex-col">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-5 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
@@ -91,7 +91,7 @@ const Initiatives: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-start sm:justify-center py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-10">
+      <div className="relative z-10 flex-1 flex flex-col justify-start sm:justify-center py-8 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-10">
         <div className="max-w-7xl mx-auto w-full">
           {/* Heading */}
           <div className="text-center mb-10 sm:mb-12 lg:mb-14">
@@ -129,7 +129,7 @@ const Initiatives: React.FC = () => {
                   </div>
 
                   <div className="p-4 flex flex-col flex-1">
-                    <h4 className={`font-bold ${initiative.textColor} text-base sm:text-lg mb-2 text-center`}>{initiative.title}</h4>
+                    {/* <h4 className={`font-bold ${initiative.textColor} text-base sm:text-lg mb-2 text-center`}>{initiative.title}</h4> */}
                     <p className="text-xs sm:text-sm text-gray-600 mb-4 flex-1 text-center">{initiative.description}</p>
                     <div className="mt-auto flex justify-center">
   <Link to={`/initiatives/${initiative.title.toLowerCase().replace(/\s+/g, '-')}`}>

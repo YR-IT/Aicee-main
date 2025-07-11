@@ -73,7 +73,8 @@ const ExcellenceAward = () => {
             
 <div className="flex justify-center lg:justify-center">
   <Link to="/nomination">
-    <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 hover:-translate-y-1">
+    <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white 
+    px-6 py-3 rounded-2xl font-bold text-xl transition-all duration-300 shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 hover:-translate-y-1">
       <span className="flex items-center space-x-3">
         <span>Click Here</span>
         <div className="w-3 h-3 bg-white rounded-full group-hover:animate-ping"></div>

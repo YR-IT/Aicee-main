@@ -43,7 +43,7 @@ const CallToAction = () => {
 
           <div className="sm:flex sm:justify-start justify-center flex">
             <Link to="/members" className="group inline-block">
-            <button className="inline-block bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white sm:px-8 sm:py-4 px-6 py-3 rounded-3xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/30 transform hover:scale-105">
+            <button className="inline-block bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white sm:px-4 sm:py-3 px-4 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/30 transform hover:scale-105">
               Become a Member
             </button>
             </Link>
