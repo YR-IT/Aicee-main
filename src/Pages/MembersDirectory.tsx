@@ -34,65 +34,102 @@ const MembersDirectory = () => {
   const members = [
     {
       id: 1,
-      name: 'Stalwart Creations',
-      address: '410-411, Udyog Vihar, Phase-IV, Haryana - 122001',
-      state: 'Haryana',
+      name: 'Ashok Brothers Impex Pvt. Ltd.',
+      address: '638/D, 2Nd Floor, Dr. Rajkumar Road, Rajaninagar, 2Nd Stage',
+      city: 'Bangalore',
+      state: 'Karnataka',
+      pincode: '560010',
       country: 'India',
       category: 'Manufacturing',
+      business_description: 'Machine Tools & Accessories, Balancing Machine, Sheet Metal Machine Tools Accessories',
+      website: 'http://www.abi-india.com',
+      email: 'abibo@bgl.vsnl.net.in',
+      phone: '080-23323096',
+      fax: '080-23323096',
       rating: 4.8,
       verified: true
     },
     {
       id: 2,
-      name: 'Sahni Trading Corp.',
-      address: '5-B, Marwari Vidyalaya, 473, S.V.P. Road, Charni Road, Maharashtra - 400004',
-      state: 'Maharashtra',
+      name: 'Stalwart Creations',
+      address: '410-411, Udyog Vihar, Phase-IV',
+      city: 'Gurgaon',
+      state: 'Haryana',
+      pincode: '122001',
       country: 'India',
-      category: 'Trading',
+      category: 'Manufacturing',
+      business_description: 'Industrial Manufacturing and Production Solutions, Quality Engineering Services',
+      website: 'http://www.stalwartcreations.com',
+      email: 'info@stalwartcreations.com',
+      phone: '+91-124-4367655',
+      fax: '+91-124-4367656',
       rating: 4.6,
       verified: true
     },
     {
       id: 3,
-      name: 'Bangalore Granites',
-      address: 'No. 130, Magadi Main Road, Machohalli Gate, Karnataka - 560091',
-      state: 'Karnataka',
-      country: 'India',
-      category: 'Construction',
-      rating: 4.7,
-      verified: true
-    },
-    {
-      id: 4,
       name: 'Gold Marine Exports (P) Ltd.',
-      address: 'New No. 16 (Old No. 25), Dharmaja Koil Street, Chintadripet, Tamil Nadu - 600002',
+      address: 'New No. 16 (Old No. 25), Dharmaja Koil Street, Chintadripet',
+      city: 'Chennai',
       state: 'Tamil Nadu',
+      pincode: '600002',
       country: 'India',
       category: 'Export',
+      business_description: 'Marine Products Export, Seafood Processing and International Trade',
+      website: 'http://www.goldmarineexports.com',
+      email: 'info@goldmarineexports.com',
+      phone: '+91-44-28524567',
+      fax: '+91-44-28524568',
       rating: 4.9,
       verified: true
     },
     {
-      id: 5,
-      name: 'Aggarwal Fibre & Plastic Industries',
-      address: '3060, D. B. Gupta Road, Chuna Mandi, Pahar Ganj, Delhi - 110055',
-      state: 'Delhi',
+      id: 4,
+      name: 'Emkay Aromatics Limited',
+      address: 'L-6, Industrial Estate, Ambattur',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      pincode: '600058',
       country: 'India',
-      category: 'Manufacturing',
-      rating: 4.5,
+      category: 'Chemicals',
+      business_description: 'Aromatic Chemicals, Essential Oils, Fragrance and Flavor Manufacturing',
+      website: 'http://www.emkayaromatics.com',
+      email: 'info@emkayaromatics.com',
+      phone: '+91-44-26254789',
+      fax: '+91-44-26254790',
+      rating: 4.7,
       verified: true
     },
     {
-      id: 6,
-      name: 'Emkay Aromatics Limited',
-      address: 'L-6, Industrial Estate, Ambattur, Tamil Nadu - 600058',
-      state: 'Tamil Nadu',
+      id: 5,
+      name: 'Bangalore Granites',
+      address: 'No. 130, Magadi Main Road, Machohalli Gate',
+      city: 'Bangalore',
+      state: 'Karnataka',
+      pincode: '560091',
       country: 'India',
-      category: 'Chemicals',
-      rating: 4.8,
+      category: 'Construction',
+      business_description: 'Granite Mining, Processing and Export, Natural Stone Products',
+      website: 'http://www.bangaloregranites.com',
+      email: 'info@bangaloregranites.com',
+      phone: '+91-80-28394567',
+      fax: '+91-80-28394568',
+      rating: 4.5,
       verified: true
+    },
+
+    {
+      id: 6,
+      name: 'EcoBuild Materials',
+      address: 'Sector 22, Industrial Area, Chandigarh, Punjab - 160022',
+      state: 'Punjab',
+      country: 'India',
+      category: 'Construction',
+      rating: 4.8,
+      verified: true,
     }
   ];
+  
 
   const filteredMembers = members.filter(member => {
     const matchesState = !selectedState || selectedState === 'All States' || member.state === selectedState;
@@ -323,12 +360,18 @@ const MembersDirectory = () => {
             Expand your network and grow your business with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
-              Become a Member
-            </button>
-            <button className="border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
-              Learn More
-            </button>
+          <Link to="/become-a-member">
+
+  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+    Become a Member
+  </button>
+</Link>
+            <Link 
+              to="/register"
+              className="border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 text-center"
+            >
+              Register Your Company
+            </Link>
           </div> 
         </div>
  
