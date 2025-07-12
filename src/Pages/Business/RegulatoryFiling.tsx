@@ -150,32 +150,33 @@ const RegulatoryFiling = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 bg-gradient-to-br from-green-50 via-white to-emerald-50">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-100/30 via-blue-100/30 to-emerald-100/30"></div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center shadow-md">
-              <ClipboardList className="w-10 h-10 text-green-700" />
-            </div>
-          </div>
+  
+<section className="relative py-20 bg-gradient-to-br from-green-50 via-white to-emerald-50">
+  <div className="absolute inset-0 bg-gradient-to-r from-green-100/30 via-blue-100/30 to-emerald-100/30"></div>
+  <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <div className="flex justify-center mb-8">
+      <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center shadow-md">
+        <ClipboardList className="w-10 h-10 text-green-700" />
+      </div>
+    </div>
 
-          <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6">
-            Sit Back — We’ll Keep You Compliant
-          </h3>
+    <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6">
+      Sit Back — We’ll Keep You Compliant
+    </h3>
 
-          <p className="text-lg sm:text-xl text-gray-700 mb-8">
-            Avoid penalties and delays. Let our compliance professionals manage your statutory obligations with precision and care.
-          </p>
+    <p className="text-lg sm:text-xl text-gray-700 mb-8">
+      Avoid penalties and delays. Let our compliance professionals manage your statutory obligations with precision and care.
+    </p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-4 inline-block bg-slate-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-slate-700 transition"
-          >
-            Start Filing Smarter
-          </motion.button>
-        </div>
-      </section>
+    <motion.p
+      whileHover={{ scale: 1.02 }}
+      className="text-slate-700 text-lg sm:text-xl font-semibold"
+    >
+      Start Filing Smarter
+    </motion.p>
+  </div>
+</section>
+
     </div>
   );
 };
