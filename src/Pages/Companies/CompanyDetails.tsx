@@ -286,12 +286,28 @@ useEffect(() => {
 
             {/* Send Message Button - Exact styling from screenshot */}
             <div className="p-8 text-center">
-              <button
-                onClick={() => setShowMessageForm(true)}
-                className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
-              >
-                Send Message To Listing Owner
-              </button>
+       <div className="flex justify-center mt-6">
+       <button
+  onClick={() => setShowMessageForm(true)}
+  className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow-sm hover:bg-orange-700 transition-all duration-300 transform hover:scale-105"
+>
+  <span>Send Message to Listing Owner</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-4 w-4 transition-transform duration-300"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+  </svg>
+</button>
+
+
+</div>
+
+
             </div>
           </div>
         </div>
@@ -380,22 +396,24 @@ useEffect(() => {
                   ></textarea>
                 </div>
 
-                <div className="flex space-x-4">
-                  <button
-                    type="button"
-                    onClick={() => setShowMessageForm(false)}
-                    className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-4 px-6 rounded-2xl font-bold transition-all duration-300"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="flex-1 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-4 px-6 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
-                  >
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
-                  </button>
-                </div>
+                <div className="flex space-x-2">
+  <button
+    type="button"
+    onClick={() => setShowMessageForm(false)}
+    className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300"
+  >
+    Cancel
+  </button>
+
+  <button
+    type="submit"
+    className="flex-1 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-1"
+  >
+    <Send className="w-4 h-4" />
+    <span>Send</span>
+  </button>
+</div>
+
               </form>
             </div>
           </div>
