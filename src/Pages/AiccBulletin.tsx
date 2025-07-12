@@ -249,7 +249,7 @@ const BulletinPage = () => {
                     </div>
                   </div>
                   
-                  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-8 py-3 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+                  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-4 py-2 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                     <span>Read More</span>
                     <ArrowRight className="w-5 h-5" />
                   </button>
@@ -276,7 +276,7 @@ const BulletinPage = () => {
                     <button
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
-                      className={`flex items-center space-x-2 px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
+                      className={`flex items-center space-x-2 px-4 py-3 rounded-2xl font-medium transition-all duration-300 ${
                         selectedCategory === category.id
                           ? 'bg-gradient-to-r from-orange-600 to-red-500 text-white shadow-lg'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -349,11 +349,11 @@ const BulletinPage = () => {
             </div>
 
             {/* Load More Button */}
-            <div className="text-center">
+            {/* <div className="text-center">
               <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                 Load More Articles
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Sidebar */}

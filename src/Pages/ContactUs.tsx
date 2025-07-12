@@ -95,19 +95,19 @@ function App() {
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91-99907-33308', '+91-22-1234-5678'],
+      details: ['+91-99907-33308'],
       color: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['info@aicc.ind.in', 'support@aicc.ind.in'],
+      details: ['info@aicc.ind.in'],
       color: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['Unit No. 836-A, Tower B-3, Spaze Tech Park', 'Badshahpur Sohna Rd Hwy, Sector 49', 'Gurugram, Haryana 122001'],
+      details: ['Unit No. 836-A, Tower B-3, Spaze Tech Park, Badshahpur, Sohna Rd Hwy, Sector 49, Gurugram, Haryana 122001'],
       color: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
@@ -324,7 +324,7 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="inline-flex bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none items-center justify-center"
+    className="inline-flex bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-2 px-5 rounded-lg font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none items-center justify-center"
   >
     {isSubmitting ? 'Sending...' : (
       <>

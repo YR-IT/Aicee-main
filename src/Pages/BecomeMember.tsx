@@ -356,11 +356,11 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="w-500 bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-3 px-5 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+    className="mt-2 w-500 bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-2 px-4 rounded-lg font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
   >
     {isSubmitting ? 'Submitting...' : (
       <>
-        Submit Membership Application
+        Submit Application
         <ArrowRight className="w-5 h-5 ml-2" />
       </>
     )}
