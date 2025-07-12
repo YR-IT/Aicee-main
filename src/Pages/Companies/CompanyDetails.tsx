@@ -117,7 +117,25 @@ const CompanyDetails = () => {
       fax: '+91-80-28394568',
       rating: 4.5,
       verified: true
-    }
+    },
+    {
+      id: 6,
+      name: 'EcoBuild Materials',
+      address: 'Plot No. 47, Khamla, Gawande Nagar, Near Khamla',
+      city: 'Bangalore',
+      state: 'Karnataka',
+      pincode: '560091',
+      country: 'India',
+      category: 'Construction',
+      business_description: 'Granite Mining, Processing and Export, Natural Stone Products',
+      website: 'http://www.ecoBuildMaterials.com',
+      email: 'info@ecobuildmaterials.com',
+      phone: '+91-90-28394567',
+      fax: '+91-80-28394568',
+      rating: 4.5,
+      verified: true
+
+    },
   ];
 
   const company = companies.find(c => c.id === parseInt(id || '1'));
