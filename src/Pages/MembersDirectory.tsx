@@ -334,9 +334,7 @@ const MembersDirectory = () => {
           {/* Load More Button */}
           {filteredMembers.length > 0 && (
             <div className="text-center mt-16">
-              <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
-                Load More Members
-              </button>
+            
             </div>
           )}
 
@@ -361,17 +359,15 @@ const MembersDirectory = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <Link to="/become-a-member">
-
-  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/25 transform hover:scale-103 hover:-translate-y-0.5">
     Become a Member
   </button>
 </Link>
-            <Link 
-              to="/register"
-              className="border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 text-center"
-            >
-              Register Your Company
-            </Link>
+
+<button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 py-3 rounded-2xl font-bold text-sm transition-all duration-300 shadow-xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+  Learn More
+</button>
+
           </div> 
         </div>
  
