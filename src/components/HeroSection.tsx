@@ -104,7 +104,7 @@ const HeroSection = () => {
 
         <div className="mt-8 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="group">
-            <div className="text-4xl font-bold text-orange-400 mb-2 group-hover:scale-110 transition-transform duration-300">100+</div>
+            <div className="text-4xl font-bold text-orange-400 mb-2 group-hover:scale-110 transition-transform duration-300">20+</div>
             <div className="text-gray-300 font-medium">Years of Excellence</div>
           </div>
           <div className="group">
