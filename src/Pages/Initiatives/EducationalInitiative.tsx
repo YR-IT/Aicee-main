@@ -513,7 +513,8 @@ function EducationalInitiative() {
             Join thousands of successful graduates who have launched their international trade careers with our comprehensive certification program.
           </p>
           <div className="flex justify-center">
-            <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 px-8 md:px-12 py-3 md:py-4 rounded-lg font-semibold text-base md:text-lg transition-all duration-300 hover:scale-105 shadow-lg">
+            <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 
+            px-4 md:px-4 py-3 md:py-3 rounded-lg font-semibold text-base md:text-lg transition-all duration-300 hover:scale-105 shadow-lg">
               Enroll Now - Get Started Today
             </button>
           </div>
