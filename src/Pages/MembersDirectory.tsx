@@ -364,9 +364,13 @@ const MembersDirectory = () => {
   </button>
 </Link>
 
-<button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 py-3 rounded-2xl font-bold text-sm transition-all duration-300 shadow-xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
-  Learn More
-</button>
+
+
+<Link to="/about">
+  <button className="border border-orange-500 text-orange-600 px-11 py-2.5 rounded-xl font-bold text-base hover:bg-orange-50 hover:text-orange-700 transition-all duration-300">
+    Learn More
+  </button>
+</Link>
 
           </div> 
         </div>

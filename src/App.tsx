@@ -30,7 +30,7 @@ import MaintainYourBusiness from './Pages/Business/MaintainBusiness';
 import IntellectualProperty from './Pages/Initiatives/IntellectualProperty';
 import IndianLaws from './Pages/Initiatives/IndianLaws';
 import CompanyDetails from './Pages/Companies/CompanyDetails';
-import CompanyRegistration from './Pages/Companies/CompanyRegistration';
+
 import BecomeMember from './Pages/BecomeMember';
 const HomePage = () => (
   <>
