@@ -11,7 +11,8 @@ import {
   Heart, 
   Briefcase,
   AlertTriangle,
-  Baby
+  Baby,
+  ArrowRight
 } from 'lucide-react';
 
 function IndianLaws() {
@@ -162,8 +163,8 @@ function IndianLaws() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-20 py-12 text-center">
-          <div className="mb-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-16 py-12 text-center">
+          <div className="mb-4">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl mb-4 shadow-2xl">
               <Scale className="w-12 h-12 text-white" />
             </div>
@@ -176,6 +177,13 @@ function IndianLaws() {
             <br />
             <span className="text-white">Indian Laws</span>
           </h1>
+          <div className="flex items-center justify-center space-x-4 text-gray-300 mb-6">
+  <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
+    Home
+  </a>
+  <ArrowRight className="w-4 h-4 text-gray-300" />
+  <span className="text-gray-200">Know The Indian Laws</span>
+</div>
           
           <p className="text-base md:text-lg text-slate-300 max-w-5xl mx-auto leading-relaxed">
             Indian Constitution has provided so many rights to the people to protect their fundamental rights but unfortunately most of the people are not aware of their rights. So in this article we have mentioned such laws and the rights which not only protect their interests but also ease their daily life.
