@@ -84,11 +84,11 @@ const CorporateCompliances = () => {
   return (
     <section className="relative overflow-hidden">
       {/* Hero Section */}
-      <div className="relative z-10 py-32 px-4 bg-gradient-to-br from-indigo-900 via-black to-gray-900">
+      <div className="relative z-10 py-20 px-4 bg-gradient-to-br from-indigo-900 via-black to-gray-900">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_70%)]"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.div
-            className="inline-flex items-center gap-2 bg-white text-gray-800 px-6 py-2 rounded-full text-sm font-medium shadow-sm mb-6 border border-purple-300"
+            className="inline-flex items-center gap-2 bg-white text-gray-800 px-6 py-2 rounded-full text-sm font-medium shadow-sm mb-10 border border-purple-300"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -97,7 +97,7 @@ const CorporateCompliances = () => {
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 uppercase"
+            className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-10 uppercase"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -117,7 +117,7 @@ const CorporateCompliances = () => {
       </div>
 
       {/* Compliance Grid */}
-      <div className="bg-white py-24 px-4">
+      <div className="bg-white py-16 px-4">
         <motion.div
           className="max-w-7xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}

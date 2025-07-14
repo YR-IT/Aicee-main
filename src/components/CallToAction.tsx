@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const CallToAction = () => {
@@ -14,19 +13,19 @@ const CallToAction = () => {
             </span>
           </h1>
 
-          <h2 className="text-base sm:text-xl font-light mb-4 text-left leading-relaxed text-gray-300">
+          <h2 className="text-base sm:text-lg font-light mb-4 text-left leading-relaxed text-gray-300">
             As India draws global attention, AICC works to strengthen India’s
             international ties and aims to be the first choice for overseas
             delegations and Indian industries seeking new markets.
           </h2>
 
-          <p className="text-base sm:text-xl font-light mb-4 text-left leading-relaxed text-gray-300">
+          <p className="text-base sm:text-lg font-light mb-4 text-left leading-relaxed text-gray-300">
             AICC’s main goal is to connect Indian businesses globally, open new
             markets for exporters, support small sectors, and build strong
             partnerships with counterpart organizations.
           </p>
 
-          <p className="text-base sm:text-xl font-light mb-4 text-left leading-relaxed text-gray-300">
+          <p className="text-base sm:text-lg font-light mb-4 text-left leading-relaxed text-gray-300">
             We host international events, exhibitions, seminars, and networking
             sessions to boost trade and investment between India and the world.
           </p>
@@ -41,23 +40,23 @@ const CallToAction = () => {
             </p>
           </div>
 
-          <div className="sm:flex sm:justify-start justify-center flex">
+          <div className="sm:flex justify-center flex">
             <Link to="/members" className="group inline-block">
-            <button className="inline-block bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white sm:px-4 sm:py-3 px-4 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/30 transform hover:scale-105">
-              Become a Member
-            </button>
+              <button className="inline-block bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white sm:px-4 sm:py-2 px-4 py-2 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-orange-500/30 transform hover:scale-105">
+                Become a Member
+              </button>
             </Link>
           </div>
         </div>
 
         {/* Image Content */}
-       <div className="order-1 md:order-2 flex justify-center">
-  <img
-    src="image_1.jpg"
-    alt="AICC Vision"
-    className="rounded-2xl shadow-2xl w-full max-w-md h-80 md:h-[28rem] object-cover transition-transform duration-500 hover:scale-105 hover:-translate-y-1"
-  />
-</div>
+        <div className="order-1 md:order-2 flex justify-center">
+          <img
+            src="image_1.jpg"
+            alt="AICC Vision"
+            className="rounded-2xl shadow-2xl w-full max-w-md h-80 md:h-[28rem] object-cover transition-transform duration-500 hover:scale-105 hover:-translate-y-1"
+          />
+        </div>
       </div>
     </section>
   );

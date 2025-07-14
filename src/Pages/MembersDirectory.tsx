@@ -150,7 +150,7 @@ const MembersDirectory = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-20 px-4 overflow-hidden">
+      <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-16 px-4 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -181,7 +181,7 @@ const MembersDirectory = () => {
             <span className="font-semibold">Members Directory</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-12 leading-tight ">
             Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Business Members</span>
           </h1>
           
@@ -194,7 +194,7 @@ const MembersDirectory = () => {
                   <select 
                     value={selectedState}
                     onChange={(e) => setSelectedState(e.target.value)}
-                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 appearance-none cursor-pointer font-medium"
+                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 appearance-none cursor-pointer font-medium"
                   >
                     <option value="" className="text-gray-800">Select State</option>
                     {states.map(state => (
@@ -211,7 +211,7 @@ const MembersDirectory = () => {
                     placeholder="Type the keyword"
                     value={searchKeyword}
                     onChange={(e) => setSearchKeyword(e.target.value)}
-                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 font-medium"
+                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 font-medium"
                   />
                   <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70" />
                 </div>
@@ -219,7 +219,7 @@ const MembersDirectory = () => {
                 {/* Search Button */}
                 <button 
                   onClick={handleSearch}
-                  className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-bold hover:bg-orange-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
+                  className="bg-white text-orange-600 px-8 py-3 rounded-2xl font-bold hover:bg-orange-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
                   <Search className="w-5 h-5" />
                   <span>SEARCH</span>
@@ -251,13 +251,13 @@ const MembersDirectory = () => {
       </div>
 
       {/* Members Section */}
-      <div className="py-20 px-4">
+      <div className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               Find the Best <span className="bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">Members in Town</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Connect with verified business members across India. Discover opportunities and build valuable partnerships.
             </p>
           </div>
@@ -353,7 +353,7 @@ const MembersDirectory = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
             Want to Join Our <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Business Network?</span>
           </h2>
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-12 leading-relaxed">
             Become a member of AICC and connect with thousands of businesses across India. 
             Expand your network and grow your business with us.
           </p>

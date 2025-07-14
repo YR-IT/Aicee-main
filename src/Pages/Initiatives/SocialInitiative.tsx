@@ -1,6 +1,7 @@
 import {
   TreePine, Leaf, Heart, Shield, Home,
-  DollarSign, Users, Wind, Sun, Droplets
+  DollarSign, Users, Wind, Sun, Droplets,
+  ArrowRight
 } from 'lucide-react';
 import { useEffect } from 'react';
 
@@ -63,8 +64,7 @@ function SocialInitiative() {
   return (
     <div className="min-h-screen bg-white text-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden flex items-center justify-center py-20 sm:py-24 lg:py-32 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800">
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 via-emerald-600/20 to-teal-600/20"></div> */}
+      <section className="relative h-[80vh] overflow-hidden flex items-center justify-center py-20 sm:py-24 lg:py-32 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-8">
             <div className="relative">
@@ -74,14 +74,21 @@ function SocialInitiative() {
               </div>
             </div>
           </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
+          
+          <h1 className="text-5xl sm:text-6xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight uppercase">
             <span className="text-white">
               Social Initiative
             </span>
           </h1>
+          <div className="flex items-center justify-center space-x-4 text-gray-300 mb-6">
+  <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
+    Home
+  </a>
+  <ArrowRight className="w-4 h-4 text-gray-300" />
+  <span className="text-gray-200">Social Initiative</span>
+</div>
 
-          <p className="text-base sm:text-2xl md:text-3xl text-gray-200 mb-8 sm:mb-12 max-w-5xl mx-auto leading-relaxed px-2">
+          <p className="text-base sm:text-2xl text-gray-200 mb-8 sm:mb-12 max-w-5xl mx-auto leading-relaxed px-2">
             Trees are a vital part of our world, and crucial to our survival. They provide us with the oxygen we need to
             <span className="font-semibold text-green-700"> breathe</span>,
             <span className="font-semibold text-emerald-700"> shelter for wildlife</span>, and
@@ -109,7 +116,7 @@ function SocialInitiative() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
@@ -136,7 +143,7 @@ function SocialInitiative() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-700">
+      <section className="py-12 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-8">
             <div className="w-16 sm:w-20 h-16 sm:h-20 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">

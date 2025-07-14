@@ -70,11 +70,11 @@ const MaintainYourBusiness = () => {
   return (
     <section className="relative overflow-hidden">
       {/* Hero Section */}
-      <div className="relative z-10 py-32 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="relative z-10 py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,128,128,0.1),transparent_70%)]"></div>
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.div
-            className="inline-flex items-center gap-2 bg-white text-emerald-700 px-6 py-2 rounded-full text-sm font-medium shadow-sm mb-6 border border-emerald-200"
+            className="inline-flex items-center gap-2 bg-white text-emerald-700 px-6 py-2 rounded-full text-sm font-medium shadow-sm mb-10 border border-emerald-200"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -83,7 +83,7 @@ const MaintainYourBusiness = () => {
           </motion.div>
 
           <motion.h1
-            className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mb-6 uppercase"
+            className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-100 mb-10 uppercase"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}

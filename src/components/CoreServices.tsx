@@ -36,10 +36,10 @@ const CoreServices = () => {
         
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-800 mb-4 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-gray-800 mb-4 leading-tight">
             Our <span className="bg-gradient-to-r from-orange-600 to-red-500 bg-clip-text text-transparent">Core Services</span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
             Empowering businesses worldwide with comprehensive solutions and unparalleled expertise
           </p>
         </div>
@@ -49,7 +49,7 @@ const CoreServices = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`group relative bg-white/90 rounded-3xl p-8 border border-gray-200 shadow-xl hover:shadow-2xl transform transition duration-500 hover:-translate-y-2 animate-fade-in-up`}
+              className={`group relative bg-white/90 rounded-3xl p-6 border border-gray-200 shadow-xl hover:shadow-2xl transform transition duration-500 hover:-translate-y-2 animate-fade-in-up`}
               style={{ animationDelay: `${index * 0.2}s`, animationFillMode: "both" }}
             >
               {/* Icon */}
@@ -60,12 +60,12 @@ const CoreServices = () => {
 </div>
 
               {/* Title */}
-              <h3 className="text-xl sm:text-3xl text-center font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors duration-300">
+              <h3 className="text-xl sm:text-2xl text-center font-bold mb-4 text-gray-800 group-hover:text-orange-600 transition-colors duration-300">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed mb-2 text-base md:text-lg text-center">
+              <p className="text-gray-600 leading-relaxed text-base text-center">
                 {service.description}
               </p>
 

@@ -145,7 +145,9 @@ function App() {
         Get in touch with us for any inquiries, support, or business opportunities
       </p>
       <div className="flex justify-center md:justify-end space-x-2 text-sm text-orange-100">
-        <span>Home</span>
+        <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
+    Home
+  </a>
         <span>›</span>
         <span className="font-semibold">Become a Member</span>
       </div>

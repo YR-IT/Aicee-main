@@ -52,13 +52,13 @@ export default function BuildYourBusiness() {
     <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-16 text-center">
         <motion.h2
-  className="text-4xl sm:text-7xl font-bold mb-4"
-  initial={{ opacity: 0, y: -10 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
->
-  Build Your Business
-</motion.h2>
+          className="text-4xl sm:text-6xl font-bold mb-4"
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Build Your Business
+        </motion.h2>
         <motion.p
           className="text-gray-800 mb-12 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 10 }}
@@ -87,23 +87,22 @@ export default function BuildYourBusiness() {
               <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
               <p className="text-gray-700 mb-6">{step.description}</p>
               <a
-  href={
-    step.id === 1
-      ? "/start-your-business"
-      : step.id === 2
-      ? "/maintain-your-business"
-      : step.id === 3
-      ? "/regulatory-filing"
-      : step.id === 4
-      ? "/corporate-compliances"
-      : "#"
-  }
-  className={`inline-flex items-center text-sm font-semibold ${step.text} group-hover:underline`}
->
-  Read More
-  <ArrowRight className="w-4 h-4 ml-1" />
-</a>
-
+                href={
+                  step.id === 1
+                    ? "/start-your-business"
+                    : step.id === 2
+                    ? "/maintain-your-business"
+                    : step.id === 3
+                    ? "/regulatory-filing"
+                    : step.id === 4
+                    ? "/corporate-compliances"
+                    : "#"
+                }
+                className={`inline-flex items-center text-sm font-semibold ${step.text} group-hover:underline`}
+              >
+                Read More
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </a>
             </motion.div>
           ))}
         </div>

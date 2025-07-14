@@ -20,7 +20,7 @@ function International() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-24 relative h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <section className="py-20 relative h-[75vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -46,12 +46,12 @@ function International() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight uppercase">
             International
             <span className="block text-blue-300">Partnerships</span>
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
+          <p className="text-base sm:text-lg md:text-xl text-blue-100 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
             All India Chamber of Commerce has entered into mutual co-operation
             agreements with international organizations to promote and develop
             bilateral economic relations by providing a platform for businessmen
@@ -82,10 +82,10 @@ function International() {
       >
         <div className="max-w-7xl mx-auto h-full flex flex-col">
           <div className="text-center mb-6">
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
               Our Global Partners
             </h2>
-            <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 max-w-2xl mx-auto mb-8">
               Building bridges across continents through strategic partnerships
               with leading chambers of commerce and industry organizations
               worldwide.

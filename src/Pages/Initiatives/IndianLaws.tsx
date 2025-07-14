@@ -164,12 +164,12 @@ function IndianLaws() {
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-20 py-12 text-center">
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl mb-4 shadow-2xl">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl mb-4 shadow-2xl">
               <Scale className="w-12 h-12 text-white" />
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight uppercase">
             <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">
               Know The
             </span>
@@ -177,9 +177,17 @@ function IndianLaws() {
             <span className="text-white">Indian Laws</span>
           </h1>
           
-          <p className="text-base md:text-xl text-slate-300 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-slate-300 max-w-5xl mx-auto leading-relaxed">
             Indian Constitution has provided so many rights to the people to protect their fundamental rights but unfortunately most of the people are not aware of their rights. So in this article we have mentioned such laws and the rights which not only protect their interests but also ease their daily life.
           </p>
+
+          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 sm:px-6 py-3 sm:py-3 shadow-lg border border-orange-200 mx-auto mb-2 mt-8">
+  <Scale className="w-5 sm:w-6 h-5 sm:h-6 text-orange-600" />
+  <span className="text-gray-700 font-medium text-sm sm:text-lg">
+    Empower Yourself With Legal Knowledge
+  </span>
+</div>
+
         </div>
       </div>
 

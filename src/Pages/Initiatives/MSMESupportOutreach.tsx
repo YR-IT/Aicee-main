@@ -1,4 +1,4 @@
-import { ChevronRight, Building2, TrendingUp, Users, Globe, FileText, HelpCircle } from 'lucide-react';
+import { ChevronRight, Building2, TrendingUp, Users, Globe, FileText, HelpCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 function MSMESupportOutreach() {
    useEffect(() => {
@@ -7,18 +7,20 @@ function MSMESupportOutreach() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <div className="min-h-screen bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col">
+      <div className="h-[80vh] bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white flex flex-col">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 flex flex-col">
-          <nav className="flex items-center space-x-2 text-blue-200 text-sm mb-8">
-            <span className="hover:text-white transition-colors cursor-pointer">Home</span>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">MSME Support & Outreach</span>
-          </nav>
 
           <div className="flex-1 flex items-center">
             <div className="grid lg:grid-cols-3 gap-12 items-center w-full">
               <div className="lg:col-span-2">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-center sm:text-start">
+                <div className="flex items-center justify-center lg:justify-start gap-3 text-lg text-blue-200 mb-6">
+           <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
+    Home
+  </a>
+          <ArrowRight className="w-5 h-5" />
+          <span className="text-white ">MSME Support & Outreach</span>
+        </div>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 leading-tight text-center sm:text-start uppercase">
                   MSME Support & <span className="text-blue-300 block">Outreach</span>
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed max-w-4xl mb-8">
@@ -157,7 +159,9 @@ function MSMESupportOutreach() {
               ['What is MSME classification?', 'Learn about the criteria for micro, small, and medium enterprises classification based on investment and turnover.'],
               ['Registration Process', 'Step-by-step guide for MSME registration and required documentation for the process.'],
               ['Government Schemes', 'Explore various government schemes and incentives available for MSMEs across different sectors.'],
-              ['Financial Support', 'Information about loans, subsidies, and financial assistance programs for MSMEs.']
+              ['Financial Support', 'Information about loans, subsidies, and financial assistance programs for MSMEs.'],
+               ['Compliance & Regulations', 'Understand the legal and compliance requirements for running an MSME smoothly.'],
+    ['Market Access & Export', 'Learn how MSMEs can expand their market reach domestically and internationally.'],
             ].map(([title, desc], index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">{title}</h3>
@@ -166,12 +170,12 @@ function MSMESupportOutreach() {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          {/* <div className="text-center mt-8">
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold transition-colors inline-flex items-center">
               <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
               View All FAQs
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

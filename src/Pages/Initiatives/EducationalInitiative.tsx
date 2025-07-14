@@ -12,7 +12,7 @@ function EducationalInitiative() {
   return (
    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
   {/* Educational Initiative Section - Full Screen (Final Enhanced Version) */}
-  <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex items-center relative overflow-hidden pt-8 pb-4">
+  <div className="h-[80vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white flex items-center relative overflow-hidden pt-8 pb-4">
     {/* Animated background */}
     <div className="absolute inset-0">
       <div className="absolute top-10 left-10 w-24 h-24 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
@@ -27,11 +27,13 @@ function EducationalInitiative() {
           <Sparkles className="w-4 h-4" />
           AICC Certified Program
         </div>
-        <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-6xl md:text-6xl font-bold bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent leading-tight uppercase">
           Educational Initiative
         </h1>
         <div className="flex items-center justify-center lg:justify-start gap-3 text-lg text-blue-200">
-          <span className="hover:text-white cursor-pointer">Home</span>
+           <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
+    Home
+  </a>
           <ArrowRight className="w-5 h-5" />
           <span className="text-white font-semibold">Educational Initiative</span>
         </div>

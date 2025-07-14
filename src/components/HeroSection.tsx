@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
   }, []);
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-start justify-center">
+    <section className="relative sm:h-[80vh] h-[110vh] overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-start justify-center">
 
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -65,14 +65,14 @@ const HeroSection = () => {
           </span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight text-center">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight text-center uppercase">
           Welcome To The{' '}
           <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent animate-pulse">
             AICC
           </span>
         </h1>
 
-        <p className="text-sm md:text-2xl mb-12 text-gray-200 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-sm md:text-lg mb-12 text-gray-200 max-w-4xl mx-auto leading-relaxed">
           Facilitating Sustainable Business Growth and Prosperity Across The Globe with{' '}
           <span className="text-orange-400 font-semibold">Excellence</span>,{' '}
           <span className="text-red-400 font-semibold">Innovation</span>, and a Commitment to{' '}
@@ -82,7 +82,7 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Link to="/members" className="group inline-block">
   <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white 
-  px-6 py-3 md:px-5 md:py-3 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
+  px-6 py-3 md:px-4 md:py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-2xl hover:shadow-orange-500/25 transform hover:scale-105 hover:-translate-y-1">
     <span className="flex items-center space-x-2">
       <span>Become a Member</span>
       <div className="w-2 h-2 bg-white rounded-full group-hover:animate-ping"></div>
@@ -91,7 +91,7 @@ const HeroSection = () => {
 </Link>
           <Link to="/activities" className="group inline-block">
           <button className="group border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white hover:text-gray-900 
-         px-5 py-3 md:px-5 md:py-3 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
+         px-5 py-3 md:px-4 md:py-3 rounded-2xl font-bold text-base transition-all duration-300 hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1">
             <span className="flex items-center space-x-2">
               <span>Explore Acitivities</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -63,7 +63,7 @@ const RegulatoryFiling = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,128,0,0.05),transparent)] pointer-events-none"></div>
         <div className="relative max-w-6xl mx-auto z-10">
           <motion.div
-            className="inline-flex items-center gap-2 mb-6 bg-gradient-to-r from-green-600 via-blue-600 to-emerald-600 text-white px-6 py-2 rounded-full text-base font-semibold shadow-xl"
+            className="inline-flex items-center gap-2 mb-10 bg-gradient-to-r from-green-600 via-blue-600 to-emerald-600 text-white px-6 py-2 rounded-full text-base font-semibold shadow-xl"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -72,7 +72,7 @@ const RegulatoryFiling = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white uppercase tracking-tight"
+            className="text-5xl sm:text-6xl font-bold mb-6 text-white uppercase tracking-tight"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}

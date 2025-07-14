@@ -51,7 +51,7 @@ const ExportImportCourse = () => {
             </div>
 
             {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 mt-4 mb-10 leading-relaxed px-2 sm:px-6 lg:px-10 z-10">
+            <p className="text-base sm:text-lg text-gray-700 mt-4 mb-6 leading-relaxed px-2 sm:px-6 lg:px-10 z-10">
               Master the fundamentals of international trade with our comprehensive online course. Learn export-import procedures, documentation, regulations, and best practices from industry experts.
             </p>
 
@@ -64,7 +64,7 @@ const ExportImportCourse = () => {
                 className="group inline-block"
               >
               <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white 
-              sm:px-5 sm:py-2 px-4 py-2 rounded-2xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center space-x-2">
+              sm:px-5 sm:py-2 px-4 py-2 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center space-x-2">
                 <span>Know More</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

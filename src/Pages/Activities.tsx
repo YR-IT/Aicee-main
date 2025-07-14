@@ -5,6 +5,7 @@ import {
   Package, ShoppingCart, Building, MessageSquare, Leaf, Send, BookOpen, Scale,
   ChevronRight, ArrowDown
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 const activities = [
@@ -136,7 +137,7 @@ const Activities: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Hero Section */}
-      <div className="relative min-h-[92vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden flex items-center justify-center">
+<div className="relative flex items-center justify-center min-h-[80vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden py-12">
   {/* Background effects */}
   <div className="absolute inset-0 overflow-hidden">
     {/* Static background gradient overlays */}
@@ -157,17 +158,18 @@ const Activities: React.FC = () => {
     />
   </div>
 
-
         {/* Hero Content */}
         <div className="relative w-full px-4 sm:px-6 max-w-6xl text-center flex flex-col justify-center items-center">
           <div className={`flex items-center justify-center text-blue-200 text-sm mb-2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <span>Home</span>
-            <ChevronRight className="mx-2 w-4 h-4" />
-            <span className="text-white">Activities</span>
-          </div>
+  <Link to="/" className="hover:underline">
+    Home
+  </Link>
+  <ChevronRight className="mx-2 w-4 h-4" />
+  <span className="text-white">Activities</span>
+</div>
 
-          <h1 className={`text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
+          <h1 className={`text-5xl sm:text-6xl md:text-7xl font-extrabold mb-12 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <span className="uppercase bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
               Activities
             </span>
           </h1>
@@ -190,8 +192,8 @@ const Activities: React.FC = () => {
             </div>
           </div>
 
-          <div className={`mt-5 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <p className="text-sm sm:text-base text-blue-200 mb-2 font-semibold">Various Activities undertaken by AICC are below:</p>
+          <div className={`mt-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <p className="text-sm sm:text-base text-blue-200 mb-8 font-semibold">Various Activities undertaken by AICC are below:</p>
             <button
               onClick={scrollToActivities}
               className="inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-white to-blue-50 text-blue-900 rounded-full font-bold text-sm sm:text-base hover:from-blue-50 hover:to-white transition-all duration-300 transform hover:scale-105 shadow-2xl border border-white/20"
@@ -200,20 +202,12 @@ const Activities: React.FC = () => {
             </button>
           </div>
         </div>
-
-        {/* Bouncing Arrow */}
-        <div className={`absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="animate-bounce">
-            <ArrowDown className="w-5 h-5 text-blue-200" />
-          </div>
-        </div>
       </div>
 
-      {/* Activities Grid Section */}
 {/* Activities Grid Section */}
 <div id="activities-section" className="relative bg-gradient-to-br from-slate-100 via-slate-100 to-slate-100 min-h-screen py-4 flex items-center">
   <div className="mx-auto px-2 sm:px-4 max-w-screen-xl w-full">
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
       {activities.map((activity, index) => {
         const Icon = activity.icon;
         return (
@@ -247,10 +241,6 @@ const Activities: React.FC = () => {
     </div>
   </div>
 </div>
-
-
-
-     
 
       <style>{`
         @keyframes float {

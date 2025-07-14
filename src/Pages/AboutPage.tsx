@@ -42,8 +42,8 @@ const AboutPage = () => {
 </div>
 
 
-    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
-      <span className="bg-gradient-to-r from-white via-orange-200 to-red-200 bg-clip-text text-transparent">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 leading-tight">
+      <span className="bg-gradient-to-r from-white via-orange-200 to-red-200 bg-clip-text text-transparent uppercase">
         About Us
       </span>
     </h1>
@@ -122,8 +122,8 @@ const AboutPage = () => {
 
   <div className="relative">
     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
-    <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 h-full">
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 h-full">
+    <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-12 h-full">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-10 h-full">
         <div className="bg-gradient-to-br from-orange-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
           <Globe2 className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
           <div className="text-lg sm:text-3xl font-bold text-white mb-2">150+</div>
@@ -261,11 +261,11 @@ const AboutPage = () => {
       <span className="text-orange-300 font-semibold text-sm sm:text-base">Membership</span>
     </div>
 
-    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8">
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">
       Voluntary Based <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Organization</span>
     </h2>
 
-    <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-8 sm:mb-12 px-4 sm:px-0">
+    <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-8 sm:mb-12 px-4 sm:px-0">
       AICC is a voluntary based member organization and draws its membership from the corporate sector,
       both private and public, including SMEs and MNCs. We facilitate business growth across the globe
       through our extensive network and comprehensive services.
