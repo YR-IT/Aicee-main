@@ -1,5 +1,6 @@
 import { ChevronRight, Building2, TrendingUp, Users, Globe, FileText, HelpCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
+import AnimatedNumber from '../../components/AnimatedNumber';
 function MSMESupportOutreach() {
    useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -28,19 +29,23 @@ function MSMESupportOutreach() {
             global competitiveness, and sustainable growth initiatives.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12">
-            {[
-              { label: 'MSMEs in India', value: '75M+', color: 'text-blue-300' },
-              { label: 'GDP Contribution', value: '30%', color: 'text-green-300' },
-              { label: 'Employment', value: '120M+', color: 'text-purple-300' },
-              { label: 'Exports', value: '45%', color: 'text-orange-300' }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className={`text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 ${stat.color}`}>{stat.value}</div>
-                <div className="text-[10px] sm:text-xs md:text-sm text-blue-200">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+          import AnimatedNumber from "@/components/AnimatedNumber";
+
+<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12">
+  {[
+    { label: 'MSMEs in India', value: 75, suffix: 'M+', color: 'text-blue-300' },
+    { label: 'GDP Contribution', value: 30, suffix: '%', color: 'text-green-300' },
+    { label: 'Employment', value: 120, suffix: 'M+', color: 'text-purple-300' },
+    { label: 'Exports', value: 45, suffix: '%', color: 'text-orange-300' }
+  ].map((stat, index) => (
+    <div key={index} className="text-center">
+      <div className={`text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 ${stat.color}`}>
+        <AnimatedNumber target={stat.value} duration={2000} />{stat.suffix}
+      </div>
+      <div className="text-[10px] sm:text-xs md:text-sm text-blue-200">{stat.label}</div>
+    </div>
+  ))}
+</div>
         </div>
 
         {/* Right content */}

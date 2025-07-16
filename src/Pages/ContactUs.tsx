@@ -90,7 +90,6 @@ function App() {
   }
 };
 
-
   const contactInfo = [
     {
       icon: Phone,
@@ -118,8 +117,6 @@ function App() {
     }
   ];
 
-
-
   const subjects = [
     'General Inquiry',
     'Membership Information',
@@ -136,9 +133,6 @@ function App() {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
-  
-
-      
            {/* Hero Section */}
            <section className="relative bg-gradient-to-r from-slate-500 via-slate-800 to-slate-800 text-white py-16">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -175,25 +169,27 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 py-12">
           {/* Contact Information Cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {contactInfo.map((info, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 border border-orange-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-center mb-4">
-                  <div className="bg-gradient-to-br from-orange-500 to-red-500 p-3 rounded-lg mr-4">
-                    <info.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-800">{info.title}</h3>
-                </div>
-                <div className="space-y-1">
-                  {info.details.map((detail, idx) => (
-                    <p key={idx} className={`text-sm ${info.color} font-medium`}>
-                      {detail}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
+  {contactInfo.map((info, index) => (
+    <div
+      key={index}
+      className="bg-white rounded-xl shadow-lg p-6 border border-orange-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center"
+    >
+      <div className="flex items-center justify-center mb-4">
+        <div className="bg-gradient-to-br from-orange-500 to-red-500 p-3 rounded-lg mr-4">
+          <info.icon className="w-6 h-6 text-white" />
+        </div>
+        <h3 className="text-lg font-bold text-gray-800">{info.title}</h3>
+      </div>
+      <div className="space-y-1">
+        {info.details.map((detail, idx) => (
+          <p key={idx} className={`text-sm ${info.color} font-medium`}>
+            {detail}
+          </p>
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
           <div className="grid lg:grid-cols-12 gap-8">
             {/* Contact Form */}
             <div className="lg:col-span-8">

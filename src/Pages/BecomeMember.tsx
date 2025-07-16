@@ -16,6 +16,7 @@ import {
   Calendar,
   MapPin,
 } from 'lucide-react';
+import AnimatedNumber from '../components/AnimatedNumber';
 
 
 interface FormData {
@@ -482,23 +483,34 @@ function App() {
               
               {/* Animated Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-                <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                  <div className="text-3xl font-bold text-orange-600 animate-count-up">10,000+</div>
-                  <div className="text-sm text-gray-600">Active Members</div>
-                </div>
-                <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                  <div className="text-3xl font-bold text-red-600 animate-count-up" style={{animationDelay: '0.2s'}}>50+</div>
-                  <div className="text-sm text-gray-600">Countries</div>
-                </div>
-                <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                  <div className="text-3xl font-bold text-orange-600 animate-count-up" style={{animationDelay: '0.4s'}}>500+</div>
-                  <div className="text-sm text-gray-600">Events</div>
-                </div>
-                <div className="text-center transform hover:scale-105 transition-transform duration-300">
-                  <div className="text-3xl font-bold text-red-600 animate-count-up" style={{animationDelay: '0.6s'}}>25</div>
-                  <div className="text-sm text-gray-600">Years</div>
-                </div>
-              </div>
+  <div className="text-center transform hover:scale-105 transition-transform duration-300">
+    <div className="text-3xl font-bold text-orange-600">
+      <AnimatedNumber target={10000} duration={2000} />+
+    </div>
+    <div className="text-sm text-gray-600">Active Members</div>
+  </div>
+
+  <div className="text-center transform hover:scale-105 transition-transform duration-300">
+    <div className="text-3xl font-bold text-red-600">
+      <AnimatedNumber target={50} duration={2000} />+
+    </div>
+    <div className="text-sm text-gray-600">Countries</div>
+  </div>
+
+  <div className="text-center transform hover:scale-105 transition-transform duration-300">
+    <div className="text-3xl font-bold text-orange-600">
+      <AnimatedNumber target={500} duration={2000} />+
+    </div>
+    <div className="text-sm text-gray-600">Events</div>
+  </div>
+
+  <div className="text-center transform hover:scale-105 transition-transform duration-300">
+    <div className="text-3xl font-bold text-red-600">
+      <AnimatedNumber target={25} duration={2000} />
+    </div>
+    <div className="text-sm text-gray-600">Years</div>
+  </div>
+</div>
             </div>
           </div>
         </div>

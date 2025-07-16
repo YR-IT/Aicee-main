@@ -14,6 +14,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import AnimatedNumber from '../components/AnimatedNumber';
 
 
 const AboutPage = () => {
@@ -124,30 +125,39 @@ const AboutPage = () => {
     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
     <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-12 h-full">
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-10 h-full">
-        <div className="bg-gradient-to-br from-orange-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
-          <Globe2 className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
-          <div className="text-lg sm:text-3xl font-bold text-white mb-2">150+</div>
-          <div className="text-gray-300 text-xs sm:text-sm">Countries Served</div>
-        </div>
-        
-        <div className="bg-gradient-to-br from-red-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
-          <Users className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
-          <div className="text-lg sm:text-3xl font-bold text-white mb-2">50K+</div>
-          <div className="text-gray-300 text-xs sm:text-sm">Active Members</div>
-        </div>
-        
-        <div className="bg-gradient-to-br from-orange-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
-          <Award className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
-          <div className="text-lg sm:text-3xl font-bold text-white mb-2">100+</div>
-          <div className="text-gray-300 text-xs sm:text-sm">Years Legacy</div>
-        </div>
-        
-        <div className="bg-gradient-to-br from-red-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
-          <TrendingUp className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
-          <div className="text-lg sm:text-3xl font-bold text-white mb-2">24/7</div>
-          <div className="text-gray-300 text-xs sm:text-sm">Global Support</div>
-        </div>
-      </div>
+  <div className="bg-gradient-to-br from-orange-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
+    <Globe2 className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
+    <div className="text-lg sm:text-3xl font-bold text-white mb-2">
+      <AnimatedNumber target={150} />+
+    </div>
+    <div className="text-gray-300 text-xs sm:text-sm">Countries Served</div>
+  </div>
+
+  <div className="bg-gradient-to-br from-red-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
+    <Users className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
+    <div className="text-lg sm:text-3xl font-bold text-white mb-2">
+      <AnimatedNumber target={50} />K+
+    </div>
+    <div className="text-gray-300 text-xs sm:text-sm">Active Members</div>
+  </div>
+
+  <div className="bg-gradient-to-br from-orange-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
+    <Award className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
+    <div className="text-lg sm:text-3xl font-bold text-white mb-2">
+      <AnimatedNumber target={100} />+
+    </div>
+    <div className="text-gray-300 text-xs sm:text-sm">Years Legacy</div>
+  </div>
+
+  <div className="bg-gradient-to-br from-red-500/10 to-transparent rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-center text-center group hover:scale-105 transition-transform duration-300">
+    <TrendingUp className="w-8 h-8 sm:w-12 sm:h-12 text-red-400 mb-4 group-hover:animate-spin" />
+    <div className="text-lg sm:text-3xl font-bold text-white mb-2">
+  <AnimatedNumber target={24} />/<AnimatedNumber target={7} />
+</div>
+
+    <div className="text-gray-300 text-xs sm:text-sm">Global Support</div>
+  </div>
+</div>
     </div>
   </div>
 </div>
