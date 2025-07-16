@@ -127,7 +127,7 @@ export default function FirstStep() {
           </motion.p>
 
           <motion.div
-            className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-lg rounded-full px-8 py-4 shadow border border-white/30"
+            className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-lg rounded-full px-5 py-3 sm:px-8 sm:py-4 shadow border border-white/30"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -141,8 +141,8 @@ export default function FirstStep() {
       </section>
 
       {/* Grid Cards */}
-      <section className="px-4 pb-20 sm:px-8 max-w-7xl mx-auto sm:mt-12">
-  <h2 className="text-5xl font-bold text-center text-gray-800 mb-12">
+      <section className="px-4 pb-20 sm:px-8 max-w-7xl mx-auto sm:mt-12 mt-12">
+  <h2 className="text-4xl sm:text-5xl font-bold text-center text-gray-800 mb-12">
     Business Formation Roadmap
   </h2>
 
@@ -155,7 +155,7 @@ export default function FirstStep() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.03 }}
     >
-      <h3 className="text-lg sm:text-xl font-semibold text-orange-700 mb-3">
+      <h3 className="text-lg sm:text-xl font-semibold text-orange-700 mb-3 text-center">
         {section.title}
       </h3>
       <div
@@ -166,7 +166,6 @@ export default function FirstStep() {
   ))}
 </div>
 </section>
-
 
       {/* CTA Section */}
       <motion.section

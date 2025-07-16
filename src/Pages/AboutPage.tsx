@@ -34,7 +34,7 @@ const AboutPage = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative z-10 pt-12 pb-20 px-4">
+      <div className="relative z-10 pt-12 pb-12 px-4">
   <div className="max-w-7xl mx-auto text-center">
     <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full px-4 py-2.5 md:px-6 md:py-3 mb-6 md:mb-8 group cursor-pointer">
   <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-orange-400 animate-pulse group-hover:animate-bounce" />
@@ -53,7 +53,7 @@ const AboutPage = () => {
 </p>
 
 
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-12">
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-8">
       <Link
   to="/courses"
   className="inline-block px-6 py-3 md:px-6 md:py-3 bg-orange-500 text-white rounded-full font-semibold hover:bg-orange-600 shadow-2xl hover:shadow-amber-500/50 hover:scale-105 transition-all"
@@ -80,45 +80,45 @@ const AboutPage = () => {
 </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 pb-20">
+      <div className="relative z-10 px-4 pb-12">
         <div className="max-w-7xl mx-auto">
           {/* Introduction Section */}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-28">
-  <div className="space-y-8">
-    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-500 group">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-6 space-y-4 sm:space-y-0">
-        <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <Building2 className="w-8 h-8 text-white" />
-        </div>
-        <div>
-          <h3 className="text-2xl font-bold text-white">Established 2004</h3>
-          <p className="text-orange-400">National Business Association</p>
-        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16">
+ <div className="space-y-8">
+  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-500 group">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-6 space-y-4 sm:space-y-0 items-center text-center sm:text-left">
+      <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+        <Building2 className="w-8 h-8 text-white" />
       </div>
-      <p className="text-gray-300 leading-relaxed">
-        All India Chamber of Commerce (AICC) is a national association of business organizations in India. 
-        AICC has been established on 04 October, 2004 and registered under section 25 of the Companies Act, 
-        1956 (1 of 1956).
-      </p>
-    </div>
-
-    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-500 group">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-6 space-y-4 sm:space-y-0">
-        <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <Shield className="w-8 h-8 text-white" />
-        </div>
-        <div>
-          <h3 className="text-2xl font-bold text-white">Government Recognition</h3>
-          <p className="text-red-400">Ministry Approved</p>
-        </div>
+      <div>
+        <h3 className="text-2xl font-bold text-white">Established 2004</h3>
+        <p className="text-orange-400">National Business Association</p>
       </div>
-      <p className="text-gray-300 leading-relaxed">
-        AICC has been recognized by the Ministry of Corporate Affairs, Government of India as an 
-        autonomous, non-governmental, non-political and non-profit organization to act on behalf of its members.
-      </p>
     </div>
+    <p className="text-gray-300 leading-relaxed text-center sm:text-left">
+      All India Chamber of Commerce (AICC) is a national association of business organizations in India. 
+      AICC has been established on 04 October, 2004 and registered under section 25 of the Companies Act, 
+      1956 (1 of 1956).
+    </p>
   </div>
+
+  <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 hover:bg-white/10 transition-all duration-500 group">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-6 space-y-4 sm:space-y-0 items-center text-center sm:text-left">
+      <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+        <Shield className="w-8 h-8 text-white" />
+      </div>
+      <div>
+        <h3 className="text-2xl font-bold text-white">Government Recognition</h3>
+        <p className="text-red-400">Ministry Approved</p>
+      </div>
+    </div>
+    <p className="text-gray-300 leading-relaxed text-center sm:text-left">
+      AICC has been recognized by the Ministry of Corporate Affairs, Government of India as an 
+      autonomous, non-governmental, non-political and non-profit organization to act on behalf of its members.
+    </p>
+  </div>
+</div>
 
   <div className="relative">
     <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-3xl blur-xl"></div>
@@ -211,7 +211,7 @@ const AboutPage = () => {
 </div>
 
           {/* Mission, Vision, Values */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="group">
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 h-full hover:bg-white/10 transition-all duration-500 transform hover:scale-105">
                 <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-8 mx-auto group-hover:animate-pulse">

@@ -155,49 +155,52 @@ function IndianLaws() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Full Screen Hero Section */}
-      <div className="relative h-[80vh] sm:h-[80vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-16 py-12 text-center">
-          <div className="mb-4">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl mb-4 shadow-2xl">
-              <Scale className="w-12 h-12 text-white" />
-            </div>
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight uppercase">
-            <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">
-              Know The
-            </span>
-            <br />
-            <span className="text-white">Indian Laws</span>
-          </h1>
-          <div className="flex items-center justify-center space-x-4 text-gray-300 mb-6">
-  <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
-    Home
-  </a>
-  <ArrowRight className="w-4 h-4 text-gray-300" />
-  <span className="text-gray-200">Know The Indian Laws</span>
-</div>
-          
-          <p className="text-base md:text-lg text-slate-300 max-w-5xl mx-auto leading-relaxed">
-            Indian Constitution has provided so many rights to the people to protect their fundamental rights but unfortunately most of the people are not aware of their rights. So in this article we have mentioned such laws and the rights which not only protect their interests but also ease their daily life.
-          </p>
+      <div className="relative min-h-[70vh] sm:min-h-[80vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+  {/* Animated Background Elements */}
+  <div className="absolute inset-0">
+    <div className="absolute top-10 left-10 w-40 h-40 sm:w-72 sm:h-72 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
+    <div className="absolute bottom-10 right-10 w-52 h-52 sm:w-96 sm:h-96 bg-red-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-[600px] sm:h-[600px] bg-amber-500/5 rounded-full blur-xl sm:blur-3xl"></div>
+  </div>
 
-          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 sm:px-6 py-3 sm:py-3 shadow-lg border border-orange-200 mx-auto mb-2 mt-8">
-  <Scale className="w-5 sm:w-6 h-5 sm:h-6 text-orange-600" />
-  <span className="text-gray-700 font-medium text-sm sm:text-lg">
-    Empower Yourself With Legal Knowledge
-  </span>
-</div>
-
-        </div>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 text-center">
+    <div className="mb-6">
+      <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl shadow-2xl">
+        <Scale className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
       </div>
+    </div>
+
+    <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 tracking-tight uppercase">
+      <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-red-400 bg-clip-text text-transparent">
+        Know The
+      </span>
+      <br />
+      <span className="text-white">Indian Laws</span>
+    </h1>
+
+    <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-gray-300 mb-4 sm:mb-6">
+      <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
+        Home
+      </a>
+      <ArrowRight className="w-4 h-4 text-gray-300" />
+      <span className="text-gray-200">Know The Indian Laws</span>
+    </div>
+
+    <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-4xl mx-auto leading-relaxed px-2">
+      Indian Constitution has provided so many rights to the people to protect their fundamental rights,
+      but unfortunately most people are not aware of their rights. So in this article we have mentioned
+      such laws and rights which not only protect their interests but also ease their daily life.
+    </p>
+
+    <div className="inline-flex items-center gap-2 sm:gap-3 bg-white/80 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg border border-orange-200 mx-auto mt-6 sm:mt-8">
+      <Scale className="w-4 sm:w-5 h-4 sm:h-5 text-orange-600" />
+      <span className="text-gray-700 font-medium text-xs sm:text-sm md:text-base">
+        Empower Yourself With Legal Knowledge
+      </span>
+    </div>
+  </div>
+</div>
+
 
       {/* Detailed Laws Section - Full Screen */}
       <div className="min-h-screen py-8 bg-white flex items-center">

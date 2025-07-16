@@ -118,36 +118,39 @@ function App() {
       
 
      {/* Hero Section with Logo - Responsive */}
-<section className="relative bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-16">
+<section className="relative bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-12 sm:py-16">
+  {/* Overlay for subtle dark effect */}
   <div className="absolute inset-0 bg-black opacity-20"></div>
-  <div className="relative max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
     
     {/* Left Section: Logo and Title */}
     <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
-      <div className="flex items-center space-x-4">
-        <div className="w-14 h-14 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-          <Building className="w-6 h-6 text-white" />
+      <div className="flex flex-col sm:flex-row items-center sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+          <Building className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </div>
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold leading-tight">ALL INDIA CHAMBER</h1>
-          <h2 className="text-lg sm:text-xl font-semibold -mt-1">OF COMMERCE</h2>
+          <h1 className="text-3xl md:text-4xl font-bold leading-tight">ALL INDIA CHAMBER</h1>
+          <h2 className="text-2xl md:text-2xl font-semibold -mt-1">OF COMMERCE</h2>
         </div>
       </div>
-      <p className="text-sm sm:text-base text-orange-100 mt-2">
+      <p className="text-base md:text-lg text-orange-100 mt-2">
         WE FACILITATE BUSINESS ACROSS THE GLOBE
       </p>
     </div>
 
     {/* Right Section: Page Title and Breadcrumb */}
-    <div className="text-center md:text-right space-y-3">
-      <h3 className="text-2xl sm:text-3xl font-bold">Become a Member</h3>
-      <p className="text-sm sm:text-base text-orange-100">
+    <div className="text-center md:text-right space-y-2 md:space-y-3">
+      <h3 className="text-3xl md:text-4xl font-bold">Become a Member</h3>
+      <p className="text-base sm:text-base md:text-lg text-orange-100">
         Get in touch with us for any inquiries, support, or business opportunities
       </p>
-      <div className="flex justify-center md:justify-end space-x-2 text-sm text-orange-100">
+
+      <div className="flex flex-wrap justify-center md:justify-end gap-1 sm:gap-2 text-sm sm:text-sm text-orange-100">
         <a href="/" className="hover:text-orange-400 transition-colors cursor-pointer">
-    Home
-  </a>
+          Home
+        </a>
         <span>›</span>
         <span className="font-semibold">Become a Member</span>
       </div>
@@ -358,7 +361,7 @@ function App() {
   <button
     type="submit"
     disabled={isSubmitting}
-    className="mt-2 w-500 bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-2 px-4 rounded-lg font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
+    className="mt-2 w-500 bg-gradient-to-r from-slate-600 via-slate-600 to-slate-800 text-white py-2 px-4 rounded-lg font-semibold text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center"
   >
     {isSubmitting ? 'Submitting...' : (
       <>

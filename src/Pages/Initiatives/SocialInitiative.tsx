@@ -75,7 +75,7 @@ function SocialInitiative() {
             </div>
           </div>
           
-          <h1 className="text-5xl sm:text-6xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight uppercase">
+          <h1 className="text-4xl sm:text-6xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight uppercase">
             <span className="text-white">
               Social Initiative
             </span>
@@ -96,9 +96,9 @@ function SocialInitiative() {
             But there's so much more.
           </p>
 
-          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 sm:px-8 py-3 sm:py-4 shadow-lg border border-green-200">
+          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg border border-green-200">
             <Leaf className="w-5 sm:w-6 h-5 sm:h-6 text-green-600" />
-            <span className="text-gray-700 font-medium text-sm sm:text-lg">Discover the benefits of trees in your landscape</span>
+            <span className="text-gray-700 font-medium text-sm sm:text-lg">Discover the benefits of trees</span>
           </div>
         </div>
       </section>
@@ -117,28 +117,32 @@ function SocialInitiative() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 overflow-hidden"
-              >
-                <div className="p-4">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${benefit.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                    <benefit.icon className="w-5 h-5 text-white" />
-                  </div>
+  {benefits.map((benefit, index) => (
+    <div
+      key={index}
+      className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-200 overflow-hidden text-center"
+    >
+      <div className="p-4 flex flex-col items-center">
+        <div
+          className={`w-10 h-10 rounded-lg bg-gradient-to-r ${benefit.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}
+        >
+          <benefit.icon className="w-5 h-5 text-white" />
+        </div>
 
-                  <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
-                    {benefit.title}
-                  </h3>
+        <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
+          {benefit.title}
+        </h3>
 
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </div>
-                <div className={`h-1 bg-gradient-to-r ${benefit.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}></div>
-              </div>
-            ))}
-          </div>
+        <p className="text-xs text-gray-600 leading-relaxed">
+          {benefit.description}
+        </p>
+      </div>
+      <div
+        className={`h-1 bg-gradient-to-r ${benefit.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+      ></div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 

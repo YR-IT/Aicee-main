@@ -136,9 +136,9 @@ const NominationForm = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <Award className="w-8 h-8 text-white" />
                 </div>
-                <h2 className="text-4xl font-bold text-gray-800">Excellence Awards Nomination</h2>
+                <h2 className="text-3xl sm:4xl font-bold text-gray-800">Excellence Awards Nomination</h2>
               </div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Recognize outstanding achievements in business excellence. Submit your nomination for the prestigious AICC Excellence Award.
               </p>
             </div>
@@ -154,9 +154,9 @@ const NominationForm = () => {
                   </div>
                 ))}
               </div>
-              <div className="text-center mt-4">
+              {/* <div className="text-center mt-4">
                 <span className="text-gray-600 text-sm">And many more categories...</span>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -172,25 +172,45 @@ const NominationForm = () => {
           )}
 
           {/* Main Form */}
-          <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+          <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl p-4 border border-gray-100">
             {/* Category Selection */}
             <div className="mb-8">
-              <label className="block text-gray-700 font-bold text-lg mb-3">
-                Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="category"
-                value={formData.category}
-                onChange={handleInputChange}
-                required
-                className="w-full px-6 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 text-lg"
-              >
-                <option value="">Select Category</option>
-                {categories.map((category, index) => (
-                  <option key={index} value={category}>{category}</option>
-                ))}
-              </select>
-            </div>
+  <label className="block text-gray-700 font-bold text-lg mb-3">
+    Category <span className="text-red-500">*</span>
+  </label>
+
+  <div className="relative">
+    <select
+      name="category"
+      value={formData.category}
+      onChange={handleInputChange}
+      required
+      className="appearance-none w-full px-5 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 sm:text-lg text-base"
+    >
+      <option value="">Select Category</option>
+      {categories.map((category, index) => (
+        <option key={index} value={category}>{category}</option>
+      ))}
+    </select>
+
+    {/* Custom arrow */}
+    <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
+      <svg
+        className="h-5 w-5 text-gray-800"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+
 
             {/* Organization Details */}
             <div className="mb-12">

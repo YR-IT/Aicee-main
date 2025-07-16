@@ -168,7 +168,7 @@ const Activities: React.FC = () => {
   <span className="text-white">Activities</span>
 </div>
 
-          <h1 className={`text-5xl sm:text-6xl md:text-7xl font-extrabold mb-12 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <h1 className={`text-5xl sm:text-6xl md:text-7xl font-extrabold mb-8 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <span className="uppercase bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent drop-shadow-2xl">
               Activities
             </span>
@@ -205,7 +205,7 @@ const Activities: React.FC = () => {
       </div>
 
 {/* Activities Grid Section */}
-<div id="activities-section" className="relative bg-gradient-to-br from-slate-100 via-slate-100 to-slate-100 min-h-screen py-4 flex items-center">
+<div id="activities-section" className="relative bg-gradient-to-br from-slate-100 via-slate-100 to-slate-100 min-h-screen py-12 flex items-center">
   <div className="mx-auto px-2 sm:px-4 max-w-screen-xl w-full">
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
       {activities.map((activity, index) => {

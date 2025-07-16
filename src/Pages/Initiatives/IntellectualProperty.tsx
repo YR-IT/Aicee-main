@@ -50,10 +50,10 @@ function IntellectualProperty() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       {/* Hero Section */}
-      <section className="relative sm:h-[80vh] h-[90vh] overflow-hidden flex items-center justify-center py-20 sm:py-24 lg:py-32 bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800">
+      <section className="relative sm:h-[80vh] h-[80vh] overflow-hidden flex items-center justify-center bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Icon */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-6">
             <div className="relative">
               <Shield className="w-16 sm:w-24 h-16 sm:h-24 text-white animate-pulse" />
               <div className="absolute -top-2 -right-2 w-6 sm:w-8 h-6 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center">
@@ -103,30 +103,30 @@ function IntellectualProperty() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {protectionMethods.map((method, index) => {
-                const IconComponent = method.icon;
-                return (
-                  <div
-                    key={index}
-                    className="group bg-white/10 backdrop-blur-lg rounded-2xl hover:bg-white/20 transition-all duration-300 p-6 border border-white/20 hover:border-blue-400/50 hover:-translate-y-2 shadow-xl hover:shadow-2xl"
-                  >
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-teal-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    
-                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-300 transition-colors">
-                      {method.title}
-                    </h3>
-                    
-                    <p className="text-white/80 leading-relaxed">
-                      {method.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
+  {protectionMethods.map((method, index) => {
+    const IconComponent = method.icon;
+    return (
+      <div
+        key={index}
+        className="group bg-white/10 backdrop-blur-lg rounded-2xl hover:bg-white/20 transition-all duration-300 p-6 border border-white/20 hover:border-blue-400/50 hover:-translate-y-2 shadow-xl hover:shadow-2xl text-center"
+      >
+        <div className="flex items-center justify-center mb-4">
+          <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-teal-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+            <IconComponent className="w-6 h-6 text-white" />
+          </div>
+        </div>
+
+        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-300 transition-colors">
+          {method.title}
+        </h3>
+
+        <p className="text-white/80 leading-relaxed">
+          {method.description}
+        </p>
+      </div>
+    );
+  })}
+</div>
         </div>
       </section>
 

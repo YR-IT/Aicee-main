@@ -84,7 +84,7 @@ const CorporateCompliances = () => {
   return (
     <section className="relative overflow-hidden">
       {/* Hero Section */}
-      <div className="relative z-10 py-20 px-4 bg-gradient-to-br from-indigo-900 via-black to-gray-900">
+      <div className="relative z-10 py-16 md:py-20 px-4 bg-gradient-to-br from-indigo-900 via-black to-gray-900">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_70%)]"></div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.div
@@ -106,7 +106,7 @@ const CorporateCompliances = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10"
+            className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -117,7 +117,7 @@ const CorporateCompliances = () => {
       </div>
 
       {/* Compliance Grid */}
-      <div className="bg-white py-16 px-4">
+      <div className="bg-white py-12 px-4">
         <motion.div
           className="max-w-7xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -128,28 +128,30 @@ const CorporateCompliances = () => {
             Core Compliance Essentials
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-            {compliances.map((item, index) => (
-              <motion.div
-                key={index}
-               className="rounded-3xl border-2 border-gray-200 p-6 bg-white shadow-lg hover:shadow-xl transition-all duration-300 text-left text-black"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gray-200 shadow-sm mb-5">
-                  <item.icon className="w-7 h-7 text-gray-800" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+  {compliances.map((item, index) => (
+    <motion.div
+      key={index}
+      className="rounded-3xl border-2 border-gray-200 p-6 bg-white shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center text-black"
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.4 }}
+    >
+       <div
+        className={`w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br ${item.gradient} shadow-sm mb-5`}
+      >
+        <item.icon className="w-7 h-7 text-gray-100" />
+      </div>
+      <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+      <p className="text-sm leading-relaxed">
+        {item.description}
+      </p>
+    </motion.div>
+  ))}
+</div>
         </motion.div>
       </div>
 
       {/* CTA Section */}
-      <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-indigo-950 overflow-hidden">
+      <section className="relative py-12 bg-gradient-to-br from-black via-gray-900 to-indigo-950 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-800/20 via-pink-800/20 to-indigo-800/20"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
@@ -158,7 +160,7 @@ const CorporateCompliances = () => {
             </div>
           </div>
 
-          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+          <h3 className="text-3xl sm:text-4xl font-medium text-white mb-6">
             Relax — We’ve Got Compliance Covered
           </h3>
 
@@ -166,7 +168,7 @@ const CorporateCompliances = () => {
             Focus on growth while our experts handle filings, records, and updates — end-to-end.
           </p>
 
-          <div className="text-lg sm:text-2xl font-bold text-white">
+          <div className="text-lg sm:text-2xl font-semibold text-white">
             Get Your Compliance Plan Started
           </div>
         </div>

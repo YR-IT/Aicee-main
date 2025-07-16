@@ -149,16 +149,16 @@ function App() {
               <img src="/images/aicc-logo.png" alt="AICC Logo" className="w-10 h-10 object-contain" />
             </div>
             <div className="text-center md:text-left mt-4 md:mt-0">
-              <h1 className="text-2xl md:text-3xl font-bold">ALL INDIA CHAMBER</h1>
-              <h2 className="text-xl md:text-2xl font-semibold">OF COMMERCE</h2>
-              <p className="text-sm text-orange-100">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
+              <h1 className="text-3xl md:text-4xl font-bold">ALL INDIA CHAMBER</h1>
+              <h2 className="text-2xl md:text-2xl font-semibold mb-2">OF COMMERCE</h2>
+              <p className="text-base text-orange-100">WE FACILITATE BUSINESS ACROSS THE GLOBE</p>
             </div>
           </div>
 
           {/* Page Info */}
           <div className="text-center md:text-right">
-            <h3 className="text-2xl md:text-4xl font-bold mb-2">Contact Us</h3>
-            <p className="text-sm md:text-lg mb-2 max-w-xl mx-auto md:mx-0">
+            <h3 className="text-3xl md:text-4xl font-bold mb-2">Contact Us</h3>
+            <p className="text-base md:text-lg mb-2 max-w-xl mx-auto md:mx-0">
               Get in touch with us for any inquiries, support, or business opportunities
             </p>
             <div className="flex items-center justify-center md:justify-end space-x-2 text-xs md:text-sm">
@@ -276,26 +276,46 @@ function App() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Subject <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
-                          errors.subject ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
-                        }`}
-                      >
-                        <option value="">Select a subject</option>
-                        {subjects.map(subject => (
-                          <option key={subject} value={subject}>{subject}</option>
-                        ))}
-                      </select>
-                      {errors.subject && (
-                        <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
-                      )}
-                    </div>
+  <label className="block text-sm font-medium text-gray-700 mb-2">
+    Subject <span className="text-red-500">*</span>
+  </label>
+
+  <div className="relative">
+    <select
+      name="subject"
+      value={formData.subject}
+      onChange={handleInputChange}
+      className={`appearance-none w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all duration-200 ${
+        errors.subject ? 'border-red-500 bg-red-50' : 'border-gray-300 focus:border-orange-500'
+      }`}
+    >
+      <option value="">Select a subject</option>
+      {subjects.map(subject => (
+        <option key={subject} value={subject}>{subject}</option>
+      ))}
+    </select>
+
+    {/* Custom arrow */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+      <svg
+        className="w-5 h-5 text-gray-800"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fillRule="evenodd"
+          d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+          clipRule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+
+  {errors.subject && (
+    <p className="mt-1 text-sm text-red-600">{errors.subject}</p>
+  )}
+</div>
                   </div>
 
                   <div>
@@ -339,13 +359,14 @@ function App() {
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-4 space-y-6">
+            <div className="lg:col-span-4 space-y-6 text-center">
               {/* Map Placeholder */}
               <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                  <MapPin className="w-6 h-6 text-orange-500 mr-2" />
-                  Our Location
-                </h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+  <MapPin className="w-6 h-6 text-orange-500 mr-2" />
+  Our Location
+</h3>
+
                 <div className="bg-gradient-to-br from-orange-100 to-red-100 rounded-lg p-8 text-center">
                   <Globe className="w-16 h-16 text-orange-500 mx-auto mb-4" />
                   <p className="text-gray-700 font-medium">Interactive Map</p>
@@ -360,7 +381,7 @@ function App() {
   rel="noopener noreferrer"
   className="inline-block mt-4"
 >
-  <button className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white px-4 py-2 rounded-lg text-sm hover:from-orange-600 hover:to-red-600 transition-colors">
+  <button className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white px-4 py-2 rounded-lg text-sm transition-colors">
     View on Google Maps
   </button>
 </a>
@@ -369,7 +390,7 @@ function App() {
 
               {/* Quick Stats */}
               <div className="bg-white rounded-xl shadow-lg p-6 border border-orange-100">
-                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center justify-center">
                   <Award className="w-6 h-6 text-orange-500 mr-2" />
                   Why Choose Us
                 </h3>

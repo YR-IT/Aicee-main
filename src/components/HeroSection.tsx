@@ -58,9 +58,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto pt-6 sm:pt-16">
-        <div className="mb-6">
-          <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4 animate-pulse">
+      <div className="relative z-10 text-center text-white px-4 max-w-6xl mx-auto pt-8 sm:pt-16">
+        <div className="mb-4 sm:mb-8">
+          <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider animate-pulse">
             Established 1920
           </span>
         </div>

@@ -265,7 +265,7 @@ const MembersDirectory = () => {
           {/* Results Count */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
-              <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl px-6 py-3">
+              <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl px-4 py-3">
                 <span className="text-orange-700 font-bold">
                   {filteredMembers.length} Members Found
                 </span>
@@ -343,7 +343,7 @@ const MembersDirectory = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-20 px-4 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 md:py-20 py-12 px-4 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
