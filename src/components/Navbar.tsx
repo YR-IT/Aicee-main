@@ -74,9 +74,13 @@ const Navbar: React.FC = () => {
   ))}
 </div>
             <div className="flex items-center gap-2"><Clock size={14} /> Mon–Fri: 8:00am–7:00pm</div>
-            <a href="/brochure.pdf" className="bg-white text-orange-600 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-              <Download size={14} /> BROCHURE
-            </a>
+            <a 
+  href="/brochure.pdf" 
+  download 
+  className="bg-white text-orange-600 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1"
+>
+  <Download size={14} /> BROCHURE
+</a>
           </div>
         </div>
       </div>
@@ -183,6 +187,15 @@ const Navbar: React.FC = () => {
                   <Link to="/contact-us" onClick={() => setIsMenuOpen(false)} className="block py-1 hover:text-orange-600">Contact Us</Link>
                 </div>
               )}
+              <a
+  href="/brochure.pdf"
+  download
+  className="flex items-center justify-center gap-2 w-full text-left px-3 py-2 font-semibold rounded-md bg-orange-600 text-white text-center hover:bg-orange-700 transition"
+>
+  <Download size={16} />
+  DOWNLOAD BROCHURE
+</a>
+
             </div>
           )}
         </div>

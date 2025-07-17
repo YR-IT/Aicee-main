@@ -34,6 +34,7 @@ import CompanyDetails from './Pages/Companies/CompanyDetails';
 import BecomeMember from './Pages/BecomeMember';
 import CoursesPage from './Pages/Courses Page/Courses';
 import LoginPage from './Pages/Courses Page/LoginPage';
+import MemberBenefits from './Pages/MemberBenefits';
 
 const HomePage = () => (
   <>
@@ -74,7 +75,7 @@ function App() {
        <Route path="/become-a-member" element={<BecomeMember />} />
        <Route path="/Courses" element={<CoursesPage />} />
        <Route path="/login" element={<LoginPage />} />
-    
+        <Route path="/member-benefits" element={<MemberBenefits />} />
 
     
       </Routes>
