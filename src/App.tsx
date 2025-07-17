@@ -32,7 +32,9 @@ import IndianLaws from './Pages/Initiatives/IndianLaws';
 import CompanyDetails from './Pages/Companies/CompanyDetails';
 
 import BecomeMember from './Pages/BecomeMember';
-import CoursesPage from './Pages/Courses';
+import CoursesPage from './Pages/Courses Page/Courses';
+import LoginPage from './Pages/Courses Page/LoginPage';
+
 const HomePage = () => (
   <>
     <HeroSection />
@@ -71,6 +73,8 @@ function App() {
        <Route path="/company/:id" element={<CompanyDetails />} />
        <Route path="/become-a-member" element={<BecomeMember />} />
        <Route path="/Courses" element={<CoursesPage />} />
+       <Route path="/login" element={<LoginPage />} />
+    
 
     
       </Routes>
