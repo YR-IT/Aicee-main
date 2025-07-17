@@ -125,21 +125,43 @@ const ExportCourseDetails = () => {
             </div>
           </div>
 
-          {/* Fee & Certificate */}
-          <div className="border-t pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
-            <div>
-              <p className="text-xl text-gray-800 font-bold">Course Fee: ₹ {course.price.toLocaleString()}</p>
-              <p className="text-sm text-gray-500 italic">
-                *Inclusive of taxes. Certificate included.
-              </p>
-              <p className="text-sm text-gray-600 mt-2">
-                📜 At the end of the course, the participant shall take an online exam and upon successful completion, will be awarded a certificate by AICC.
-              </p>
+          {/* Course Fee Section */}
+          <div className="border-t pt-6">
+            <h3 className="text-xl font-semibold mb-2">You Pay</h3>
+            <div className="bg-orange-100 p-4 rounded-xl">
+              <p className="text-3xl font-bold text-orange-800">₹ {course.price.toLocaleString()}</p>
+              <p className="text-sm text-gray-600 italic mb-4">Inclusive of taxes & certification</p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    placeholder="Enter Coupon Code"
+                    className="px-3 py-2 rounded-lg border border-gray-300"
+                  />
+                  <button className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">Apply</button>
+                </div>
+                <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition w-full sm:w-auto">Buy Now</button>
+              </div>
             </div>
-            <button className="bg-orange-600 hover:bg-orange-700 text-white text-lg font-bold py-3 px-8 rounded-2xl shadow-lg transition-transform hover:scale-105">
-              Buy Now
-            </button>
           </div>
+
+          {/* App Install & Contact */}
+          {/* App Install Buttons */}
+<div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+  <a
+    href="https://play.google.com/store/apps/details?id=co.davos.yuoty"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:scale-105 transition-transform"
+  >
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+      alt="Get it on Google Play"
+      className="h-14"
+    />
+  </a>
+</div>
+
         </div>
 
         {/* Bottom note */}
