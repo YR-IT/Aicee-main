@@ -22,13 +22,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-white flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-3xl p-8">
-        <h2 className="text-3xl font-bold text-center text-slate-800 mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-white flex items-center justify-center px-4 py-6">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-3xl p-6 sm:p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-slate-800 mb-6 sm:mb-8">
           {isLogin ? 'Login to Your Account' : 'Create a New Account'}
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {!isLogin && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -101,11 +101,12 @@ const LoginPage = () => {
           </button>
         </form>
 
-        <p className="text-sm text-center text-gray-500 mt-6">
+        <p className="text-sm text-center text-gray-500 mt-4 sm:mt-6">
           {isLogin ? (
             <>
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <button
+                type="button"
                 className="text-blue-600 hover:underline"
                 onClick={() => setIsLogin(false)}
               >
@@ -116,6 +117,7 @@ const LoginPage = () => {
             <>
               Already have an account?{' '}
               <button
+                type="button"
                 className="text-blue-600 hover:underline"
                 onClick={() => setIsLogin(true)}
               >
