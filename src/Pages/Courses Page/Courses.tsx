@@ -130,10 +130,8 @@ const ExportCourseDetails = () => {
             <a href="https://play.google.com/store/apps/details?id=co.davos.yuoty" target="_blank" rel="noopener noreferrer">
               <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Download on Google Play" className="h-12" />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on App Store" className="h-12" />
-            </a>
-            <a href="/login" className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg transition text-sm">Login</a>
+           
+           
           </div>
         </div>
 
