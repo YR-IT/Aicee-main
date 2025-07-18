@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Search, 
   MapPin, 
-  Building2, 
-  Phone, 
-  Mail, 
-  Globe, 
   Filter,
   ChevronDown,
   ExternalLink,
   Users,
-  Star,
-  Award,
-  
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-
 
 const MembersDirectory = () => {
   const [selectedState, setSelectedState] = useState('');
@@ -129,7 +120,6 @@ const MembersDirectory = () => {
       verified: true,
     }
   ];
-  
 
   const filteredMembers = members.filter(member => {
     const matchesState = !selectedState || selectedState === 'All States' || member.state === selectedState;
@@ -291,7 +281,6 @@ const MembersDirectory = () => {
           </div>
 
           {/* Members Grid */}
-{/* Clean & Compact Members Grid */}
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
   {filteredMembers.map((member) => (
     <div
@@ -328,17 +317,7 @@ const MembersDirectory = () => {
 
     </div>
   ))}
-</div>
-
-
-          {/* Load More Button */}
-          {filteredMembers.length > 0 && (
-            <div className="text-center mt-16">
-            
-            </div>
-          )}
-
-       
+</div> 
 </div>
       </div>
 
@@ -364,24 +343,15 @@ const MembersDirectory = () => {
   </button>
 </Link>
 
-
-
 <Link to="/about">
   <button className="border border-orange-500 text-orange-600 px-11 py-2.5 rounded-xl font-bold text-base hover:bg-orange-50 hover:text-orange-700 transition-all duration-300">
     Learn More
   </button>
 </Link>
-
           </div> 
         </div>
- 
 </div>
-
-</div>
-
-
-
-    
+</div> 
   );
 };
 

@@ -144,39 +144,27 @@ const BulletinPage = () => {
   const filteredArticles = allArticles.filter(article => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-                         
-                         
+                         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());                   
     return matchesCategory && matchesSearch;
     
   });
 
     function handleNavigation(arg0: string): void {
         throw new Error('Function not implemented.');
-
-      
     }
 
     useEffect(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
     }, []);
-    
-
   return (
-    
     <div className="min-h-screen bg-gray-50">
-        
-        
-        
       {/* Header Section */}
-      
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">AICC Bulletin</h1>
           <div className="flex items-center justify-center space-x-2 text-gray-300">
             <span className="hover:text-orange-400 transition-colors cursor-pointer">Home</span>
             <ArrowRight className="w-4 h-4 text-orange-500" />
-            
             <span className="text-orange-400">AICC Bulletin</span>
           </div>
         </div>
@@ -195,7 +183,6 @@ const BulletinPage = () => {
   AICC Bulletin
 </button>
 
-            
             {/* Featured Article */}
             <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-12 border border-gray-100">
               <div className="relative">
@@ -209,9 +196,9 @@ const BulletinPage = () => {
                     Featured
                   </span>
                 </div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 text-white">
-                    <div className="flex items-center space-x-4 text-sm mb-3">
+                <div className="absolute bottom-6 left-4 right-4">
+                  <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-4 text-white">
+                    <div className="flex items-center space-x-2 md:space-x-6 text-xs mb-3">
                       <div className="flex items-center space-x-2">
                         <Calendar className="w-4 h-4 text-orange-400" />
                         <span>{featuredArticle.date}</span>
@@ -230,7 +217,7 @@ const BulletinPage = () => {
               </div>
               
               <div className="p-8">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4 leading-tight">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-tight">
                   {featuredArticle.title}
                 </h2>
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
@@ -249,7 +236,7 @@ const BulletinPage = () => {
                     </div>
                   </div>
                   
-                  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-4 py-2 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+                  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-4 py-2 rounded-2xl font-semibold text-xs transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
                     <span>Read More</span>
                     <ArrowRight className="w-5 h-5" />
                   </button>

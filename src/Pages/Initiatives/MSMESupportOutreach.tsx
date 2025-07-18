@@ -29,8 +29,6 @@ function MSMESupportOutreach() {
             global competitiveness, and sustainable growth initiatives.
           </p>
 
-          import AnimatedNumber from "@/components/AnimatedNumber";
-
 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12">
   {[
     { label: 'MSMEs in India', value: 75, suffix: 'M+', color: 'text-blue-300' },

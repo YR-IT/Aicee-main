@@ -51,14 +51,14 @@ const ExportCourseDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 to-white pb-20">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 py-20 text-white text-center relative overflow-hidden">
+      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 py-16 sm:py-20 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4">
-          <div className="inline-flex items-center space-x-2 bg-orange-500/20 backdrop-blur-sm border border-orange-400/30 rounded-full px-6 py-2 mb-6">
+        <div className="relative z-10 max-w-5xl mx-auto px-4">
+          <div className="inline-flex items-center space-x-2 bg-orange-500/20 backdrop-blur-sm border border-orange-400/30 rounded-full sm:px-6 px-4 py-2 mb-6">
             <BookOpen className="w-5 h-5 text-orange-300" />
-            <span className="text-orange-300 font-semibold">eKnowledge – An AICC Initiative</span>
+            <span className="text-orange-300 font-semibold text-xs sm:text-base">eKnowledge – An AICC Initiative</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4">
+          <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4">
             CERTIFICATE COURSE ON <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">EXPORT-IMPORT MANAGEMENT</span>
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">

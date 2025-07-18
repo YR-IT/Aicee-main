@@ -500,7 +500,7 @@ const NominationForm = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-5 py-3 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center space-x-3 mx-auto"
+                className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-5 py-3 rounded-2xl font-bold sm:text-lg text-sm transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center space-x-3 mx-auto"
               >
                 <Send className="w-6 h-6" />
                 <span>Submit Nomination</span>
