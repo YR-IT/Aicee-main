@@ -16,7 +16,12 @@ import {
     } from 'lucide-react';
 
     // AnimatedNumber component
-    const AnimatedNumber = ({ target, duration }) => {
+    interface AnimatedNumberProps {
+      target: number;
+      duration: number;
+    }
+
+    const AnimatedNumber = ({ target, duration }: AnimatedNumberProps) => {
       const [count, setCount] = useState(0);
       useEffect(() => {
         let start = 0;
