@@ -51,14 +51,12 @@ const CallToAction = () => {
 
         {/* Image Content */}
         <div className="order-1 md:order-2 flex justify-center">
-  <img
-    src="sir_image.jpg"
-    alt="AICC Vision"
-    className="rounded-full shadow-xl w-60 h-60 md:w-96 md:h-96 object-cover transition-all duration-500 ease-in-out transform hover:scale-110 hover:shadow-2xl hover:ring-4 hover:ring-orange-400"
-  />
-</div>
-
-
+          <img
+            src="sir_image.jpg"
+            alt="AICC Vision"
+            className="rounded-full shadow-xl w-60 h-60 md:w-72 md:h-72 object-cover transition-all duration-500 ease-in-out transform hover:scale-110 hover:shadow-2xl hover:ring-4 hover:ring-orange-400"
+          />
+        </div>
       </div>
     </section>
   );

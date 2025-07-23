@@ -35,6 +35,7 @@ import BecomeMember from './Pages/BecomeMember';
 import CoursesPage from './Pages/Courses Page/Courses';
 import LoginPage from './Pages/Courses Page/LoginPage';
 import MemberBenefits from './Pages/MemberBenefits';
+import ArbitrationCell from './Pages/ArbitrationCell';
 
 const HomePage = () => (
   <>
@@ -76,7 +77,7 @@ function App() {
         <Route path="/Courses" element={<CoursesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/member-benefits" element={<MemberBenefits />} />
-
+        <Route path="/arbitration" element={<ArbitrationCell />} />
     
       </Routes>
       <Footer />
