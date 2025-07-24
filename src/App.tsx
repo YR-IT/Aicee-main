@@ -35,6 +35,7 @@ import BecomeMember from './Pages/BecomeMember';
 import CoursesPage from './Pages/Courses Page/Courses';
 import LoginPage from './Pages/Courses Page/LoginPage';
 import MemberBenefits from './Pages/MemberBenefits';
+import ArbitrationCell from './Pages/ArbitrationCell';
 
 const HomePage = () => (
   <>
@@ -68,15 +69,15 @@ function App() {
         <Route path="/maintain-your-business" element={<MaintainYourBusiness />} />
         <Route path="/initiatives/social-initiative" element={<SocialInitiative />}/>
         <Route path="/initiatives/educational-initiative" element={<EducationalInitiative/>}/>
-       <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
-       <Route path="/initiatives/Protecting-Intellectual-Property-Rights" element={<IntellectualProperty/>}/>
-       <Route path="/initiatives/Know-The-Indian-Law" element={<IndianLaws/>}/>
-       <Route path="/company/:id" element={<CompanyDetails />} />
-       <Route path="/become-a-member" element={<BecomeMember />} />
-       <Route path="/Courses" element={<CoursesPage />} />
-       <Route path="/login" element={<LoginPage />} />
+        <Route path="/initiatives/msme-support-&-outreach" element={<MSMESupportOutreach />} />
+        <Route path="/initiatives/Protecting-Intellectual-Property-Rights" element={<IntellectualProperty/>}/>
+        <Route path="/initiatives/Know-The-Indian-Law" element={<IndianLaws/>}/>
+        <Route path="/company/:id" element={<CompanyDetails />} />
+        <Route path="/become-a-member" element={<BecomeMember />} />
+        <Route path="/Courses" element={<CoursesPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/member-benefits" element={<MemberBenefits />} />
-
+        <Route path="/arbitration" element={<ArbitrationCell />} />
     
       </Routes>
       <Footer />
