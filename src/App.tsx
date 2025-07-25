@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Admin from './Pages/admin';
+import Admin from './Pages/admin'; 
 
 import AboutPage from './Pages/AboutPage';
 import International from './Pages/International';
