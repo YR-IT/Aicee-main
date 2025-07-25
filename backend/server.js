@@ -11,6 +11,16 @@ console.log("🚀 server.js started");
 const app = express();
 const PORT = 5000;
 
+app.get("/api/members", async (req, res) => {
+  try {
+    const members = await Member.find(); // fetches all members from MongoDB
+    res.json(members);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 // 1. Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/membersDB', {
   useNewUrlParser: true,

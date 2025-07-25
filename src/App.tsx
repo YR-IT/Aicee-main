@@ -2,6 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Admin from './Pages/Admin';
 
 import AboutPage from './Pages/AboutPage';
 import International from './Pages/International';
@@ -76,7 +77,7 @@ function App() {
        <Route path="/Courses" element={<CoursesPage />} />
        <Route path="/login" element={<LoginPage />} />
         <Route path="/member-benefits" element={<MemberBenefits />} />
-
+<Route path ="/admin" element={<Admin />} />
     
       </Routes>
       <Footer />
