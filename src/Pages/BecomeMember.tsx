@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { 
       Phone, 
       Mail, 
@@ -100,31 +101,82 @@ import {
         return Object.keys(newErrors).length === 0;
       };
 
+      // const handleSubmit = async (e: React.FormEvent) => {
+      //   e.preventDefault();
+      //   if (!validateForm()) return;
+      //   if (!showPopup) {
+      //     setShowPopup(true);
+      //     return;
+      //   }
+      //   setIsSubmitting(true);
+      //   await new Promise(resolve => setTimeout(resolve, 2000));
+      //   setIsSubmitting(false);
+      //   setShowPopup(false);
+      //   alert('Membership application submitted successfully!');
+      //   setFormData({
+      //     fullName: '',
+      //     phone: '',
+      //     email: '',
+      //     address: '',
+      //     city: '',
+      //     country: '',
+      //     zipCode: '',
+      //     businessDescription: '',
+      //     website: '',
+      //     fax: ''
+      //   });
+      // };
+
+      
+
+
+
       const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
         if (!validateForm()) return;
+
         if (!showPopup) {
           setShowPopup(true);
           return;
         }
+
         setIsSubmitting(true);
-        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        try {
+          const response = await axios.post('http://localhost:5000/members', formData);
+
+          if (response.data?.success) {
+            alert('✅ Membership application submitted successfully!');
+          } else {
+            alert('⚠️ Submission failed. Please try again.');
+          }
+
+          // Reset the form
+          setFormData({
+            fullName: '',
+            phone: '',
+            email: '',
+            address: '',
+            city: '',
+            country: '',
+            zipCode: '',
+            businessDescription: '',
+            website: '',
+            fax: '',
+          });
+          setShowPopup(false);
+        } catch (error) {
+          console.error('❌ Error submitting form:', error);
+          alert('🚫 Error submitting form. Please try again.');
+        }
+
         setIsSubmitting(false);
-        setShowPopup(false);
-        alert('Membership application submitted successfully!');
-        setFormData({
-          fullName: '',
-          phone: '',
-          email: '',
-          address: '',
-          city: '',
-          country: '',
-          zipCode: '',
-          businessDescription: '',
-          website: '',
-          fax: ''
-        });
       };
+
+
+
+
 
       const handlePopupClose = () => {
         setShowPopup(false);

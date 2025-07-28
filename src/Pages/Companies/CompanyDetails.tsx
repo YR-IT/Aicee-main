@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, MapPin, Globe, Mail, Phone, Fan as Fax, Building2, Star, Award, Send, User, MessageSquare, ExternalLink, CheckCircle } from 'lucide-react';
+import axios from 'axios';
+import { ArrowLeft, MapPin, Globe, Mail, Phone, Fan as Fax, Building2, Send, User, CheckCircle } from 'lucide-react';
 
 interface Company {
-  id: number;
+  _id: string;
   name: string;
   address: string;
   city: string;
-  state: string;
-  pincode: string;
   country: string;
-  category: string;
-  business_description: string;
-  website: string;
-  email: string;
   phone: string;
-  fax: string;
-  rating: number;
-  verified: boolean;
+  email: string;
+  website?: string;
+  fax?: string;
+  zipcode: string;
+  tax?: string;
+  status: string;
+  createdAt: string;
 }
 
-const CompanyDetails = () => {
+const CompanyDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const [company, setCompany] = useState<Company | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [showMessageForm, setShowMessageForm] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
   const [messageForm, setMessageForm] = useState({
@@ -31,114 +33,27 @@ const CompanyDetails = () => {
     message: ''
   });
 
-  // Static company data - matches your screenshot
-  const companies: Company[] = [
-    {
-      id: 1,
-      name: 'Ashok Brothers Impex Pvt. Ltd.',
-      address: '638/D, 2Nd Floor, Dr. Rajkumar Road, Rajaninagar, 2Nd Stage',
-      city: 'Bangalore',
-      state: 'Karnataka',
-      pincode: '560010',
-      country: 'India',
-      category: 'Manufacturing',
-      business_description: 'Machine Tools & Accessories, Balancing Machine, Sheet Metal Machine Tools Accessories',
-      website: 'http://www.abi-india.com',
-      email: 'abibo@bgl.vsnl.net.in',
-      phone: '080-23323096',
-      fax: '080-23323096',
-      rating: 4.8,
-      verified: true
-    },
-    {
-      id: 2,
-      name: 'Stalwart Creations',
-      address: '410-411, Udyog Vihar, Phase-IV',
-      city: 'Gurgaon',
-      state: 'Haryana',
-      pincode: '122001',
-      country: 'India',
-      category: 'Manufacturing',
-      business_description: 'Industrial Manufacturing and Production Solutions, Quality Engineering Services',
-      website: 'http://www.stalwartcreations.com',
-      email: 'info@stalwartcreations.com',
-      phone: '+91-124-4367655',
-      fax: '+91-124-4367656',
-      rating: 4.6,
-      verified: true
-    },
-    {
-      id: 3,
-      name: 'Gold Marine Exports (P) Ltd.',
-      address: 'New No. 16 (Old No. 25), Dharmaja Koil Street, Chintadripet',
-      city: 'Chennai',
-      state: 'Tamil Nadu',
-      pincode: '600002',
-      country: 'India',
-      category: 'Export',
-      business_description: 'Marine Products Export, Seafood Processing and International Trade',
-      website: 'http://www.goldmarineexports.com',
-      email: 'info@goldmarineexports.com',
-      phone: '+91-44-28524567',
-      fax: '+91-44-28524568',
-      rating: 4.9,
-      verified: true
-    },
-    {
-      id: 4,
-      name: 'Emkay Aromatics Limited',
-      address: 'L-6, Industrial Estate, Ambattur',
-      city: 'Chennai',
-      state: 'Tamil Nadu',
-      pincode: '600058',
-      country: 'India',
-      category: 'Chemicals',
-      business_description: 'Aromatic Chemicals, Essential Oils, Fragrance and Flavor Manufacturing',
-      website: 'http://www.emkayaromatics.com',
-      email: 'info@emkayaromatics.com',
-      phone: '+91-44-26254789',
-      fax: '+91-44-26254790',
-      rating: 4.7,
-      verified: true
-    },
-    {
-      id: 5,
-      name: 'Bangalore Granites',
-      address: 'No. 130, Magadi Main Road, Machohalli Gate',
-      city: 'Bangalore',
-      state: 'Karnataka',
-      pincode: '560091',
-      country: 'India',
-      category: 'Construction',
-      business_description: 'Granite Mining, Processing and Export, Natural Stone Products',
-      website: 'http://www.bangaloregranites.com',
-      email: 'info@bangaloregranites.com',
-      phone: '+91-80-28394567',
-      fax: '+91-80-28394568',
-      rating: 4.5,
-      verified: true
-    },
-    {
-      id: 6,
-      name: 'EcoBuild Materials',
-      address: 'Plot No. 47, Khamla, Gawande Nagar, Near Khamla',
-      city: 'Bangalore',
-      state: 'Karnataka',
-      pincode: '560091',
-      country: 'India',
-      category: 'Construction',
-      business_description: 'Granite Mining, Processing and Export, Natural Stone Products',
-      website: 'http://www.ecoBuildMaterials.com',
-      email: 'info@ecobuildmaterials.com',
-      phone: '+91-90-28394567',
-      fax: '+91-80-28394568',
-      rating: 4.5,
-      verified: true
+  useEffect(() => {
+    const fetchCompany = async () => {
+      try {
+        console.log('Fetching company with ID:', id);
+        const response = await axios.get(`http://localhost:5000/members/${id}`);
+        setCompany(response.data);
+      } catch (err: any) {
+        console.error('❌ Error fetching company:', err);
+        if (err.response?.status === 404) {
+          setError('Company not found. Please check the ID or try another company.');
+        } else {
+          setError('Failed to load company details. Please try again later.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    },
-  ];
-
-  const company = companies.find(c => c.id === parseInt(id || '1'));
+    fetchCompany();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [id]);
 
   const handleMessageSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -149,7 +64,6 @@ const CompanyDetails = () => {
       setShowMessageForm(false);
     }, 3000);
   };
-  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -159,7 +73,20 @@ const CompanyDetails = () => {
     }));
   };
 
-  if (!company) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Building2 className="w-8 h-8 text-blue-500" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">Loading...</h2>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !company) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -167,7 +94,7 @@ const CompanyDetails = () => {
             <Building2 className="w-8 h-8 text-red-500" />
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Company Not Found</h2>
-          <p className="text-gray-600 mb-6">The requested company could not be found.</p>
+          <p className="text-gray-600 mb-6">{error || 'The requested company could not be found.'}</p>
           <Link 
             to="/members-directory" 
             className="bg-gradient-to-r from-orange-600 to-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
@@ -178,14 +105,10 @@ const CompanyDetails = () => {
       </div>
     );
   }
-  
-useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
-  }, []);
+
   return (
-    
     <div className="min-h-screen bg-gray-50">
-      {/* Header - Exact match to screenshot */}
+      {/* Header */}
       <div className="bg-gradient-to-r from-orange-600 to-red-500 py-8 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
@@ -196,7 +119,6 @@ useEffect(() => {
               <ArrowLeft className="w-5 h-5" />
               <span className="font-semibold">Back to Directory</span>
             </Link>
-            
             <div className="flex items-center space-x-4">
               <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white font-semibold">
                 DIRECTORY
@@ -209,7 +131,7 @@ useEffect(() => {
         </div>
       </div>
 
-      {/* Company Details - Exact layout from screenshot */}
+      {/* Company Details */}
       <div className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -218,7 +140,7 @@ useEffect(() => {
               <h1 className="text-4xl font-bold text-gray-800 mb-4">{company.name}</h1>
             </div>
 
-            {/* Company Information - Exact format from screenshot */}
+            {/* Company Information */}
             <div className="p-8 space-y-8">
               {/* Address */}
               <div className="flex items-start justify-between">
@@ -228,7 +150,7 @@ useEffect(() => {
                 <div className="flex-1 ml-8">
                   <div className="text-gray-600 leading-relaxed">
                     {company.address}<br />
-                    {company.state} - {company.pincode}<br />
+                    {company.city} - {company.zipcode}<br />
                     {company.country}
                   </div>
                 </div>
@@ -240,26 +162,30 @@ useEffect(() => {
                   <span className="text-lg font-semibold text-gray-700">Long Business Description:</span>
                 </div>
                 <div className="flex-1 ml-8">
-                  <p className="text-gray-600 leading-relaxed">{company.business_description}</p>
+                  <p className="text-gray-600 leading-relaxed">
+                    {company.tax ? `${company.tax}, ` : ''}{company.business_description}
+                  </p>
                 </div>
               </div>
 
               {/* Website */}
-              <div className="flex items-center justify-between">
-                <div className="w-32 text-right">
-                  <span className="text-lg font-semibold text-gray-700">Website:</span>
+              {company.website && (
+                <div className="flex items-center justify-between">
+                  <div className="w-32 text-right">
+                    <span className="text-lg font-semibold text-gray-700">Website:</span>
+                  </div>
+                  <div className="flex-1 ml-8">
+                    <a 
+                      href={company.website} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700 font-medium"
+                    >
+                      {company.website}
+                    </a>
+                  </div>
                 </div>
-                <div className="flex-1 ml-8">
-                  <a 
-                    href={company.website} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 font-medium"
-                  >
-                    {company.website}
-                  </a>
-                </div>
-              </div>
+              )}
 
               {/* Email */}
               <div className="flex items-center justify-between">
@@ -292,47 +218,65 @@ useEffect(() => {
               </div>
 
               {/* Fax */}
+              {company.fax && (
+                <div className="flex items-center justify-between">
+                  <div className="w-32 text-right">
+                    <span className="text-lg font-semibold text-gray-700">Business Fax:</span>
+                  </div>
+                  <div className="flex-1 ml-8">
+                    <span className="text-gray-600 font-medium">{company.fax}</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Status */}
               <div className="flex items-center justify-between">
                 <div className="w-32 text-right">
-                  <span className="text-lg font-semibold text-gray-700">Business Fax:</span>
+                  <span className="text-lg font-semibold text-gray-700">Status:</span>
                 </div>
                 <div className="flex-1 ml-8">
-                  <span className="text-gray-600 font-medium">{company.fax}</span>
+                  <span className="text-gray-600 font-medium">{company.status}</span>
+                </div>
+              </div>
+
+              {/* Created At */}
+              <div className="flex items-center justify-between">
+                <div className="w-32 text-right">
+                  <span className="text-lg font-semibold text-gray-700">Created At:</span>
+                </div>
+                <div className="flex-1 ml-8">
+                  <span className="text-gray-600 font-medium">{new Date(company.createdAt).toLocaleString()}</span>
                 </div>
               </div>
             </div>
 
-            {/* Send Message Button - Exact styling from screenshot */}
+            {/* Send Message Button */}
             <div className="p-8 text-center">
-       <div className="flex justify-center mt-6">
-       <button
-  onClick={() => setShowMessageForm(true)}
-  className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow-sm hover:bg-orange-700 transition-all duration-300 transform hover:scale-105"
->
-  <span>Send Message to Listing Owner</span>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-4 w-4 transition-transform duration-300"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-  </svg>
-</button>
-
-
-</div>
-
-
+              <div className="flex justify-center mt-6">
+                <button
+                  onClick={() => setShowMessageForm(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 text-white font-semibold rounded-lg shadow-sm hover:bg-orange-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  <span>Send Message to Listing Owner</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 transition-transform duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Message Form Modal */}
-      {showMessageForm && (
+      { showMessageForm && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-8">
@@ -415,23 +359,21 @@ useEffect(() => {
                 </div>
 
                 <div className="flex space-x-2">
-  <button
-    type="button"
-    onClick={() => setShowMessageForm(false)}
-    className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300"
-  >
-    Cancel
-  </button>
-
-  <button
-    type="submit"
-    className="flex-1 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-1"
-  >
-    <Send className="w-4 h-4" />
-    <span>Send</span>
-  </button>
-</div>
-
+                  <button
+                    type="button"
+                    onClick={() => setShowMessageForm(false)}
+                    className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-1"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Send</span>
+                  </button>
+                </div>
               </form>
             </div>
           </div>

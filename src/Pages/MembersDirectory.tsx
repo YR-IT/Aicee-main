@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { 
   Search, 
   MapPin, 
@@ -9,7 +10,28 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const MembersDirectory = () => {
+interface Member {
+  _id: string;
+  fullName: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  country: string;
+  category: string;
+  business_description: string;
+  website?: string;
+  email: string;
+  phone: string;
+  fax?: string;
+  rating: number;
+  verified: boolean;
+}
+
+const MembersDirectory: React.FC = () => {
+  const [members, setMembers] = useState<Member[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [selectedState, setSelectedState] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
   const [selectedLetter, setSelectedLetter] = useState('');
@@ -22,120 +44,36 @@ const MembersDirectory = () => {
     'Rajasthan', 'Tamil Nadu', 'Uttar Pradesh', 'West Bengal'
   ];
 
-  const members = [
-    {
-      id: 1,
-      name: 'Ashok Brothers Impex Pvt. Ltd.',
-      address: '638/D, 2Nd Floor, Dr. Rajkumar Road, Rajaninagar, 2Nd Stage',
-      city: 'Bangalore',
-      state: 'Karnataka',
-      pincode: '560010',
-      country: 'India',
-      category: 'Manufacturing',
-      business_description: 'Machine Tools & Accessories, Balancing Machine, Sheet Metal Machine Tools Accessories',
-      website: 'http://www.abi-india.com',
-      email: 'abibo@bgl.vsnl.net.in',
-      phone: '080-23323096',
-      fax: '080-23323096',
-      rating: 4.8,
-      verified: true
-    },
-    {
-      id: 2,
-      name: 'Stalwart Creations',
-      address: '410-411, Udyog Vihar, Phase-IV',
-      city: 'Gurgaon',
-      state: 'Haryana',
-      pincode: '122001',
-      country: 'India',
-      category: 'Manufacturing',
-      business_description: 'Industrial Manufacturing and Production Solutions, Quality Engineering Services',
-      website: 'http://www.stalwartcreations.com',
-      email: 'info@stalwartcreations.com',
-      phone: '+91-124-4367655',
-      fax: '+91-124-4367656',
-      rating: 4.6,
-      verified: true
-    },
-    {
-      id: 3,
-      name: 'Gold Marine Exports (P) Ltd.',
-      address: 'New No. 16 (Old No. 25), Dharmaja Koil Street, Chintadripet',
-      city: 'Chennai',
-      state: 'Tamil Nadu',
-      pincode: '600002',
-      country: 'India',
-      category: 'Export',
-      business_description: 'Marine Products Export, Seafood Processing and International Trade',
-      website: 'http://www.goldmarineexports.com',
-      email: 'info@goldmarineexports.com',
-      phone: '+91-44-28524567',
-      fax: '+91-44-28524568',
-      rating: 4.9,
-      verified: true
-    },
-    {
-      id: 4,
-      name: 'Emkay Aromatics Limited',
-      address: 'L-6, Industrial Estate, Ambattur',
-      city: 'Chennai',
-      state: 'Tamil Nadu',
-      pincode: '600058',
-      country: 'India',
-      category: 'Chemicals',
-      business_description: 'Aromatic Chemicals, Essential Oils, Fragrance and Flavor Manufacturing',
-      website: 'http://www.emkayaromatics.com',
-      email: 'info@emkayaromatics.com',
-      phone: '+91-44-26254789',
-      fax: '+91-44-26254790',
-      rating: 4.7,
-      verified: true
-    },
-    {
-      id: 5,
-      name: 'Bangalore Granites',
-      address: 'No. 130, Magadi Main Road, Machohalli Gate',
-      city: 'Bangalore',
-      state: 'Karnataka',
-      pincode: '560091',
-      country: 'India',
-      category: 'Construction',
-      business_description: 'Granite Mining, Processing and Export, Natural Stone Products',
-      website: 'http://www.bangaloregranites.com',
-      email: 'info@bangaloregranites.com',
-      phone: '+91-80-28394567',
-      fax: '+91-80-28394568',
-      rating: 4.5,
-      verified: true
-    },
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/members');
+        setMembers(response.data);
+      } catch (err) {
+        console.error('❌ Error fetching members:', err);
+        setError("Failed to load members. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    {
-      id: 6,
-      name: 'EcoBuild Materials',
-      address: 'Sector 22, Industrial Area, Chandigarh, Punjab - 160022',
-      state: 'Punjab',
-      country: 'India',
-      category: 'Construction',
-      rating: 4.8,
-      verified: true,
-    }
-  ];
+    fetchMembers();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const filteredMembers = members.filter(member => {
     const matchesState = !selectedState || selectedState === 'All States' || member.state === selectedState;
-    const matchesKeyword = !searchKeyword || member.name.toLowerCase().includes(searchKeyword.toLowerCase());
-    const matchesLetter = !selectedLetter || member.name.charAt(0).toUpperCase() === selectedLetter;
+    const matchesKeyword = !searchKeyword || member.fullName.toLowerCase().includes(searchKeyword.toLowerCase());
+    const matchesLetter = !selectedLetter || member.fullName.charAt(0).toUpperCase() === selectedLetter;
     return matchesState && matchesKeyword && matchesLetter;
   });
 
   const handleSearch = () => {
-    // Search functionality is handled by the filter above
     console.log('Searching with:', { selectedState, searchKeyword, selectedLetter });
   };
-  
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
-  }, []);
+
+  if (loading) return <div className="text-center py-10 text-gray-600">Loading members...</div>;
+  if (error) return <div className="text-center text-red-600 py-10">{error}</div>;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
@@ -171,7 +109,7 @@ const MembersDirectory = () => {
             <span className="font-semibold">Members Directory</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-12 leading-tight ">
+          <h1 className="text-4xl md:text-6xl font-bold mb-12 leading-tight">
             Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Business Members</span>
           </h1>
           
@@ -281,44 +219,40 @@ const MembersDirectory = () => {
           </div>
 
           {/* Members Grid */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {filteredMembers.map((member) => (
-    <div
-      key={member.id}
-      className="bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col hover:shadow-lg transition"
-    >
-      {/* Top: Logo + Name + Rating */}
-      <div className="flex items-center space-x-4 mb-4">
-        {/* Logo/Initial */}
-        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-lg">
-          {member.name.charAt(0)}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredMembers.map((member) => (
+              <div
+                key={member._id}
+                className="bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col hover:shadow-lg transition"
+              >
+                {/* Top: Logo + Name */}
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-lg">
+                    {member.fullName.charAt(0)}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-semibold text-gray-900">{member.fullName}</h3>
+                  </div>
+                </div>
+
+                {/* Address */}
+                <div className="flex items-start space-x-3 mb-4">
+                  <MapPin className="w-5 h-5 text-orange-500 mt-1" />
+                  <p className="text-sm text-gray-700 leading-relaxed">{member.address}</p>
+                </div>
+
+                {/* More Info */}
+                <Link
+                  to={`/company/${member._id}`}
+                  className="group inline-flex items-center text-orange-600 font-semibold text-sm hover:underline hover:underline-offset-4 transition mt-auto"
+                >
+                  <span>More Info</span>
+                  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div className="flex-1">
-          <h3 className="text-base font-semibold text-gray-900">{member.name}</h3>
-         
-        </div>
-      </div>
-
-      {/* Address */}
-      <div className="flex items-start space-x-3 mb-4">
-        <MapPin className="w-5 h-5 text-orange-500 mt-1" />
-        <p className="text-sm text-gray-700 leading-relaxed">{member.address}</p>
-      </div>
-
-      {/* More Info */}
-      <Link
-  to={`/company/${member.id}`}
-  className="group inline-flex items-center text-orange-600 font-semibold text-sm hover:underline hover:underline-offset-4 transition mt-auto"
->
-  <span>More Info</span>
-  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-</Link>
-
-    </div>
-  ))}
-</div> 
-</div>
       </div>
 
       {/* CTA Section */}
@@ -337,21 +271,20 @@ const MembersDirectory = () => {
             Expand your network and grow your business with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <Link to="/become-a-member">
-  <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/25 transform hover:scale-103 hover:-translate-y-0.5">
-    Become a Member
-  </button>
-</Link>
-
-<Link to="/about">
-  <button className="border border-orange-500 text-orange-600 px-11 py-2.5 rounded-xl font-bold text-base hover:bg-orange-50 hover:text-orange-700 transition-all duration-300">
-    Learn More
-  </button>
-</Link>
+            <Link to="/become-a-member">
+              <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/25 transform hover:scale-103 hover:-translate-y-0.5">
+                Become a Member
+              </button>
+            </Link>
+            <Link to="/about">
+              <button className="border border-orange-500 text-orange-600 px-11 py-2.5 rounded-xl font-bold text-base hover:bg-orange-50 hover:text-orange-700 transition-all duration-300">
+                Learn More
+              </button>
+            </Link>
           </div> 
         </div>
-</div>
-</div> 
+      </div>
+    </div>
   );
 };
 
