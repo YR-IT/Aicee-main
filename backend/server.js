@@ -16,6 +16,10 @@ app.use(express.json());
 
 // Routes
 app.use('/api/blogs', blogRoutes);
+app.get('/', (req, res) => {
+  res.send('Backend API is running...');
+});
+
 
 
 app.listen(PORT, () => {
