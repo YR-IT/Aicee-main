@@ -41,7 +41,8 @@ app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
 // ✅ Routes
-app.use('/api/admin', blogRoutes);
+app.use('/api/blogs', blogRoutes);
+
 
 // ✅ Root route
 app.get('/', (req, res) => {
