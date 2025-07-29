@@ -12,15 +12,15 @@ const AdminPanel = () => {
     if (!image) return null;
     const formData = new FormData();
     formData.append('file', image);
-    formData.append('upload_preset', 'YOUR_UPLOAD_PRESET'); // <-- replace this
+    formData.append('upload_preset', 'aicee_preset'); // ✅ your actual upload preset
     try {
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload', // <-- replace this
+        'https://api.cloudinary.com/v1_1/dkoostvfb/image/upload', // ✅ your actual cloud name
         formData
       );
       return response.data.secure_url;
     } catch (error) {
-      console.error('Image upload failed:', error);
+      console.error('❌ Image upload failed:', error);
       return null;
     }
   };
@@ -31,13 +31,19 @@ const AdminPanel = () => {
 
     const imageUrl = await handleImageUpload();
 
+    if (!imageUrl) {
+      alert('Image upload failed.');
+      setUploading(false);
+      return;
+    }
+
     const newPost = {
       title,
       author,
       excerpt: content.slice(0, 150),
       content,
       image: imageUrl,
-      category: 'business', // default/fixed category
+      category: 'business',
       date: new Date(),
       views: 0,
       comments: 0,
@@ -45,15 +51,15 @@ const AdminPanel = () => {
     };
 
     try {
-      await axios.post('http://localhost:5000/blogs', newPost);
-      alert('Blog post created successfully!');
+      await axios.post('https://aicee-main.onrender.com/api/admin', newPost);
+      alert('✅ Blog post created successfully!');
       setTitle('');
       setAuthor('');
       setContent('');
       setImage(null);
     } catch (error) {
-      console.error('Error submitting post:', error);
-      alert('Failed to submit post.');
+      console.error('❌ Error submitting post:', error.response?.data || error.message);
+      alert('❌ Failed to submit post.');
     } finally {
       setUploading(false);
     }
