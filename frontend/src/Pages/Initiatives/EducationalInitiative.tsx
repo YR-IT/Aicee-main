@@ -3,6 +3,7 @@ import {
   BookOpen, Users, Globe, TrendingUp, Shield, Megaphone, Truck, Building, FileText, Target, DollarSign,
   ArrowRight, CheckCircle, Award, Clock, Monitor, Star, Sparkles
 } from 'lucide-react';
+import React from 'react';
 
 function EducationalInitiative() {
   useEffect(() => {

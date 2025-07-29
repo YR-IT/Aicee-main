@@ -1,6 +1,7 @@
 import { ChevronRight, Building2, TrendingUp, Users, Globe, FileText, HelpCircle, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import AnimatedNumber from '../../components/AnimatedNumber';
+import React from 'react';
 function MSMESupportOutreach() {
    useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -9,6 +9,7 @@ import {
   ClipboardList,
   Rocket,
 } from "lucide-react";
+import React from "react";
 
 const services = [
   {

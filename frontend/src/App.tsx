@@ -38,6 +38,7 @@ import CoursesPage from './Pages/Courses Page/Courses';
 import LoginPage from './Pages/Courses Page/LoginPage';
 import MemberBenefits from './Pages/MemberBenefits';
 import ArbitrationCell from './Pages/ArbitrationCell';
+import React from 'react';
 
 const HomePage = () => (
   <>

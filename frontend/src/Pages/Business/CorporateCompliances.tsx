@@ -11,6 +11,7 @@ import {
   Globe,
   Rocket
 } from "lucide-react";
+import React from "react";
 
 const CorporateCompliances = () => {
   const compliances = [

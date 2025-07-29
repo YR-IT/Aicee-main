@@ -14,6 +14,7 @@ import {
   Baby,
   ArrowRight
 } from 'lucide-react';
+import React from 'react';
 
 function IndianLaws() {
     useEffect(() => {

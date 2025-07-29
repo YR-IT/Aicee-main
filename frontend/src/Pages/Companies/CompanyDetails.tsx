@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, MapPin, Globe, Mail, Phone, Fan as Fax, Building2, Send, User, CheckCircle } from 'lucide-react';
 
 interface Company {
+  [x: string]: ReactNode;
   _id: string;
   name: string;
   address: string;

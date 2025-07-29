@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Rocket, CheckCircle, ShieldCheck, Clock3, FileText, BarChart, Users, LayoutDashboard } from "lucide-react";
+import React from "react";
 
 const sections = [
   {

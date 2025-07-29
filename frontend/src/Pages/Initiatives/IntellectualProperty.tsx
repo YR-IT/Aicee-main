@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import {
   Shield, Lock, Eye, UserCheck, FileText, Clock, ChevronRight, Key
 } from 'lucide-react';
+import React from 'react';
 
 function IntellectualProperty() {
   useEffect(() => {

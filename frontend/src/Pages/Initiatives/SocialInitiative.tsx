@@ -3,6 +3,7 @@ import {
   DollarSign, Users, Wind, Sun, Droplets,
   ArrowRight
 } from 'lucide-react';
+import React from 'react';
 import { useEffect } from 'react';
 
 function SocialInitiative() {
