@@ -5,24 +5,29 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 interface BlogPostData {
   title: string;
   content: string;
-  image: File; // should be a File object from input[type="file"]
+  imageUrl: string; // Cloudinary image URL
   author?: string;
 }
 
 export const createBlogPost = async (data: BlogPostData) => {
   try {
-    const formData = new FormData();
-    formData.append('title', data.title);
-    formData.append('content', data.content);
-    formData.append('image', data.image);
+    const payload = {
+      title: data.title,
+      content: data.content,
+      image: data.imageUrl,
+      author: data.author,
+      category: 'business',
+      date: new Date(),
+      views: 0,
+      comments: 0,
+      excerpt: data.content.slice(0, 150),
+      readTime: `${Math.ceil(data.content.split(' ').length / 200)} min read`
+    };
 
-    if (data.author) {
-      formData.append('author', data.author);
-    }
+    const res = await axios.post(`${API_BASE_URL}/api/blogs`, FormData, {
 
-    const res = await axios.post(`${API_BASE_URL}/api/admin/blogs`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
     });
 

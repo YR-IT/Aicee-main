@@ -1,16 +1,7 @@
 import express from 'express';
-import multer from 'multer';
-import { v2 as cloudinary } from 'cloudinary';
-import streamifier from 'streamifier';
-
 import Blog from '../models/Blog.js';
 
-
 const router = express.Router();
-
-// Multer in-memory config
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
 
 // Public: GET all blogs
 router.get('/', async (req, res) => {
@@ -62,32 +53,13 @@ router.post('/approve-member', async (req, res) => {
   }
 });
 
-// ✅ Admin: POST create blog
-router.post('/', upload.single('image'), async (req, res) => {
+// ✅ Admin: POST create blog (without multer/cloudinary)
+router.post('/', async (req, res) => {
   try {
-    const { title, content, author, category, readTime } = req.body;
-    if (!title || !content) {
-      return res.status(400).json({ error: 'Title and content are required' });
-    }
+    const { title, content, author, image, category, readTime } = req.body;
 
-    let imageUrl = '';
-
-    if (req.file) {
-      console.log('📤 Uploading image to Cloudinary...');
-      imageUrl = await new Promise((resolve, reject) => {
-        const stream = cloudinary.uploader.upload_stream(
-          { folder: 'blogs' },
-          (error, result) => {
-            if (error) {
-              console.error('❌ Cloudinary upload error:', error);
-              return reject(error);
-            }
-            console.log('✅ Uploaded to Cloudinary:', result.secure_url);
-            resolve(result.secure_url);
-          }
-        );
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
-      });
+    if (!title || !content || !image) {
+      return res.status(400).json({ error: 'Title, content, and image are required' });
     }
 
     const newBlog = new Blog({
@@ -95,7 +67,7 @@ router.post('/', upload.single('image'), async (req, res) => {
       content,
       excerpt: content.slice(0, 150) + '...',
       author: author || 'Admin',
-      image: imageUrl,
+      image,
       category: category || 'General',
       readTime: readTime || '2 min',
       views: 0

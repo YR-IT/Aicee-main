@@ -1,5 +1,5 @@
-
 import Blog from '../models/Blog.js';
+import Member from '../models/Member.js'; // ✅ Ensure this is imported
 
 // ✅ GET /pending-members
 export const getPendingMembers = async (req, res) => {
@@ -32,7 +32,7 @@ export const approveMember = async (req, res) => {
   }
 };
 
-// ✅ POST /blogs
+// ✅ POST /blogs - expects image URL from Cloudinary
 export const createBlogPost = async (req, res) => {
   const { title, excerpt, image, author, category, readTime } = req.body;
 
@@ -45,13 +45,14 @@ export const createBlogPost = async (req, res) => {
       title,
       excerpt,
       image,
-      author: author || 'Admin',
-      category,
-      readTime,
+      author: author?.trim() || 'Admin',
+      category: category?.trim() || 'General',
+      readTime: readTime?.trim() || '2 min',
+      views: 0,
     });
 
     await newBlog.save();
-    res.status(201).json({ message: 'Blog created successfully', blog: newBlog });
+    res.status(201).json({ message: '✅ Blog created successfully', blog: newBlog });
   } catch (err) {
     console.error('❌ Error creating blog:', err);
     res.status(500).json({ error: 'Failed to create blog' });

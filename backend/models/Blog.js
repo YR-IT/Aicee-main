@@ -13,7 +13,8 @@ const blogSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: true, // Cloudinary image URL
+    required: true, // Cloudinary URL
+    trim: true,
   },
   date: {
     type: Date,
@@ -26,10 +27,12 @@ const blogSchema = new mongoose.Schema({
   },
   category: {
     type: String,
+    default: 'General',
     trim: true,
   },
   readTime: {
     type: String,
+    default: '2 min',
     trim: true,
   },
   views: {

@@ -10,17 +10,23 @@ const AdminPanel = () => {
 
   const handleImageUpload = async (): Promise<string | null> => {
     if (!image) return null;
+
     const formData = new FormData();
     formData.append('file', image);
-    formData.append('upload_preset', 'aicee_preset'); // ✅ your actual upload preset
+    formData.append('upload_preset', 'aicee_preset'); // 👈 Ensure this preset is created and unsigned
+    console.log('Uploading to Cloudinary with preset: aicee_preset');
+
     try {
       const response = await axios.post(
-        'https://api.cloudinary.com/v1_1/dkoostvfb/image/upload', // ✅ your actual cloud name
+        'https://api.cloudinary.com/v1_1/dkoostvfb/image/upload',
         formData
       );
+      console.log('✅ Cloudinary upload successful:', response.data);
       return response.data.secure_url;
-    } catch (error) {
-      console.error('❌ Image upload failed:', error);
+    } catch (error: any) {
+      const message = error.response?.data?.error?.message || error.message;
+      console.error('❌ Image upload failed:', message);
+      alert('Image upload failed: ' + message);
       return null;
     }
   };
@@ -32,7 +38,6 @@ const AdminPanel = () => {
     const imageUrl = await handleImageUpload();
 
     if (!imageUrl) {
-      alert('Image upload failed.');
       setUploading(false);
       return;
     }
@@ -57,9 +62,10 @@ const AdminPanel = () => {
       setAuthor('');
       setContent('');
       setImage(null);
-    } catch (error) {
-      console.error('❌ Error submitting post:', error.response?.data || error.message);
-      alert('❌ Failed to submit post.');
+    } catch (error: any) {
+      const message = error.response?.data?.error || error.message;
+      console.error('❌ Error submitting post:', message);
+      alert('❌ Failed to submit post: ' + message);
     } finally {
       setUploading(false);
     }
@@ -107,6 +113,7 @@ const AdminPanel = () => {
               accept="image/*"
               onChange={(e) => setImage(e.target.files?.[0] || null)}
               className="block w-full"
+              required
             />
           </div>
           <button
