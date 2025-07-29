@@ -1,237 +1,119 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
 
-interface Member {
-  _id: string;
-  fullname: string;
-  email: string;
-  phone: string;
-  status: string;
-  createdAt: string;
-}
+const AdminPanel = () => {
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [content, setContent] = useState('');
+  const [image, setImage] = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
 
-interface BlogPost {
-  title: string;
-  excerpt: string;
-  image?: string;
-  date?: string;
-  author: string;
-  category: string;
-  readTime: string;
-  views: number;
-}
-
-const Admin: React.FC = () => {
-  const navigate = useNavigate();
-  const [pendingMembers, setPendingMembers] = useState<Member[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [approving, setApproving] = useState<string | null>(null);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [newBlog, setNewBlog] = useState<BlogPost>({
-    title: '',
-    excerpt: '',
-    image: '',
-    date: new Date().toISOString(),
-    author: 'ADMIN',
-    category: 'business',
-    readTime: '5 min read',
-    views: 0
-  });
-  const [blogSubmitting, setBlogSubmitting] = useState(false);
-
-  useEffect(() => {
-    const sessionCheck = localStorage.getItem('isLoggedIn');
-    if (!sessionCheck || sessionCheck !== 'true') {
-      navigate('/adminlogin');
-      return;
-    }
-    setLoggedIn(true);
-
-    let timer: NodeJS.Timeout;
-    timer = setTimeout(() => {
-      setLoggedIn(false);
-      localStorage.removeItem('isLoggedIn');
-      navigate('/adminlogin');
-    }, 30 * 60 * 1000); // 30 minutes in milliseconds
-
-    return () => clearTimeout(timer);
-  }, [navigate]);
-
-  const fetchPending = async () => {
-    setLoading(true);
+  const handleImageUpload = async (): Promise<string | null> => {
+    if (!image) return null;
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('upload_preset', 'YOUR_UPLOAD_PRESET'); // <-- replace this
     try {
-      const res = await axios.get('http://localhost:5000/pending-members');
-      setPendingMembers(res.data);
-    } catch (err) {
-      console.error("Error fetching pending members:", err);
-    } finally {
-      setLoading(false);
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload', // <-- replace this
+        formData
+      );
+      return response.data.secure_url;
+    } catch (error) {
+      console.error('Image upload failed:', error);
+      return null;
     }
   };
 
-  const approveMember = async (id: string) => {
-    setApproving(id);
-    try {
-      await axios.post('http://localhost:5000/approve-member', { id });
-      setPendingMembers(prev => prev.filter(m => m._id !== id));
-    } catch (err) {
-      console.error("Error approving member:", err);
-    } finally {
-      setApproving(null);
-    }
-  };
-
-  const handleBlogSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setBlogSubmitting(true);
+    setUploading(true);
+
+    const imageUrl = await handleImageUpload();
+
+    const newPost = {
+      title,
+      author,
+      excerpt: content.slice(0, 150),
+      content,
+      image: imageUrl,
+      category: 'business', // default/fixed category
+      date: new Date(),
+      views: 0,
+      comments: 0,
+      readTime: `${Math.ceil(content.split(' ').length / 200)} min read`
+    };
+
     try {
-      await axios.post('http://localhost:5000/blogs', newBlog);
-      setNewBlog({
-        title: '',
-        excerpt: '',
-        image: '',
-        date: new Date().toISOString(),
-        author: 'ADMIN',
-        category: 'business',
-        readTime: '5 min read',
-        views: 0
-      });
+      await axios.post('http://localhost:5000/blogs', newPost);
       alert('Blog post created successfully!');
-    } catch (err) {
-      console.error("Error creating blog post:", err);
-      alert('Failed to create blog post.');
+      setTitle('');
+      setAuthor('');
+      setContent('');
+      setImage(null);
+    } catch (error) {
+      console.error('Error submitting post:', error);
+      alert('Failed to submit post.');
     } finally {
-      setBlogSubmitting(false);
+      setUploading(false);
     }
   };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem('isLoggedIn');
-    navigate('/');
-  };
-
-  useEffect(() => {
-    if (loggedIn) {
-      fetchPending();
-    }
-  }, [loggedIn]);
-
-  if (!loggedIn) {
-    return null; // Render nothing until redirected
-  }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold mb-6">Admin Panel</h1>
-
-      {/* Member Approval Section */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Approve Members</h2>
-        {loading ? (
-          <p>Loading pending requests...</p>
-        ) : pendingMembers.length === 0 ? (
-          <p>No pending members to review.</p>
-        ) : (
-          <div className="space-y-4">
-            {pendingMembers.map(member => (
-              <div key={member._id} className="bg-white p-4 rounded shadow flex flex-col sm:flex-row sm:items-center justify-between">
-                <div className="space-y-1">
-                  <p><strong>Name:</strong> {member.fullname}</p>
-                  <p><strong>Email:</strong> {member.email}</p>
-                  <p><strong>Phone:</strong> {member.phone}</p>
-                  <p className="text-sm text-gray-500">Applied on {new Date(member.createdAt).toLocaleString()}</p>
-                </div>
-                <button
-                  onClick={() => approveMember(member._id)}
-                  disabled={approving === member._id}
-                  className="mt-4 sm:mt-0 sm:ml-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition disabled:opacity-50"
-                >
-                  {approving === member._id ? 'Approving...' : 'Approve'}
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Blog Entry Section */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-4">Create New Blog Post</h2>
-        <form onSubmit={handleBlogSubmit} className="bg-white p-6 rounded shadow space-y-4">
+    <div className="min-h-screen bg-gray-50 p-8">
+      <div className="max-w-2xl mx-auto bg-white shadow-xl rounded-2xl p-8 border border-gray-200">
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Create Blog Post</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Title</label>
+            <label className="block font-semibold text-gray-700 mb-1">Title</label>
             <input
               type="text"
-              value={newBlog.title}
-              onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+              className="w-full border rounded-lg px-4 py-2"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Excerpt</label>
+            <label className="block font-semibold text-gray-700 mb-1">Author</label>
+            <input
+              type="text"
+              className="w-full border rounded-lg px-4 py-2"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label className="block font-semibold text-gray-700 mb-1">Content</label>
             <textarea
-              value={newBlog.excerpt}
-              onChange={(e) => setNewBlog({ ...newBlog, excerpt: e.target.value })}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+              className="w-full border rounded-lg px-4 py-2"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              rows={6}
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Image URL</label>
+            <label className="block font-semibold text-gray-700 mb-1">Image</label>
             <input
-              type="url"
-              value={newBlog.image || ''}
-              onChange={(e) => setNewBlog({ ...newBlog, image: e.target.value })}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Category</label>
-            <select
-              value={newBlog.category}
-              onChange={(e) => setNewBlog({ ...newBlog, category: e.target.value })}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-            >
-              <option value="business">Business News</option>
-              <option value="international">International</option>
-              <option value="technology">Technology</option>
-              <option value="policy">Policy Updates</option>
-              <option value="monetary">Monetary Policy</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Read Time</label>
-            <input
-              type="text"
-              value={newBlog.readTime}
-              onChange={(e) => setNewBlog({ ...newBlog, readTime: e.target.value })}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-              placeholder="e.g., 5 min read"
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files?.[0] || null)}
+              className="block w-full"
             />
           </div>
           <button
             type="submit"
-            disabled={blogSubmitting}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition disabled:opacity-50"
+            disabled={uploading}
+            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition-all"
           >
-            {blogSubmitting ? 'Submitting...' : 'Create Blog Post'}
+            {uploading ? 'Posting...' : 'Submit Post'}
           </button>
         </form>
-      </div>
-
-      <div className="mt-6 text-center">
-        <button
-          onClick={handleLogout}
-          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors duration-300"
-        >
-          Logout
-        </button>
       </div>
     </div>
   );
 };
 
-export default Admin;
+export default AdminPanel;
