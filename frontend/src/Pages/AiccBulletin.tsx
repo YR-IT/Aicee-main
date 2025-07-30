@@ -1,27 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Calendar, 
-  User, 
-  MessageCircle, 
-  ArrowRight, 
-  Search,
+import { useState, useEffect } from 'react';
+import {
+  Calendar,
+  User,
+  ArrowRight,
   Clock,
   Eye,
   BookOpen,
-  TrendingUp,
-  Globe,
-  Building2,
-  Briefcase,
-  DollarSign,
-  FileText,
-  Tag
+  Tags,
 } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
 
 interface Article {
   _id: string;
   title: string;
-  excerpt: string;
+  content: string;
   image?: string;
   date: string;
   author: string;
@@ -29,69 +21,47 @@ interface Article {
   category: string;
   readTime: string;
   views: number;
-  
 }
 
-
-
-
 const BulletinPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [featuredArticle, setFeaturedArticle] = useState<Article | null>(null);
-  const [recentPosts, setRecentPosts] = useState<Article[]>([]);
   const [allArticles, setAllArticles] = useState<Article[]>([]);
+  const [recentPosts, setRecentPosts] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const categories = [
-    { id: 'all', name: 'All Posts', icon: FileText },
-    { id: 'monetary', name: 'Monetary Policy', icon: DollarSign },
-    { id: 'business', name: 'Business News', icon: Briefcase },
-    { id: 'international', name: 'International', icon: Globe },
-    { id: 'technology', name: 'Technology', icon: TrendingUp },
-    { id: 'policy', name: 'Policy Updates', icon: Building2 }
-  ];
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [currentView, setCurrentView] = useState<'blog' | 'article'>('blog');
 
   useEffect(() => {
     const fetchArticles = async () => {
       setIsLoading(true);
       try {
-        // Fetch all articles from blogs collection
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
-
         const data = await response.json();
-        
-        // Transform server data to match Article interface
+
         const transformedArticles = data.map((item: any) => ({
           _id: item._id,
           title: item.title || 'Untitled Article',
-          excerpt: item.excerpt || 'No description available',
+          content: item.content || 'No description available',
           image: item.image || 'https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2',
-          date: item.date ? new Date(item.date).toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-          }) : new Date().toLocaleDateString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric'
-          }),
+          date: item.date
+            ? new Date(item.date).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })
+            : new Date().toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              }),
           author: item.author || 'ADMIN',
           comments: item.comments || Math.floor(Math.random() * 20),
           category: item.category || 'business',
           readTime: item.readTime || `${Math.floor(Math.random() * 5 + 3)} min read`,
-          views: item.views || Math.floor(Math.random() * 1000 + 500)
+          views: item.views || Math.floor(Math.random() * 1000 + 500),
         }));
 
-        // Set featured article (first article)
-        setFeaturedArticle(transformedArticles[0] || null);
-
-        // Set recent posts (latest 5 articles)
-        setRecentPosts(transformedArticles.slice(0, 5));
-
-        // Set all articles
         setAllArticles(transformedArticles);
-
+        setRecentPosts(transformedArticles.slice(0, 5));
       } catch (error) {
         console.error('Error fetching articles:', error);
       } finally {
@@ -103,334 +73,234 @@ const BulletinPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const filteredArticles = allArticles.filter(article => {
-    const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
-    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         article.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const handleNavigation = (path: string) => {
-    console.log('Navigating to:', path);
+  const openArticle = (article: Article) => {
+    setSelectedArticle(article);
+    setCurrentView('article');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const backToBlog = () => {
+    setSelectedArticle(null);
+    setCurrentView('blog');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+    }, []);
 
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white text-gray-600">
         <svg className="animate-spin h-12 w-12 text-orange-500 mb-4" viewBox="0 0 24 24">
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-            fill="none"
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"
-          />
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z" />
         </svg>
         <div className="text-lg font-medium">Loading latest blog posts...</div>
       </div>
     );
   }
-  
+
+  if (currentView === 'article' && selectedArticle) {
+    const formattedContent = selectedArticle.content
+      .split(/\n+/)
+      .filter((p) => p.trim() !== '')
+      .map((para) => `<p>${para.trim()}</p>`)
+      .join('')
+      .replace(/<\/p><p>/g, '</p><p>&nbsp;</p><p>');
+
+   return (
+  <div className="min-h-screen bg-gradient-to-b from-white to-slate-100">
+
+  {/* Hero Section */}
+  <div className="relative h-[70vh] sm:h-[60vh] w-full">
+    <img
+      src={selectedArticle.image}
+      alt={selectedArticle.title}
+      className="w-full h-full object-cover brightness-50"
+    />
+
+    {/* Top-Left Back Button */}
+    <div className="absolute top-4 left-8 z-10">
+      <button
+        onClick={backToBlog}
+        className="flex items-center gap-2 bg-white/90 text-gray-900 hover:bg-white/70 font-medium px-4 py-2 rounded-full backdrop-blur-sm shadow-md transition"
+      >
+        <ArrowRight className="w-4 h-4 rotate-180" />
+        Back
+      </button>
+    </div>
+
+    {/* Hero Content */}
+    <div className="absolute inset-0 flex items-center justify-center px-4">
+      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 max-w-4xl text-center shadow-xl">
+        <span className="inline-block mb-4 px-4 py-1 text-xs font-semibold rounded-full bg-indigo-500/70 text-white shadow-sm">
+          Featured Article
+        </span>
+        <h1 className="text-white text-xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg">
+          {selectedArticle.title}
+        </h1>
+        <div className="flex flex-wrap justify-center items-center gap-4 mt-6 text-sm text-slate-200 font-medium">
+          <div className="flex items-center gap-1">
+            <User className="w-4 h-4 text-orange-300" />
+            {selectedArticle.author}
+          </div>
+          <div className="flex items-center gap-1">
+            <Calendar className="w-4 h-4 text-orange-300" />
+            {selectedArticle.date}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Article Body */}
+  <section className="max-w-4xl mx-auto px-4 py-12">
+    <article
+      className="prose prose-lg md:prose-xl prose-slate max-w-none leading-relaxed text-justify"
+      style={{
+        wordBreak: 'break-word',
+        textWrap: 'pretty',
+      }}
+      dangerouslySetInnerHTML={{ __html: formattedContent }}
+    />
+  </section>
+</div>
+
+);
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">AICC Bulletin</h1>
-          <div className="flex items-center justify-center space-x-2 text-gray-300">
-            <span className="hover:text-orange-400 transition-colors cursor-pointer">Home</span>
-            <ArrowRight className="w-4 h-4 text-orange-500" />
-            <span className="text-orange-400">AICC Bulletin</span>
-          </div>
-        </div>
-      </div>
+  <div className="max-w-7xl mx-auto text-center">
+    <h1 className="text-5xl md:text-6xl font-bold mb-4">AICC Bulletin</h1>
+
+    <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-6">
+      Stay informed with the latest news, updates, and insights from AICC — your trusted source for industry developments and thought leadership.
+    </p>
+
+   <div className="flex items-center justify-center space-x-2 text-gray-300 mb-8">
+  <Link to="/" className="hover:text-orange-400 transition-colors">
+    Home
+  </Link>
+  <ArrowRight className="w-4 h-4 text-orange-500" />
+  <span className="text-orange-400">AICC Bulletin</span>
+</div>
+  </div>
+</div>
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-          {/* Main Content */}
-          <div className="lg:col-span-3">
-            <button
-              onClick={() => handleNavigation('AICC-Bulletin')}
-              className="block w-full text-left px-6 py-3 text-gray-700 hover:bg-gray-100 font-semibold border-b"
-            >
-              AICC Bulletin
-            </button>
-
-            {/* Featured Article */}
-            {featuredArticle && (
-              <div className="bg-white rounded-3xl shadow-xl overflow-hidden mb-12 border border-gray-100">
+          <div className="lg:col-span-3 space-y-10">
+            {allArticles.map((article) => (
+              <div key={article._id} className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                 <div className="relative">
-                  <img 
-                    src={featuredArticle.image} 
-                    alt={featuredArticle.title}
-                    className="w-full h-80 object-cover"
-                  />
-                  <div className="absolute top-6 left-6">
-                    <span className="bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold uppercase">
-                      Featured
-                    </span>
-                  </div>
-                  <div className="absolute bottom-6 left-4 right-4">
-                    <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-4 text-white">
-                      <div className="flex items-center space-x-2 md:space-x-6 text-xs mb-3">
-                        <div className="flex items-center space-x-2">
-                          <Calendar className="w-4 h-4 text-orange-400" />
-                          <span>{featuredArticle.date}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <User className="w-4 h-4 text-orange-400" />
-                          <span>{featuredArticle.author}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <MessageCircle className="w-4 h-4 text-orange-400" />
-                          <span>{featuredArticle.comments} Comments</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <img src={article.image} alt={article.title} className="w-full h-80 object-cover" />
                 </div>
-                
+
                 <div className="p-8">
                   <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-tight">
-                    {featuredArticle.title}
+                    {article.title}
                   </h2>
                   <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                    {featuredArticle.excerpt}
+                    {article.content.slice(0, 180)}...
                   </p>
-                  
-                  <div className="flex items-center justify-between">
+
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex items-center space-x-6 text-sm text-gray-500">
                       <div className="flex items-center space-x-2">
-                        <Clock className="w-4 h-4" />
-                        <span>{featuredArticle.readTime}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Eye className="w-4 h-4" />
-                        <span>{featuredArticle.views} views</span>
-                      </div>
-                    </div>
-                    
-                    <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-4 py-2 rounded-2xl font-semibold text-xs transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
-                      <span>Read More</span>
-                      <ArrowRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Search and Filter */}
-            <div className="bg-grey rounded-3xl shadow-lg p-8 mb-12 border border-gray-100">
-              <div className="flex flex-col md:flex-row gap-10">
-                <div className="flex-1 relative">
-                  <input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-10 py-10 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  />
-                  <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                </div>
-                
-                <div className="flex flex-wrap gap-3">
-                  {categories.map((category) => (
-                    <button
-                      key={category.id}
-                      onClick={() => setSelectedCategory(category.id)}
-                      className={`flex items-center space-x-2 px-4 py-3 rounded-2xl font-medium transition-all duration-300 ${
-                        selectedCategory === category.id
-                          ? 'bg-gradient-to-r from-orange-600 to-red-500 text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      <category.icon className="w-4 h-4" />
-                      <span>{category.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Articles Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {filteredArticles.map((article) => (
-                <div key={article._id} className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden group">
-                  <div className="relative">
-                    <img 
-                      src={article.image} 
-                      alt={article.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
-                        {categories.find(cat => cat.id === article.category)?.name}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
-                      <div className="flex items-center space-x-1">
                         <Calendar className="w-4 h-4" />
                         <span>{article.date}</span>
                       </div>
-                      <div className="flex items-center space-x-1">
+                      <div className="flex items-center space-x-2">
                         <Clock className="w-4 h-4" />
                         <span>{article.readTime}</span>
                       </div>
-                    </div>
-                    
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 leading-tight group-hover:text-orange-600 transition-colors duration-300">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">
-                      {article.excerpt}
-                    </p>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4 text-sm text-gray-500">
-                        <div className="flex items-center space-x-1">
-                          <Eye className="w-4 h-4" />
-                          <span>{article.views}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MessageCircle className="w-4 h-4" />
-                          <span>{article.comments}</span>
-                        </div>
+                      <div className="flex items-center space-x-2">
+                        <Eye className="w-4 h-4" />
+                        <span>{article.views} views</span>
                       </div>
-                      
-                      <button className="text-orange-600 hover:text-red-500 font-semibold flex items-center space-x-2 transition-colors duration-300">
-                        <span>Read More</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
                     </div>
+
+                    <button
+  onClick={() => openArticle(article)}
+  className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-4 py-2 rounded-2xl font-semibold text-xs transition-all duration-300 transform hover:scale-105 w-fit self-center"
+>
+  <span>Read More</span>
+  <ArrowRight className="w-5 h-5" />
+</button>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:col-span-1">
-            {/* Recent Posts */}
-            <div className="bg-white rounded-3xl shadow-lg p-8 mb-8 border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-2">
-                <BookOpen className="w-6 h-6 text-orange-600" />
-                <span>Recent Posts</span>
-              </h3>
-              
-              <div className="space-y-6">
-                {recentPosts.map((post) => (
-                  <div key={post._id} className="group cursor-pointer">
-                    <h4 className="text-gray-800 font-semibold leading-tight mb-2 group-hover:text-orange-600 transition-colors duration-300">
-                      {post.title}
-                    </h4>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="w-3 h-3" />
-                        <span>{post.date}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Clock className="w-3 h-3" />
-                        <span>{post.readTime}</span>
-                      </div>
-                    </div>
-                    <div className="h-px bg-gray-200 mt-4"></div>
-                  </div>
-                ))}
-              </div>
+            {/* Sidebar */}
+          <div className="lg:col-span-1 space-y-8 sticky top-24 self-start">
+  {/* Recent Posts */}
+  <div className="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
+    <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-2">
+      <BookOpen className="w-6 h-6 text-orange-600" />
+      <span>Recent Posts</span>
+    </h3>
+    <div className="space-y-6">
+      {recentPosts.map((post) => (
+        <div key={post._id} className="group cursor-pointer" onClick={() => openArticle(post)}>
+          <h4 className="text-gray-800 font-semibold leading-tight mb-2 group-hover:text-orange-600 transition-colors duration-300">
+            {post.title}
+          </h4>
+          <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <div className="flex items-center space-x-1">
+              <Calendar className="w-3 h-3" />
+              <span>{post.date}</span>
             </div>
-
-            {/* Categories */}
-            <div className="bg-white rounded-3xl shadow-lg p-8 mb-8 border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-2">
-                <Tag className="w-6 h-6 text-orange-600" />
-                <span>Categories</span>
-              </h3>
-              
-              <div className="space-y-3">
-                {categories.slice(1).map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`w-full flex items-center justify-between p-4 rounded-2xl transition-all duration-300 ${
-                      selectedCategory === category.id
-                        ? 'bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 border border-orange-200'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <category.icon className="w-5 h-5" />
-                      <span className="font-medium">{category.name}</span>
-                    </div>
-                    <span className="text-sm bg-white px-2 py-1 rounded-full">
-                      {allArticles.filter(article => article.category === category.id).length}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Newsletter Signup */}
-            <div className="bg-gradient-to-br from-orange-600 to-red-500 rounded-3xl shadow-lg p-8 text-white">
-              <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-              <p className="text-orange-100 mb-6">
-                Subscribe to our newsletter for the latest business insights and policy updates.
-              </p>
-              
-              <div className="space-y-4">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-4 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
-                />
-                <button className="w-full bg-white text-orange-600 py-3 px-6 rounded-2xl font-bold hover:bg-orange-50 transition-all duration-300 transform hover:scale-105">
-                  Subscribe Now
-                </button>
-              </div>
+            <div className="flex items-center space-x-1">
+              <Clock className="w-3 h-3" />
+              <span>{post.readTime}</span>
             </div>
           </div>
+          <div className="h-px bg-gray-200 mt-4"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Popular Topics */}
+ <div className="bg-white rounded-3xl shadow-lg p-6 border border-gray-100">
+  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center space-x-2">
+    <Tags className="w-5 h-5 text-orange-600" />
+    <span>Popular Topics</span>
+  </h3>
+
+  <div className="flex flex-col gap-2">
+    {['Economy', 'Startups', 'Politics', 'Trade', 'Leadership'].map((topic) => (
+      <span
+        key={topic}
+        className="w-full bg-orange-100 text-orange-700 text-sm font-medium px-4 py-2 rounded-full hover:bg-orange-200 transition text-center cursor-pointer"
+      >
+        {topic}
+      </span>
+    ))}
+  </div>
+</div>
+  
+  {/* Subscribe */}
+  <div className="bg-gradient-to-br from-orange-100 to-white rounded-3xl shadow-lg p-6 border border-gray-100 text-center">
+    <h3 className="text-xl font-semibold text-orange-700 mb-2">Stay Updated</h3>
+    <p className="text-sm text-gray-600 mb-4">
+      Subscribe to get the latest bulletins, events, and insights.
+    </p>
+    <a
+      href="mailto:info@aicc.ind.in?subject=Subscribe%20Me&body=I%20would%20like%20to%20receive%20updates%20from%20AICC%20Bulletin."
+      className="inline-block bg-orange-500 text-white px-4 py-2 rounded-full font-medium hover:bg-orange-600 transition"
+    >
+      Subscribe Now
+    </a>
+  </div>
+</div>
+
         </div>
       </div>
-
-      {/* Custom CSS for animations */}
-      <style>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slide-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes count-up {
-          from { opacity: 0; transform: scale(0.5); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-        
-        .animate-slide-up {
-          animation: slide-up 1s ease-out 0.3s both;
-        }
-        
-        .animate-count-up {
-          animation: count-up 0.8s ease-out both;
-        }
-      `}</style>
     </div>
   );
 };
