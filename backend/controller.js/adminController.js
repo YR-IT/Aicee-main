@@ -32,7 +32,7 @@ export const approveMember = async (req, res) => {
   }
 };
 
-// ✅ POST /blogs - expects image URL from Cloudinary
+// ✅ POST /blogs
 export const createBlogPost = async (req, res) => {
   const { title, content, excerpt, image, author, category, readTime } = req.body;
 
@@ -48,8 +48,10 @@ export const createBlogPost = async (req, res) => {
       image,
       author: author?.trim() || 'Admin',
       category: category?.trim() || 'General',
-      readTime: readTime?.trim() || '2 min',
+      readTime: readTime?.trim() || `${Math.ceil(content.split(' ').length / 200)} min read`,
       views: 0,
+      comments: 0,
+      date: new Date()
     });
 
     await newBlog.save();
@@ -57,5 +59,58 @@ export const createBlogPost = async (req, res) => {
   } catch (err) {
     console.error('❌ Error creating blog:', err);
     res.status(500).json({ error: 'Failed to create blog' });
+  }
+};
+
+// ✅ GET /blogs
+export const getAllBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find().sort({ createdAt: -1 });
+    res.status(200).json(blogs);
+  } catch (err) {
+    console.error('❌ Error fetching blogs:', err);
+    res.status(500).json({ error: 'Failed to fetch blogs' });
+  }
+};
+
+// ✅ GET /blogs/:id
+export const getBlogById = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ error: 'Blog not found' });
+    res.status(200).json(blog);
+  } catch (err) {
+    console.error('❌ Error fetching blog:', err);
+    res.status(500).json({ error: 'Failed to fetch blog' });
+  }
+};
+
+// ✅ PUT /blogs/:id
+export const updateBlogPost = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!blog) return res.status(404).json({ error: 'Blog not found' });
+
+    res.status(200).json({ message: '✅ Blog updated successfully', blog });
+  } catch (err) {
+    console.error('❌ Error updating blog:', err);
+    res.status(500).json({ error: 'Failed to update blog' });
+  }
+};
+
+// ✅ DELETE /blogs/:id
+export const deleteBlogPost = async (req, res) => {
+  try {
+    const blog = await Blog.findByIdAndDelete(req.params.id);
+    if (!blog) return res.status(404).json({ error: 'Blog not found' });
+
+    res.status(200).json({ message: '🗑️ Blog deleted successfully' });
+  } catch (err) {
+    console.error('❌ Error deleting blog:', err);
+    res.status(500).json({ error: 'Failed to delete blog' });
   }
 };

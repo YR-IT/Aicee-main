@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import blogRoutes from './routes/blogRoutes.js';
+import memberRoutes from './routes/memberRoutes.js'; // ✅ Import member routes
 
 dotenv.config();
 
@@ -40,13 +41,19 @@ app.use(cors({
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
-// ✅ Routes
-app.use('/api/blogs', blogRoutes);
-
+// ✅ API Routes
+app.use('/api/blogs', blogRoutes);     // Blog-related routes (GET, POST, GET/:id)
+app.use('/api/admin', memberRoutes);   // Member-related routes (/pending-members, /approve-member)
 
 // ✅ Root route
 app.get('/', (req, res) => {
   res.send('✅ AICEE Backend is running!');
+});
+
+// ✅ 404 Handler (Optional, for catching undefined routes)
+app.use((req, res, next) => {
+  console.warn(`❌ Route not found: ${req.originalUrl}`);
+  res.status(404).json({ error: `Route ${req.originalUrl} not found` });
 });
 
 // ✅ MongoDB connection

@@ -38,7 +38,7 @@ const blogSchema = new mongoose.Schema(
     },
     readTime: {
       type: String,
-      default: '2 min',
+      default: '2 min read',
       trim: true,
     },
     views: {
@@ -48,11 +48,12 @@ const blogSchema = new mongoose.Schema(
     comments: {
       type: Number,
       default: 0,
-    }
+    },
   },
   {
-    timestamps: true, // Adds createdAt and updatedAt automatically
+    timestamps: true, // adds createdAt and updatedAt fields
   }
 );
 
-export default mongoose.model('Blog', blogSchema);
+// Avoid OverwriteModelError in dev environments
+export default mongoose.models.Blog || mongoose.model('Blog', blogSchema);

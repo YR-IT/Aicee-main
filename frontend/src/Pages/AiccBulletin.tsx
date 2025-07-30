@@ -16,6 +16,7 @@ import {
   FileText,
   Tag
 } from 'lucide-react';
+import axios from 'axios';
 
 interface Article {
   _id: string;
@@ -28,7 +29,10 @@ interface Article {
   category: string;
   readTime: string;
   views: number;
+  
 }
+const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
+
 
 const BulletinPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
