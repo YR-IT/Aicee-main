@@ -232,8 +232,8 @@ const BulletinPage = () => {
             ))}
           </div>
 
-
-          <div className="lg:col-span-1 space-y-8">
+            {/* Sidebar */}
+          <div className="lg:col-span-1 space-y-8 sticky top-24 self-start">
   {/* Recent Posts */}
   <div className="bg-white rounded-3xl shadow-lg p-8 border border-gray-100">
     <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center space-x-2">
@@ -294,8 +294,8 @@ const BulletinPage = () => {
       Subscribe Now
     </a>
   </div>
-
 </div>
+
         </div>
       </div>
     </div>
