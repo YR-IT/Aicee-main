@@ -16,7 +16,7 @@ import {
   FileText,
   Tag
 } from 'lucide-react';
-import axios from 'axios';
+
 
 interface Article {
   _id: string;
@@ -31,7 +31,8 @@ interface Article {
   views: number;
   
 }
-const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/blogs`);
+
+
 
 
 const BulletinPage = () => {
@@ -56,7 +57,7 @@ const BulletinPage = () => {
       setIsLoading(true);
       try {
         // Fetch all articles from blogs collection
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/blogs`);
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/blogs`);
         const data = await response.json();
         
         // Transform server data to match Article interface
@@ -114,11 +115,28 @@ const BulletinPage = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading articles...</div>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white text-gray-600">
+        <svg className="animate-spin h-12 w-12 text-orange-500 mb-4" viewBox="0 0 24 24">
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+            fill="none"
+          />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"
+          />
+        </svg>
+        <div className="text-lg font-medium">Loading latest blog posts...</div>
       </div>
     );
   }
+  
 
   return (
     <div className="min-h-screen bg-gray-50">
