@@ -84,6 +84,9 @@ const BulletinPage = () => {
     setCurrentView('blog');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top when page loads
+    }, []);
 
   if (isLoading) {
     return (
