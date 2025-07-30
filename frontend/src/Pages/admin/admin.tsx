@@ -8,6 +8,7 @@ const AdminPanel = () => {
   const [image, setImage] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [blogs, setBlogs] = useState([]);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -47,10 +48,13 @@ const AdminPanel = () => {
     e.preventDefault();
     setUploading(true);
 
-    const imageUrl = await handleImageUpload();
-    if (!imageUrl) {
-      setUploading(false);
-      return;
+    let imageUrl = null;
+    if (image) {
+      imageUrl = await handleImageUpload();
+      if (!imageUrl) {
+        setUploading(false);
+        return;
+      }
     }
 
     const newPost = {
@@ -58,7 +62,7 @@ const AdminPanel = () => {
       author,
       excerpt: content.slice(0, 150),
       content,
-      image: imageUrl,
+      image: imageUrl || undefined,
       category: 'business',
       date: new Date(),
       views: 0,
@@ -67,13 +71,21 @@ const AdminPanel = () => {
     };
 
     try {
-      await axios.post(`${API_BASE_URL}/api/blogs`, newPost);
-      alert('✅ Blog post created successfully!');
+      if (editingId) {
+        await axios.put(`${API_BASE_URL}/api/blogs/${editingId}`, newPost);
+        alert('✏️ Blog updated successfully!');
+      } else {
+        await axios.post(`${API_BASE_URL}/api/blogs`, newPost);
+        alert('✅ Blog post created successfully!');
+      }
+
+      // reset form
       setTitle('');
       setAuthor('');
       setContent('');
       setImage(null);
-      fetchBlogs(); // refresh list
+      setEditingId(null);
+      fetchBlogs();
     } catch (error: any) {
       alert('❌ Failed to submit post: ' + (error.response?.data?.error || error.message));
     } finally {
@@ -96,7 +108,28 @@ const AdminPanel = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-2xl mx-auto bg-white shadow-xl rounded-2xl p-8 border border-gray-200 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Create Blog Post</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+          {editingId ? '✏️ Edit Blog Post' : 'Create Blog Post'}
+        </h2>
+
+        {editingId && (
+          <div className="text-center text-yellow-600 text-sm mb-4">
+            You are editing a post.{' '}
+            <button
+              onClick={() => {
+                setEditingId(null);
+                setTitle('');
+                setAuthor('');
+                setContent('');
+                setImage(null);
+              }}
+              className="text-blue-600 underline"
+            >
+              Cancel edit
+            </button>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
             type="text"
@@ -127,14 +160,13 @@ const AdminPanel = () => {
             accept="image/*"
             onChange={(e) => setImage(e.target.files?.[0] || null)}
             className="block w-full"
-            required
           />
           <button
             type="submit"
             disabled={uploading}
             className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg"
           >
-            {uploading ? 'Posting...' : 'Submit Post'}
+            {uploading ? 'Saving...' : editingId ? 'Update Post' : 'Submit Post'}
           </button>
         </form>
       </div>
@@ -155,10 +187,22 @@ const AdminPanel = () => {
                 <p className="text-gray-700 mb-3">{blog.excerpt}</p>
                 <div className="flex gap-3">
                   <button
-                    className="text-sm px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={() => alert('🛠️ Edit functionality coming soon')}
+                    className="text-sm px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                    onClick={() => {
+                      setTitle(blog.title);
+                      setAuthor(blog.author);
+                      setContent(blog.content);
+                      setEditingId(blog._id);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                   >
                     Edit
+                  </button>
+                  <button
+                    className="text-sm px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+                    onClick={() => window.open(`/blog/${blog._id}`, '_blank')}
+                  >
+                    Preview
                   </button>
                   <button
                     className="text-sm px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
