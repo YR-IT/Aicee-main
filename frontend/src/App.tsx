@@ -82,6 +82,7 @@ function App() {
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/member-benefits" element={<MemberBenefits />} />
         <Route path ="/admin" element={<Admin />} />
+        
     
       </Routes>
       <Footer />

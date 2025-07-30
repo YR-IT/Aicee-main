@@ -9,6 +9,7 @@ const AdminPanel = () => {
   const [uploading, setUploading] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [previewBlog, setPreviewBlog] = useState<any | null>(null);
 
   const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -27,7 +28,6 @@ const AdminPanel = () => {
 
   const handleImageUpload = async (): Promise<string | null> => {
     if (!image) return null;
-
     const formData = new FormData();
     formData.append('file', image);
     formData.append('upload_preset', 'aicee_preset');
@@ -200,7 +200,7 @@ const AdminPanel = () => {
                   </button>
                   <button
                     className="text-sm px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
-                    onClick={() => window.open(`/blog/${blog._id}`, '_blank')}
+                    onClick={() => setPreviewBlog(blog)}
                   >
                     Preview
                   </button>
@@ -216,6 +216,36 @@ const AdminPanel = () => {
           )}
         </div>
       </div>
+
+      {/* ✅ Preview Modal */}
+      {previewBlog && (
+  <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 px-4">
+    <div className="bg-white w-full max-w-xl max-h-[80vh] rounded-xl shadow-xl p-6 relative overflow-y-auto">
+      <button
+        onClick={() => setPreviewBlog(null)}
+        className="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-2xl"
+      >
+        &times;
+      </button>
+      <h2 className="text-2xl font-bold mb-2 pr-6">{previewBlog.title}</h2>
+      <p className="text-sm text-gray-500 mb-2">
+        By {previewBlog.author} • {previewBlog.readTime} •{' '}
+        {new Date(previewBlog.date).toLocaleDateString()}
+      </p>
+      {previewBlog.image && (
+        <img
+          src={previewBlog.image}
+          alt={previewBlog.title}
+          className="rounded-lg mb-4 max-h-48 object-cover w-full"
+        />
+      )}
+      <div className="whitespace-pre-line text-gray-800 leading-relaxed pr-2">
+        {previewBlog.content}
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
