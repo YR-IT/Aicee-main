@@ -52,7 +52,7 @@ const BulletinPage = () => {
       setIsLoading(true);
       try {
         // Fetch all articles from blogs collection
-        const response = await fetch('http://localhost:5000/blogs');
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/blogs`);
         const data = await response.json();
         
         // Transform server data to match Article interface
