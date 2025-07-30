@@ -1,5 +1,5 @@
 import Blog from '../models/Blog.js';
-import Member from '../models/Member.js'; // ✅ Ensure this is imported
+import Member from '../models/Member.js';
 
 // ✅ GET /pending-members
 export const getPendingMembers = async (req, res) => {
@@ -25,7 +25,7 @@ export const approveMember = async (req, res) => {
     member.status = 'approved';
     await member.save();
 
-    res.status(200).json({ message: 'Member approved successfully' });
+    res.status(200).json({ message: '✅ Member approved successfully' });
   } catch (err) {
     console.error('❌ Error approving member:', err);
     res.status(500).json({ error: 'Internal server error' });
@@ -34,15 +34,16 @@ export const approveMember = async (req, res) => {
 
 // ✅ POST /blogs - expects image URL from Cloudinary
 export const createBlogPost = async (req, res) => {
-  const { title, excerpt, image, author, category, readTime } = req.body;
+  const { title, content, excerpt, image, author, category, readTime } = req.body;
 
-  if (!title || !excerpt || !image) {
-    return res.status(400).json({ error: 'Title, excerpt, and image are required' });
+  if (!title || !excerpt || !image || !content) {
+    return res.status(400).json({ error: 'Title, excerpt, content, and image are required' });
   }
 
   try {
     const newBlog = new Blog({
       title,
+      content,
       excerpt,
       image,
       author: author?.trim() || 'Admin',

@@ -15,17 +15,17 @@ export const createBlogPost = async (data: BlogPostData) => {
       title: data.title,
       content: data.content,
       image: data.imageUrl,
-      author: data.author,
+      author: data.author?.trim() || 'Admin',
       category: 'business',
-      date: new Date(),
+      excerpt: data.content.slice(0, 150) + '...',
+      readTime: `${Math.ceil(data.content.split(' ').length / 200)} min`,
       views: 0,
-      comments: 0,
-      excerpt: data.content.slice(0, 150),
-      readTime: `${Math.ceil(data.content.split(' ').length / 200)} min read`
     };
 
-    const res = await axios.post(`${API_BASE_URL}/api/blogs`, FormData, {
+    console.log('➡️ Submitting blog to:', `${API_BASE_URL}/api/blogs`);
+    console.log('📦 Payload:', payload);
 
+    const res = await axios.post(`${API_BASE_URL}/api/blogs`, payload, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -33,7 +33,7 @@ export const createBlogPost = async (data: BlogPostData) => {
 
     return res.data;
   } catch (error: any) {
-    console.error('Error submitting blog post:', error.response?.data || error.message);
-    throw new Error(error.response?.data?.message || 'Failed to submit blog post');
+    console.error('❌ Error submitting blog post:', error.response?.data || error.message);
+    throw new Error(error.response?.data?.error || 'Failed to submit blog post');
   }
 };

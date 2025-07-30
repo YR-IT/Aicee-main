@@ -1,10 +1,10 @@
-
 import express from 'express';
 import Blog from '../models/Blog.js';
 
+
 const router = express.Router();
 
-// Public: GET all blogs
+// ✅ Public: GET all blogs
 router.get('/', async (req, res) => {
   try {
     const blogs = await Blog.find().sort({ createdAt: -1 });
@@ -15,19 +15,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Public: GET blog by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const blog = await Blog.findById(req.params.id);
-    if (!blog) return res.status(404).json({ error: 'Blog not found' });
-    res.status(200).json(blog);
-  } catch (err) {
-    console.error('❌ Error fetching blog:', err);
-    res.status(500).json({ error: 'Failed to fetch blog post' });
-  }
-});
-
-// Admin: GET pending members
+// ✅ Admin: GET pending members
 router.get('/pending-members', async (req, res) => {
   try {
     const pending = await Member.find({ status: 'pending' }).sort({ createdAt: -1 });
@@ -38,7 +26,7 @@ router.get('/pending-members', async (req, res) => {
   }
 });
 
-// Admin: POST approve member
+// ✅ Admin: POST approve member
 router.post('/approve-member', async (req, res) => {
   const { id } = req.body;
   try {
@@ -54,7 +42,7 @@ router.post('/approve-member', async (req, res) => {
   }
 });
 
-// ✅ Admin: POST create blog (without multer/cloudinary)
+// ✅ Admin: POST create blog (Cloudinary image URL only)
 router.post('/', async (req, res) => {
   try {
     const { title, content, author, image, category, readTime } = req.body;
@@ -80,6 +68,18 @@ router.post('/', async (req, res) => {
   } catch (err) {
     console.error('❌ Error creating blog:', err);
     res.status(500).json({ error: 'Failed to create blog post' });
+  }
+});
+
+// ✅ Public: GET single blog by ID (put last)
+router.get('/:id', async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ error: 'Blog not found' });
+    res.status(200).json(blog);
+  } catch (err) {
+    console.error('❌ Error fetching blog:', err);
+    res.status(500).json({ error: 'Failed to fetch blog post' });
   }
 });
 
