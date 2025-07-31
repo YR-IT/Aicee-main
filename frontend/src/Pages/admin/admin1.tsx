@@ -20,7 +20,7 @@ const AdminPanel: React.FC = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/members`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/members`);
       setMembers(res.data);
     } catch (error) {
       console.error('Error fetching members:', error);
@@ -31,7 +31,7 @@ const AdminPanel: React.FC = () => {
 
   const handleApprove = async (id: string) => {
     try {
-      await axios.patch(`${import.meta.env.VITE_API_URL}/admin/members/${id}/approve`);
+      await axios.patch(`${import.meta.env.VITE_API_URL}/api/members/${id}/approve`);
       setMembers(prev => prev.filter(m => m._id !== id));
     } catch (err) {
       console.error('Approve failed', err);
@@ -40,7 +40,7 @@ const AdminPanel: React.FC = () => {
 
   const handleReject = async (id: string) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/members/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/members/${id}/reject`);
       setMembers(prev => prev.filter(m => m._id !== id));
     } catch (err) {
       console.error('Reject failed', err);
@@ -50,7 +50,7 @@ const AdminPanel: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Admin Panel – Approve Members</h1>
-      
+
       {loading ? (
         <p>Loading members...</p>
       ) : members.length === 0 ? (

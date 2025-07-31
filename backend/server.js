@@ -6,6 +6,9 @@ import dotenv from 'dotenv';
 
 import blogRoutes from './routes/blogRoutes.js';
 import memberRoutes from './routes/memberRoutes.js'; // ✅ Member routes
+import adminRoutes from './routes/memberRoutes.js';
+
+
 
 dotenv.config();
 
@@ -50,6 +53,7 @@ app.get('/apple-touch-icon-precomposed.png', (req, res) => res.status(204).end()
 // ✅ API Routes
 app.use('/api/blogs', blogRoutes);        // Blogs
 app.use('/api/members', memberRoutes);    // Members
+app.use('/admin', adminRoutes); // ✅ Mount admin routes
 
 // ✅ Root route
 app.get('/', (req, res) => {

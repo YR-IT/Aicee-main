@@ -1,24 +1,17 @@
-// backend/routes/memberRoutes.js
 import express from 'express';
-import {
-  createMember,        // ✅ Handles POST for new member submission
-  getPendingMembers,   // ✅ Returns all unapproved members
-  approveMember,       // ✅ Approves a member by ID
-  rejectMember         // ✅ Rejects a member by ID
-} from '../controller/memberController.js';
+import Member from '../models/Member.js';
 
 const router = express.Router();
 
-// POST - Submit a new member application
-router.post('/', createMember);
-
-// GET - Retrieve all pending (unapproved) members
-router.get('/', getPendingMembers);
-
-// PATCH - Approve a member by ID
-router.patch('/:id/approve', approveMember);
-
-// DELETE - Reject a member by ID
-router.delete('/:id/reject', rejectMember);
+// Route to get all pending members
+router.get('/members', async (req, res) => {
+  try {
+    const members = await Member.find({ status: 'pending' }).sort({ createdAt: -1 });
+    res.json(members);
+  } catch (error) {
+    console.error('Error fetching members:', error);
+    res.status(500).json({ error: 'Failed to fetch members' });
+  }
+});
 
 export default router;
