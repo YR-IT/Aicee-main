@@ -17,9 +17,6 @@ const allowedOrigins = [
   'https://aicee-main.vercel.app',
   'https://aicee-main.onrender.com'
 ];
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
-});
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -59,8 +56,9 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Server running on port ${PORT}`);
     });
+   
   })
   .catch((err) => {
     console.error('❌ MongoDB connection error:', err.message);
