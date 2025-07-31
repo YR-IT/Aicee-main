@@ -2,6 +2,7 @@
 
 import Member from '../models/Member.js';
 
+
 // ✅ Create a new member
 export const createMember = async (req, res) => {
   try {
@@ -18,20 +19,11 @@ export const createMember = async (req, res) => {
       fax,
     } = req.body;
 
-    // Validation for required fields
-    if (
-      !fullName ||
-      !phone ||
-      !email ||
-      !country ||
-      !zipCode ||
-      !businessDescription ||
-      !website ||
-      !fax
-    ) {
+    // ✅ Validate only required fields
+    if (!fullName || !phone || !email || !country || !zipCode || !businessDescription) {
       return res.status(400).json({
         success: false,
-        message: 'All fields are required',
+        message: 'Please fill in all required fields',
       });
     }
 
@@ -39,14 +31,14 @@ export const createMember = async (req, res) => {
       fullName,
       phone,
       email,
-      address,
-      city,
+      address: address || '',
+      city: city || '',
       country,
       zipCode,
       businessDescription,
-      website,
-      fax,
-      status: 'pending', // make sure new member is marked as pending
+      website: website || '',
+      fax: fax || '',
+      status: 'pending',
     });
 
     await newMember.save();
@@ -64,6 +56,7 @@ export const createMember = async (req, res) => {
     });
   }
 };
+
 
 // ✅ Get all pending members
 export const getPendingMembers = async (req, res) => {
