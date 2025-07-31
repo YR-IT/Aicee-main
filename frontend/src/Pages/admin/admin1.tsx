@@ -8,6 +8,7 @@ interface Member {
   email: string;
   phone: string;
   createdAt: string;
+  status: 'pending' | 'approved';
 }
 
 const AdminPanel: React.FC = () => {
@@ -20,10 +21,10 @@ const AdminPanel: React.FC = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/members`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/members/pending`);
       setMembers(res.data);
     } catch (error) {
-      console.error('Error fetching members:', error);
+      console.error('❌ Error fetching pending members:', error);
     } finally {
       setLoading(false);
     }
@@ -34,7 +35,7 @@ const AdminPanel: React.FC = () => {
       await axios.patch(`${import.meta.env.VITE_API_URL}/api/members/${id}/approve`);
       setMembers(prev => prev.filter(m => m._id !== id));
     } catch (err) {
-      console.error('Approve failed', err);
+      console.error('❌ Approve failed:', err);
     }
   };
 
@@ -43,7 +44,7 @@ const AdminPanel: React.FC = () => {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/members/${id}/reject`);
       setMembers(prev => prev.filter(m => m._id !== id));
     } catch (err) {
-      console.error('Reject failed', err);
+      console.error('❌ Reject failed:', err);
     }
   };
 
@@ -52,13 +53,16 @@ const AdminPanel: React.FC = () => {
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Admin Panel – Approve Members</h1>
 
       {loading ? (
-        <p>Loading members...</p>
+        <p>Loading pending members...</p>
       ) : members.length === 0 ? (
         <p className="text-gray-600">No pending member requests.</p>
       ) : (
         <div className="space-y-4">
           {members.map(member => (
-            <div key={member._id} className="bg-white shadow-md p-5 rounded-lg flex justify-between items-center border border-gray-200">
+            <div
+              key={member._id}
+              className="bg-white shadow-md p-5 rounded-lg flex justify-between items-center border border-gray-200"
+            >
               <div>
                 <p><span className="font-semibold">Name:</span> {member.fullName}</p>
                 <p className="flex items-center text-sm text-gray-600"><Mail className="w-4 h-4 mr-1" /> {member.email}</p>
