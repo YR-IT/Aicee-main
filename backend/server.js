@@ -42,22 +42,27 @@ app.use(cors({
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
+// ✅ Dummy icon routes to silence 404s
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/apple-touch-icon.png', (req, res) => res.status(204).end());
+app.get('/apple-touch-icon-precomposed.png', (req, res) => res.status(204).end());
+
 // ✅ API Routes
 app.use('/api/blogs', blogRoutes);        // Blogs
-app.use('/api/members', memberRoutes);    // ✅ FIXED: mount memberRoutes at /api/members
+app.use('/api/members', memberRoutes);    // Members
 
 // ✅ Root route
 app.get('/', (req, res) => {
   res.send('✅ AICEE Backend is running!');
 });
 
-// ✅ 404 handler
+// ✅ 404 handler (must be last)
 app.use((req, res, next) => {
   console.warn(`❌ Route not found: ${req.originalUrl}`);
   res.status(404).json({ error: `Route ${req.originalUrl} not found` });
 });
 
-// ✅ MongoDB connection
+// ✅ MongoDB connection and server start
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
@@ -69,9 +74,3 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('❌ MongoDB connection error:', err.message);
     process.exit(1);
   });
-
-// dummy routes
-  app.get('/favicon.ico', (req, res) => res.status(204).end());
-app.get('/apple-touch-icon.png', (req, res) => res.status(204).end());
-app.get('/apple-touch-icon-precomposed.png', (req, res) => res.status(204).end());
-
