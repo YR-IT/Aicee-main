@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
 // ✅ Mount API routes
 app.use('/api/blogs', blogRoutes);
-app.use('/admin/members', memberRoutes); // ✅ Now your route is /api/members
+app.use('/api/members', memberRoutes); //route is /api/members
 
 // ✅ Dummy favicon routes
 app.get('/favicon.ico', (req, res) => res.status(204).end());
