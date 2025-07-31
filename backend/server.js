@@ -17,6 +17,9 @@ const allowedOrigins = [
   'https://aicee-main.vercel.app',
   'https://aicee-main.onrender.com'
 ];
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
+});
 
 app.use(cors({
   origin: function (origin, callback) {
