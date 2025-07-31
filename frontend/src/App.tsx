@@ -37,8 +37,7 @@ import BecomeMember from './Pages/BecomeMember';
 import CoursesPage from './Pages/Courses Page/Courses';
 import LoginPage from './Pages/Courses Page/LoginPage';
 import MemberBenefits from './Pages/MemberBenefits';
-import ArbitrationCell from './Pages/ArbitrationCell';
-import React from 'react';
+import Admin1 from './Pages/admin/admin1';
 
 const HomePage = () => (
   <>
@@ -82,7 +81,10 @@ function App() {
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/member-benefits" element={<MemberBenefits />} />
         <Route path ="/admin" element={<Admin />} />
+        <Route path="/admin/members" element={<Admin1 />} />
+      
         
+  
     
       </Routes>
       <Footer />

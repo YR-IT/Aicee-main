@@ -47,7 +47,8 @@ const MembersDirectory: React.FC = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/members');
+       const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/members`);
+
         setMembers(response.data);
       } catch (err) {
         console.error('❌ Error fetching members:', err);

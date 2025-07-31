@@ -1,10 +1,11 @@
+// backend/server.js
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import blogRoutes from './routes/blogRoutes.js';
-import memberRoutes from './routes/memberRoutes.js'; // ✅ Import member routes
+import memberRoutes from './routes/memberRoutes.js'; // ✅ Member routes
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ console.log('🌐 Cloudinary ENV Check:', {
   secret: process.env.CLOUDINARY_API_SECRET ? 'Exists ✅' : 'Missing ❌',
 });
 
-// ✅ CORS: Whitelist your frontend domains
+// ✅ CORS Setup
 const allowedOrigins = [
   'http://localhost:5173',
   'https://aicee-main.vercel.app',
@@ -37,20 +38,20 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ Request body parsers
+// ✅ Body parsers
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
 // ✅ API Routes
-app.use('/api/blogs', blogRoutes);     // Blog-related routes (GET, POST, GET/:id)
-app.use('/api/admin', memberRoutes);   // Member-related routes (/pending-members, /approve-member)
+app.use('/api/blogs', blogRoutes);        // Blogs
+app.use('/api/members', memberRoutes);    // ✅ FIXED: mount memberRoutes at /api/members
 
 // ✅ Root route
 app.get('/', (req, res) => {
   res.send('✅ AICEE Backend is running!');
 });
 
-// ✅ 404 Handler (Optional, for catching undefined routes)
+// ✅ 404 handler
 app.use((req, res, next) => {
   console.warn(`❌ Route not found: ${req.originalUrl}`);
   res.status(404).json({ error: `Route ${req.originalUrl} not found` });
@@ -66,5 +67,11 @@ mongoose.connect(process.env.MONGO_URI)
   })
   .catch((err) => {
     console.error('❌ MongoDB connection error:', err.message);
-    process.exit(1); // Exit if DB fails
+    process.exit(1);
   });
+
+// dummy routes
+  app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/apple-touch-icon.png', (req, res) => res.status(204).end());
+app.get('/apple-touch-icon-precomposed.png', (req, res) => res.status(204).end());
+

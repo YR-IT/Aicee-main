@@ -144,7 +144,8 @@ import {
         setIsSubmitting(true);
 
         try {
-          const response = await axios.post('http://localhost:5000/members', formData);
+          const response = await axios.post(`${import.meta.env.VITE_API_URL}/members`, formData);
+
 
           if (response.data?.success) {
             alert('✅ Membership application submitted successfully!');
@@ -166,11 +167,16 @@ import {
             fax: '',
           });
           setShowPopup(false);
-        } catch (error) {
-          console.error('❌ Error submitting form:', error);
-          alert('🚫 Error submitting form. Please try again.');
+        } catch (error: unknown) {
+          if (axios.isAxiosError(error)) {
+            console.error('Submission error:', error.response?.data || error.message);
+            alert('Error submitting form. Please try again.');
+          } else {
+            console.error('Unexpected error:', error);
+            alert('An unexpected error occurred.');
+          }
         }
-
+        
         setIsSubmitting(false);
       };
 

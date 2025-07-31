@@ -1,31 +1,24 @@
+// backend/routes/memberRoutes.js
 import express from 'express';
-import Member from '../models/Member.js';
+import {
+  createMember,        // ✅ Handles POST for new member submission
+  getPendingMembers,   // ✅ Returns all unapproved members
+  approveMember,       // ✅ Approves a member by ID
+  rejectMember         // ✅ Rejects a member by ID
+} from '../controller/memberController.js';
 
 const router = express.Router();
 
-router.get('/pending-members', async (req, res) => {
-  try {
-    const pending = await Member.find({ status: 'pending' }).sort({ createdAt: -1 });
-    res.status(200).json(pending);
-  } catch (err) {
-    console.error('❌ Error fetching pending members:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+// POST - Submit a new member application
+router.post('/', createMember);
 
-router.post('/approve-member', async (req, res) => {
-  const { id } = req.body;
-  try {
-    const member = await Member.findById(id);
-    if (!member) return res.status(404).json({ error: 'Member not found' });
+// GET - Retrieve all pending (unapproved) members
+router.get('/', getPendingMembers);
 
-    member.status = 'approved';
-    await member.save();
-    res.json({ message: '✅ Member approved' });
-  } catch (err) {
-    console.error('❌ Error approving member:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
+// PATCH - Approve a member by ID
+router.patch('/:id/approve', approveMember);
+
+// DELETE - Reject a member by ID
+router.delete('/:id/reject', rejectMember);
 
 export default router;
