@@ -5,7 +5,10 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import blogRoutes from './routes/blogRoutes.js';
-import memberRoutes from './routes/memberRoutes.js'; // ✅ single import only
+import memberRoutes from './routes/memberRoutes.js'; // ✅ Member routes
+
+
+
 
 dotenv.config();
 
@@ -38,30 +41,31 @@ app.use(cors({
   credentials: true
 }));
 
+// ✅ Body parsers
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
-// Dummy icons
+// ✅ Dummy icon routes to silence 404s
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 app.get('/apple-touch-icon.png', (req, res) => res.status(204).end());
 app.get('/apple-touch-icon-precomposed.png', (req, res) => res.status(204).end());
 
-// ✅ Mount routes
-app.use('/api/blogs', blogRoutes);
-app.use('/api', memberRoutes); // ✅ now /api/members and /api/admin/* work
+// ✅ API Routes
+app.use('/api/blogs', blogRoutes);        // Blogs
+app.use('/api/members', memberRoutes);    // Members
 
-// ✅ Health check
+// ✅ Root route
 app.get('/', (req, res) => {
   res.send('✅ AICEE Backend is running!');
 });
 
-// ✅ 404 handler
+// ✅ 404 handler (must be last)
 app.use((req, res, next) => {
   console.warn(`❌ Route not found: ${req.originalUrl}`);
   res.status(404).json({ error: `Route ${req.originalUrl} not found` });
 });
 
-// ✅ Mongo + Start server
+// ✅ MongoDB connection and server start
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
