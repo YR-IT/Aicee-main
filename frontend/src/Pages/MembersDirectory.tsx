@@ -31,7 +31,7 @@ interface Member {
 const MembersDirectory: React.FC = () => {
   const [members, setMembers] = useState<Member[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const [selectedState, setSelectedState] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
   const [selectedLetter, setSelectedLetter] = useState('');
@@ -44,25 +44,18 @@ const MembersDirectory: React.FC = () => {
   ];
 
   useEffect(() => {
-    const getMembers = async () => {
+    const loadMembers = async () => {
       try {
-        const res = await fetchApprovedMembers();
-        console.log('API Response:', res);  // ✅ Add this line to see API response
-        if (res.members && Array.isArray(res.members)) {
-          setMembers(res.members);  // ✅ Correct: res.members
-        } else {
-          throw new Error('Invalid API Response Shape');
-        }
-      } catch (err: any) {
-        console.error('❌ Error fetching members:', err);
-        setError("Failed to load members. Please try again later.");
-      } finally {
+        const data = await fetchApprovedMembers();
+        setMembers(data.members || data); // Supports both { members: [...] } and [...] shape
+        setLoading(false);
+      } catch (err) {
+        setError(true);
         setLoading(false);
       }
     };
-  
-    getMembers();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    loadMembers();
   }, []);
   
   const filteredMembers = members.filter(member => {
