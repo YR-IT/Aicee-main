@@ -1,7 +1,4 @@
-// backend/controller/memberController.js
-
 import Member from '../models/Member.js';
-
 
 // ✅ Create a new member
 export const createMember = async (req, res) => {
@@ -19,7 +16,7 @@ export const createMember = async (req, res) => {
       fax,
     } = req.body;
 
-    // ✅ Validate only required fields
+    // Validate required fields
     if (!fullName || !phone || !email || !country || !zipCode || !businessDescription) {
       return res.status(400).json({
         success: false,
@@ -57,15 +54,37 @@ export const createMember = async (req, res) => {
   }
 };
 
-
 // ✅ Get all pending members
 export const getPendingMembers = async (req, res) => {
   try {
     const members = await Member.find({ status: 'pending' }).sort({ createdAt: -1 });
-    res.json(members);
+    res.json({
+      success: true,
+      members,
+    });
   } catch (err) {
     console.error('Get Pending Members Error:', err.message);
-    res.status(500).json({ error: 'Failed to fetch members' });
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch pending members',
+    });
+  }
+};
+
+// ✅ Get all approved members
+export const getApprovedMembers = async (req, res) => {
+  try {
+    const members = await Member.find({ status: 'approved' }).sort({ createdAt: -1 });
+    res.json({
+      success: true,
+      members,
+    });
+  } catch (err) {
+    console.error('Get Approved Members Error:', err.message);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch approved members',
+    });
   }
 };
 
@@ -77,11 +96,23 @@ export const approveMember = async (req, res) => {
       { status: 'approved' },
       { new: true }
     );
-    if (!member) return res.status(404).json({ error: 'Member not found' });
-    res.json({ message: 'Member approved', member });
+    if (!member) {
+      return res.status(404).json({
+        success: false,
+        message: 'Member not found',
+      });
+    }
+    res.json({
+      success: true,
+      message: 'Member approved successfully',
+      member,
+    });
   } catch (err) {
     console.error('Approve Member Error:', err.message);
-    res.status(500).json({ error: 'Failed to approve member' });
+    res.status(500).json({
+      success: false,
+      message: 'Failed to approve member',
+    });
   }
 };
 
@@ -89,10 +120,21 @@ export const approveMember = async (req, res) => {
 export const rejectMember = async (req, res) => {
   try {
     const deleted = await Member.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).json({ error: 'Member not found' });
-    res.json({ message: 'Member rejected and deleted' });
+    if (!deleted) {
+      return res.status(404).json({
+        success: false,
+        message: 'Member not found',
+      });
+    }
+    res.json({
+      success: true,
+      message: 'Member rejected and deleted successfully',
+    });
   } catch (err) {
     console.error('Reject Member Error:', err.message);
-    res.status(500).json({ error: 'Failed to delete member' });
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete member',
+    });
   }
 };

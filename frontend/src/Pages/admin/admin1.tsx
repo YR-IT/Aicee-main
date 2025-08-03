@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Mail, Phone, Calendar, Check, X } from 'lucide-react';
+import { fetchPendingMembers, approveMember, rejectMember } from './api/memberApi'; // Adjust path as needed
 
 interface Member {
   _id: string;
@@ -21,8 +21,8 @@ const AdminPanel: React.FC = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/members/pending`);
-      setMembers(res.data);
+      const res = await fetchPendingMembers();
+      setMembers(res);
     } catch (error) {
       console.error('❌ Error fetching pending members:', error);
     } finally {
@@ -32,19 +32,23 @@ const AdminPanel: React.FC = () => {
 
   const handleApprove = async (id: string) => {
     try {
-      await axios.patch(`${import.meta.env.VITE_API_URL}/api/members/${id}/approve`);
+      await approveMember(id);
       setMembers(prev => prev.filter(m => m._id !== id));
+      alert('✅ Member approved successfully!');
     } catch (err) {
       console.error('❌ Approve failed:', err);
+      alert('Failed to approve member. Please try again.');
     }
   };
 
   const handleReject = async (id: string) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/members/${id}/reject`);
+      await rejectMember(id);
       setMembers(prev => prev.filter(m => m._id !== id));
+      alert('❌ Member rejected successfully!');
     } catch (err) {
       console.error('❌ Reject failed:', err);
+      alert('Failed to reject member. Please try again.');
     }
   };
 

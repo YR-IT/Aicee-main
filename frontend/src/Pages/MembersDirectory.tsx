@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { 
   Search, 
   MapPin, 
@@ -8,7 +8,7 @@ import {
   ExternalLink,
   Users,
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { fetchApprovedMembers } from './admin/api/memberApi';
 
 interface Member {
   _id: string;
@@ -37,7 +37,6 @@ const MembersDirectory: React.FC = () => {
   const [selectedLetter, setSelectedLetter] = useState('');
 
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  
   const states = [
     'All States', 'Andhra Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi', 
     'Gujarat', 'Haryana', 'Karnataka', 'Kerala', 'Maharashtra', 'Punjab', 
@@ -45,24 +44,27 @@ const MembersDirectory: React.FC = () => {
   ];
 
   useEffect(() => {
-    const fetchMembers = async () => {
+    const getMembers = async () => {
       try {
-       const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/members`, FormData);
-
-
-        setMembers(response.data);
-      } catch (err) {
+        const res = await fetchApprovedMembers();
+        console.log('API Response:', res);  // ✅ Add this line to see API response
+        if (res.members && Array.isArray(res.members)) {
+          setMembers(res.members);  // ✅ Correct: res.members
+        } else {
+          throw new Error('Invalid API Response Shape');
+        }
+      } catch (err: any) {
         console.error('❌ Error fetching members:', err);
         setError("Failed to load members. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
-
-    fetchMembers();
+  
+    getMembers();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-
+  
   const filteredMembers = members.filter(member => {
     const matchesState = !selectedState || selectedState === 'All States' || member.state === selectedState;
     const matchesKeyword = !searchKeyword || member.fullName.toLowerCase().includes(searchKeyword.toLowerCase());
@@ -79,30 +81,11 @@ const MembersDirectory: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
-      {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-16 px-4 overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-spin-slow"></div>
-        </div>
-
-        {/* City Skyline Illustration */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/20 to-transparent">
-          <div className="max-w-7xl mx-auto h-full flex items-end justify-center space-x-4 opacity-30">
-            {[...Array(12)].map((_, i) => (
-              <div 
-                key={i} 
-                className={`bg-white/40 rounded-t-lg animate-pulse`}
-                style={{
-                  width: `${Math.random() * 30 + 20}px`,
-                  height: `${Math.random() * 60 + 40}px`,
-                  animationDelay: `${i * 0.2}s`
-                }}
-              ></div>
-            ))}
-          </div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto text-center text-white">
@@ -115,11 +98,9 @@ const MembersDirectory: React.FC = () => {
             Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Business Members</span>
           </h1>
           
-          {/* Search Section */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                {/* State Selector */}
                 <div className="relative">
                   <select 
                     value={selectedState}
@@ -134,7 +115,6 @@ const MembersDirectory: React.FC = () => {
                   <ChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70 pointer-events-none" />
                 </div>
 
-                {/* Keyword Search */}
                 <div className="relative">
                   <input
                     type="text"
@@ -146,7 +126,6 @@ const MembersDirectory: React.FC = () => {
                   <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70" />
                 </div>
 
-                {/* Search Button */}
                 <button 
                   onClick={handleSearch}
                   className="bg-white text-orange-600 px-8 py-3 rounded-2xl font-bold hover:bg-orange-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
@@ -156,7 +135,6 @@ const MembersDirectory: React.FC = () => {
                 </button>
               </div>
 
-              {/* Alphabet Filter */}
               <div className="border-t border-white/20 pt-6">
                 <p className="text-white/90 font-semibold mb-4 text-center">Search by Alphabet:</p>
                 <div className="flex flex-wrap justify-center gap-2">
@@ -180,7 +158,6 @@ const MembersDirectory: React.FC = () => {
         </div>
       </div>
 
-      {/* Members Section */}
       <div className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -192,7 +169,6 @@ const MembersDirectory: React.FC = () => {
             </p>
           </div>
 
-          {/* Results Count */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl px-4 py-3">
@@ -220,14 +196,12 @@ const MembersDirectory: React.FC = () => {
             </div>
           </div>
 
-          {/* Members Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredMembers.map((member) => (
               <div
                 key={member._id}
                 className="bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col hover:shadow-lg transition"
               >
-                {/* Top: Logo + Name */}
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold text-lg">
                     {member.fullName.charAt(0)}
@@ -237,13 +211,11 @@ const MembersDirectory: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Address */}
                 <div className="flex items-start space-x-3 mb-4">
                   <MapPin className="w-5 h-5 text-orange-500 mt-1" />
                   <p className="text-sm text-gray-700 leading-relaxed">{member.address}</p>
                 </div>
 
-                {/* More Info */}
                 <Link
                   to={`/company/${member._id}`}
                   className="group inline-flex items-center text-orange-600 font-semibold text-sm hover:underline hover:underline-offset-4 transition mt-auto"
@@ -257,7 +229,6 @@ const MembersDirectory: React.FC = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 md:py-20 py-12 px-4 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
