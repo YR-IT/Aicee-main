@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Search, 
-  MapPin, 
+import {
+  Search,
+  MapPin,
   Filter,
   ChevronDown,
   ExternalLink,
   Users,
 } from 'lucide-react';
 import { fetchApprovedMembers } from './admin/api/memberApi';
-import axios from 'axios';
 
 interface Member {
   _id: string;
@@ -39,31 +38,34 @@ const MembersDirectory: React.FC = () => {
 
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
   const states = [
-    'All States', 'Andhra Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi', 
-    'Gujarat', 'Haryana', 'Karnataka', 'Kerala', 'Maharashtra', 'Punjab', 
+    'All States', 'Andhra Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Delhi',
+    'Gujarat', 'Haryana', 'Karnataka', 'Kerala', 'Maharashtra', 'Punjab',
     'Rajasthan', 'Tamil Nadu', 'Uttar Pradesh', 'West Bengal'
   ];
 
   useEffect(() => {
     const loadMembers = async () => {
       try {
-        const { data } = await axios.get<{ members: Member[] }>(`...`);
-        setMembers(data.members);
-        // Supports both { members: [...] } and [...] shape
-        setLoading(false);
+        const data = await fetchApprovedMembers(); // returns Member[]
+        setMembers(data as unknown as Member[]);
       } catch (err) {
+        console.error('❌ Error loading members:', err);
         setError(true);
+      } finally {
         setLoading(false);
       }
     };
 
     loadMembers();
   }, []);
-  
+
   const filteredMembers = members.filter(member => {
-    const matchesState = !selectedState || selectedState === 'All States' || member.state === selectedState;
-    const matchesKeyword = !searchKeyword || member.fullName.toLowerCase().includes(searchKeyword.toLowerCase());
-    const matchesLetter = !selectedLetter || member.fullName.charAt(0).toUpperCase() === selectedLetter;
+    const matchesState =
+      !selectedState || selectedState === 'All States' || member.state === selectedState;
+    const matchesKeyword =
+      !searchKeyword || member.fullName.toLowerCase().includes(searchKeyword.toLowerCase());
+    const matchesLetter =
+      !selectedLetter || member.fullName.charAt(0).toUpperCase() === selectedLetter;
     return matchesState && matchesKeyword && matchesLetter;
   });
 
@@ -72,10 +74,11 @@ const MembersDirectory: React.FC = () => {
   };
 
   if (loading) return <div className="text-center py-10 text-gray-600">Loading members...</div>;
-  if (error) return <div className="text-center text-red-600 py-10">{error}</div>;
+  if (error) return <div className="text-center text-red-600 py-10">Error loading members</div>;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
+      {/* HEADER */}
       <div className="relative bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 py-16 px-4 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -88,16 +91,16 @@ const MembersDirectory: React.FC = () => {
             <Users className="w-5 h-5" />
             <span className="font-semibold">Members Directory</span>
           </div>
-          
           <h1 className="text-4xl md:text-6xl font-bold mb-12 leading-tight">
             Find the <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Business Members</span>
           </h1>
-          
+
+          {/* FILTERS */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="relative">
-                  <select 
+                  <select
                     value={selectedState}
                     onChange={(e) => setSelectedState(e.target.value)}
                     className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl px-6 py-3 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 appearance-none cursor-pointer font-medium"
@@ -121,7 +124,7 @@ const MembersDirectory: React.FC = () => {
                   <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70" />
                 </div>
 
-                <button 
+                <button
                   onClick={handleSearch}
                   className="bg-white text-orange-600 px-8 py-3 rounded-2xl font-bold hover:bg-orange-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
@@ -130,6 +133,7 @@ const MembersDirectory: React.FC = () => {
                 </button>
               </div>
 
+              {/* ALPHABET FILTER */}
               <div className="border-t border-white/20 pt-6">
                 <p className="text-white/90 font-semibold mb-4 text-center">Search by Alphabet:</p>
                 <div className="flex flex-wrap justify-center gap-2">
@@ -153,6 +157,7 @@ const MembersDirectory: React.FC = () => {
         </div>
       </div>
 
+      {/* RESULTS */}
       <div className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -172,7 +177,7 @@ const MembersDirectory: React.FC = () => {
                 </span>
               </div>
               {(selectedState || searchKeyword || selectedLetter) && (
-                <button 
+                <button
                   onClick={() => {
                     setSelectedState('');
                     setSearchKeyword('');
@@ -184,13 +189,14 @@ const MembersDirectory: React.FC = () => {
                 </button>
               )}
             </div>
-            
+
             <div className="flex items-center space-x-2">
               <Filter className="w-5 h-5 text-gray-600" />
               <span className="text-gray-600 font-medium">Sort by Relevance</span>
             </div>
           </div>
 
+          {/* MEMBER CARDS */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredMembers.map((member) => (
               <div
@@ -221,35 +227,6 @@ const MembersDirectory: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 md:py-20 py-12 px-4 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
-            Want to Join Our <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Business Network?</span>
-          </h2>
-          <p className="text-lg text-gray-300 mb-12 leading-relaxed">
-            Become a member of AICC and connect with thousands of businesses across India. 
-            Expand your network and grow your business with us.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link to="/become-a-member">
-              <button className="bg-gradient-to-r from-orange-600 to-red-500 hover:from-orange-700 hover:to-red-600 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 shadow-lg hover:shadow-orange-500/25 transform hover:scale-103 hover:-translate-y-0.5">
-                Become a Member
-              </button>
-            </Link>
-            <Link to="/about">
-              <button className="border border-orange-500 text-orange-600 px-11 py-2.5 rounded-xl font-bold text-base hover:bg-orange-50 hover:text-orange-700 transition-all duration-300">
-                Learn More
-              </button>
-            </Link>
-          </div> 
         </div>
       </div>
     </div>

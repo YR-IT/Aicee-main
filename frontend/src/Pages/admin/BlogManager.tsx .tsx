@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 const AdminPanel = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -22,42 +21,6 @@ const AdminPanel = () => {
       console.error('❌ Failed to fetch blogs:', err);
     }
   };
-
-  const [members, setMembers] = useState([]);
-
-  const fetchMembers = async () => {
-    try {
-      const res = await axios.get(`${API_BASE_URL}/api/admin`);
-      setMembers(res.data);
-    } catch (err) {
-      console.error("❌ Failed to fetch members:", err);
-    }
-  };
-
-  const updateMemberStatus = async (id: string, status: string) => {
-    try {
-      await axios.patch(`${API_BASE_URL}/api/admin/${id}`, { status });
-      alert(`✅ Member ${status}`);
-      fetchMembers();
-    } catch (err) {
-      alert("❌ Failed to update member.");
-    }
-  };
-
-  const deleteMember = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this member?")) return;
-    try {
-      await axios.delete(`${API_BASE_URL}/api/admin/${id}`);
-      alert("🗑️ Member deleted");
-      fetchMembers();
-    } catch (err) {
-      alert("❌ Failed to delete member.");
-    }
-  };
-
-  useEffect(() => {
-    fetchMembers();
-  }, []);
 
   useEffect(() => {
     fetchBlogs();
@@ -243,65 +206,6 @@ const AdminPanel = () => {
                   <button
                     className="text-sm px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                     onClick={() => handleDelete(blog._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-
-      {/* ✅ Member Requests Section */}
-      <div className="max-w-4xl mx-auto mt-12">
-        <h3 className="text-2xl font-bold mb-4 text-gray-800">🧾 Member Requests</h3>
-        <div className="space-y-4">
-          {members.length === 0 ? (
-            <p className="text-gray-500">No member requests yet.</p>
-          ) : (
-            members.map((member: any) => (
-              <div
-                key={member._id}
-                className="bg-white shadow rounded-lg p-4 border border-gray-200"
-              >
-                <h4 className="text-lg font-semibold text-gray-800">
-                  {member.name} ({member.email})
-                </h4>
-                <p className="text-sm text-gray-600 mb-2">
-                  Status:{" "}
-                  <span
-                    className={
-                      member.status === "approved"
-                        ? "text-green-600"
-                        : member.status === "rejected"
-                        ? "text-red-600"
-                        : "text-yellow-600"
-                    }
-                  >
-                    {member.status}
-                  </span>
-                </p>
-                <div className="flex gap-3">
-                  {member.status === "pending" && (
-                    <>
-                      <button
-                        className="text-sm px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-                        onClick={() => updateMemberStatus(member._id, "approved")}
-                      >
-                        Approve
-                      </button>
-                      <button
-                        className="text-sm px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                        onClick={() => updateMemberStatus(member._id, "rejected")}
-                      >
-                        Reject
-                      </button>
-                    </>
-                  )}
-                  <button
-                    className="text-sm px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
-                    onClick={() => deleteMember(member._id)}
                   >
                     Delete
                   </button>
