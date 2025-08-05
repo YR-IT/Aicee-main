@@ -84,6 +84,9 @@ function App() {
        
         <Route path="/member-benefits" element={<MemberBenefits />} />
         <Route path ="/admin" element={<AdminPanel />} />
+        <Route path="/admin/blogs" element={<BlogManager />} />
+<Route path="/admin/members" element={<MemberManager />} />
+
      
       
         
