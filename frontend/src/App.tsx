@@ -38,6 +38,7 @@ import CoursesPage from './Pages/Courses Page/Courses';
 import LoginPage from './Pages/Courses Page/LoginPage';
 import MemberBenefits from './Pages/MemberBenefits';
 import Admin1 from './Pages/admin/admin1';
+import ArbitrationCell from './Pages/ArbitrationCell';
 
 const HomePage = () => (
   <>
@@ -82,7 +83,7 @@ function App() {
         <Route path="/member-benefits" element={<MemberBenefits />} />
         <Route path ="/admin" element={<Admin />} />
         <Route path="/admin/members" element={<Admin1 />} />
-      
+        <Route path="/arbitration" element={<ArbitrationCell />} />
         
   
     
