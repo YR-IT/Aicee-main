@@ -2,21 +2,35 @@ import axios from 'axios';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
+// Interfaces
+interface MemberResponse {
+  members: Member[];
+}
+
+interface Member {
+  _id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  createdAt: string;
+  status: 'pending' | 'approved' | 'rejected';
+}
+
 // ✅ Get all PENDING members
-export const fetchPendingMembers = async () => {
-  const response = await axios.get(`${BASE_URL}/api/members/pending`);
+export const fetchPendingMembers = async (): Promise<Member[]> => {
+  const response = await axios.get<MemberResponse>(`${BASE_URL}/api/members/pending`);
   return response.data.members;
 };
 
 // ✅ Get all APPROVED members
-export const fetchApprovedMembers = async () => {
-  const response = await axios.get(`${BASE_URL}/api/members/approved`);
+export const fetchApprovedMembers = async (): Promise<Member[]> => {
+  const response = await axios.get<MemberResponse>(`${BASE_URL}/api/members/approved`);
   return response.data.members;
 };
 
 // ✅ Get all REJECTED members
-export const fetchRejectedMembers = async () => {
-  const response = await axios.get(`${BASE_URL}/api/members/rejected`);
+export const fetchRejectedMembers = async (): Promise<Member[]> => {
+  const response = await axios.get<MemberResponse>(`${BASE_URL}/api/members/rejected`);
   return response.data.members;
 };
 

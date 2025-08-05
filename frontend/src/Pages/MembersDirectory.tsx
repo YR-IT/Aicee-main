@@ -9,6 +9,7 @@ import {
   Users,
 } from 'lucide-react';
 import { fetchApprovedMembers } from './admin/api/memberApi';
+import axios from 'axios';
 
 interface Member {
   _id: string;
@@ -46,8 +47,9 @@ const MembersDirectory: React.FC = () => {
   useEffect(() => {
     const loadMembers = async () => {
       try {
-        const data = await fetchApprovedMembers();
-        setMembers(data.members || data); // Supports both { members: [...] } and [...] shape
+        const { data } = await axios.get<{ members: Member[] }>(`...`);
+        setMembers(data.members);
+        // Supports both { members: [...] } and [...] shape
         setLoading(false);
       } catch (err) {
         setError(true);
