@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import BlogManager from './BlogManager.tsx '; // Make sure path is correct
-import MemberManager from './MemberManager.tsx '; // Make sure path is correct
 import { useNavigate } from 'react-router-dom';
+import BlogManager from './BlogManager';
+import MemberManager from './MemberManager';
 
 const AdminPanel: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'blogs' | 'members'>('blogs');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (sessionStorage.getItem('isAdmin') !== 'true') {
-      navigate('/admin');
-    }
-  }, [navigate]);
+useEffect(() => {
+  if (sessionStorage.getItem("isAdmin") !== "true") {
+    navigate("/admin/login");
+  }
+}, [navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">

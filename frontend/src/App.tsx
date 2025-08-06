@@ -2,8 +2,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-
-
 import AboutPage from './Pages/AboutPage';
 import International from './Pages/International';
 import Activities from './Pages/Activities';
@@ -11,10 +9,6 @@ import BecomeMembers from './Pages/BecomeMember';
 import MembersDirectory from './Pages/MembersDirectory';
 import AiccBulletin from './Pages/AiccBulletin';
 import ContactUs from './Pages/ContactUs';
-
-import BlogManager from './Pages/admin/BlogManager.tsx ';        // ✅ Adjust if in a different folder
-import MemberManager from './Pages/admin/MemberManager.tsx ';    
-
 import HeroSection from './components/HeroSection';
 import CoreServices from './components/CoreServices';
 import ExportImportCourse from './components/ExportImportCourse';
@@ -37,11 +31,11 @@ import CompanyDetails from './Pages/Companies/CompanyDetails';
 
 import BecomeMember from './Pages/BecomeMember';
 import CoursesPage from './Pages/Courses Page/Courses';
-import LoginPage from './Pages/Courses Page/LoginPage';
 import MemberBenefits from './Pages/MemberBenefits';
 
 import ArbitrationCell from './Pages/ArbitrationCell';
 import AdminPanel from './Pages/admin/AdminPanel';
+import AdminLogin from './Pages/admin/AdminLogin';
 
 const HomePage = () => (
   <>
@@ -80,17 +74,11 @@ function App() {
         <Route path="/initiatives/Know-The-Indian-Law" element={<IndianLaws/>}/>
         <Route path="/company/:id" element={<CompanyDetails />} />
         <Route path="/become-a-member" element={<BecomeMember />} />
-        <Route path="/Courses" element={<CoursesPage />} />
-        <Route path="/login" element={<LoginPage />} />
-       
+        <Route path="/Courses" element={<CoursesPage />} />   
         <Route path="/member-benefits" element={<MemberBenefits />} />
         <Route path ="/admin" element={<AdminPanel />} />
-  
+        <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/arbitration" element={<ArbitrationCell />} />
-        <Route path="/admin/blogs" element={<BlogManager />} />
-        <Route path="/admin/members" element={<MemberManager />} />
-        
-  
     
       </Routes>
       <Footer />
